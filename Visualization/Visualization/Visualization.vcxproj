@@ -151,6 +151,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="N2B_Container.h" />
+    <ClInclude Include="N2B_Coordinate_System.h" />
     <ClInclude Include="N2B_MainWin.h" />
     <ClInclude Include="N2B_Graphics.h" />
   </ItemGroup>

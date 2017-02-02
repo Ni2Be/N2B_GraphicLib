@@ -1,4 +1,11 @@
 ﻿  main.cpp
-d:\programmieren\graphiclib\visualization\visualization\n2b_graphics.h(132): warning C4129: "d": nicht erkannte Folge von Escapesequenz
-d:\programmieren\graphiclib\visualization\visualization\n2b_graphics.h(130): warning C4018: ">=": Konflikt zwischen "signed" und "unsigned"
-  Visualization.vcxproj -> D:\Programmieren\GraphicLib\Visualization\Debug\Visualization.exe
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_graphics.h(150): warning C4129: "d": nicht erkannte Folge von Escapesequenz
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_graphics.h(148): warning C4018: ">=": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(45): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(49): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_container.h(34): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_container.h(38): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_mainwin.h(22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_mainwin.h(31): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol ""public: void __thiscall N2B::N2B_Shape::draw(void)" (?draw@N2B_Shape@N2B@@QAEXXZ)" in Funktion ""public: void __thiscall N2B::N2B_Container::draw(void)" (?draw@N2B_Container@N2B@@QAEXXZ)".
+D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe : fatal error LNK1120: 1 nicht aufgelöste Externe

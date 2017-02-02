@@ -12,25 +12,25 @@
 
 namespace N2B
 {
-	class Point;
-	class Color;
-	class Shape;
-	class Line;
-	class Ployline;
-	class Mark;
+	class N2B_Point;
+	class N2B_Color;
+	class N2B_Shape;
+	class N2B_Line;
+	class N2B_Ployline;
+	class N2B_Mark;
 
-	class Point
+	class N2B_Point
 	{
 	public:
 		int x;
 		int y;
 
-		Point()
+		N2B_Point()
 			:x(0), y(0){}
-		Point(int x, int y)
+		N2B_Point(int x, int y)
 			:x(x), y(y) {}
 
-		Point& operator=(const Point& other)
+		N2B_Point& operator=(const N2B_Point& other)
 		{
 #ifdef DEBUG
 			if (this == &other)
@@ -42,19 +42,20 @@ namespace N2B
 			y = other.y;
 			return *this;
 		}
-		Point(const Point& point)
+		N2B_Point(const N2B_Point& point)
 		{
 			*this = point;
 		}
 	};
-	inline bool operator==(const Point& lhs, const Point& rhs)
+	inline bool operator==(const N2B_Point& lhs, const N2B_Point& rhs)
 	{
 		return (lhs.x == rhs.x && lhs.y == rhs.y);
 	}
 
-	class Color
+	//TODO
+	class N2B_Color
 	{
-		friend class Shape;
+		friend class N2B_Shape;
 	public:
 		const static int BLACK = FL_BLACK;
 		const static int RED = FL_RED;
@@ -66,63 +67,77 @@ namespace N2B
 		const static int WHITE = FL_WHITE;
 		const static int GRAY = FL_GRAY;
 
-		Color(int color)
+		N2B_Color(int color)
 		: c(color) {}
 	private:
 		Fl_Color c;
 
-		Color()
-		: c(BLACK) {}
+		N2B_Color()
+		: c(GRAY) {}
+
+		Fl_Color get_color()
+		{
+			return c;
+		}
 	};
 
-	class Shape
+	class N2B_Shape
 	{
+		friend class N2B_Color;
 	protected:
-		Shape() {}
-		Color color;
-		std::vector<Point> points;
+		N2B_Shape() 
+		:color(color.BLACK) {}
+
+		N2B_Color color;
+		std::vector<N2B_Point> points;
 	public:
-		//virtual void draw();
+		virtual void draw() {}
 	};
 
-	class Line : Shape
+	class N2B_Line : public N2B_Shape
 	{
 	public:
-		Line(const Point& point1, const Point& point2)
+		N2B_Line(N2B_Point point1, N2B_Point point2)
+			:N2B_Shape()
 		{
 			points.push_back(point1);
 			points.push_back(point2);
 		}
-		Point& p1()
+		N2B_Point& p1()
 		{
 			return points[0];
 		}
-		Point& p2()
+		N2B_Point& p2()
 		{
 			return points[1];
 		}
-		void p1(const Point& point)
+		void p1(const N2B_Point& point)
 		{
 			points[0] = point;
 		}
-		void p2(const Point& point)
+		void p2(const N2B_Point& point)
 		{
 			points[1] = point;
 		}
+	protected:
+		void draw()
+		{
+			fl_line(p1().x, p1().y, p2().x, p2().y);
+		}
 	};
 
-	class Polyline : Shape
+	class Polyline : public N2B_Shape
 	{
 	private:
 		int point_count;
 	public:
-		Polyline(const Point& p0)
+		Polyline(const N2B_Point& p0)
 			:point_count(0)
 		{
 			points.push_back(p0);
 			point_count++;
 		}
-		void add_Point(Point& point)
+		void add_Point(N2B_Point& point)
 		{
 			points.push_back(point);
 			point_count++;
@@ -142,7 +157,7 @@ namespace N2B
 		{
 			return point_count;
 		}
-		Point& operator[](std::size_t idx)
+		N2B_Point& operator[](std::size_t idx)
 		{
 #ifdef DEBUG
 			if (idx >= points.size() || idx < 0)
@@ -152,7 +167,7 @@ namespace N2B
 #endif // DEBUG
 			return points[idx];
 		}
-		const Point& operator[](std::size_t idx) const
+		const N2B_Point& operator[](std::size_t idx) const
 		{
 #ifdef DEBUG
 			if (idx >= points.size() || idx < 0)
@@ -162,15 +177,28 @@ namespace N2B
 #endif // DEBUG
 			return points[idx];
 		}
+
+	protected:
+		void draw()
+		{
+
+		}
 	};
 
-	class Mark : Shape
+	class N2B_Mark : public N2B_Shape
 	{
+	public:
 		char m;
-		Mark(const Point& point, const char& mark = 'x')
+		N2B_Mark(const N2B_Point& point, const char& mark = 'x')
 			:m(mark)
 		{
 			points.push_back(point);
+		}
+
+	protected:
+		void draw()
+		{
+
 		}
 	};
 }

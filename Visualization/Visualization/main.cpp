@@ -2,26 +2,28 @@
 #include <FL/Fl.H>
 
 #include "N2B_Graphics.h"
+#include "N2B_Coordinate_System.h"
+#include "N2B_Container.h"
+#include "N2B_MainWin.h"
 
-int main()
+using namespace N2B;
+int main() 
 {
-	try
+	try 
 	{
-		N2B::Polyline pl1(N2B::Point(0, 0));
-		pl1.add_Point(N2B::Point(3, 3));
-		pl1.add_Point(N2B::Point(5, 9));
-		pl1.add_Point(N2B::Point(3, 6));
+		N2B_Window win1(200, 200, "win1");
 
-		std::cout << "\nP0:" << pl1[0].x << "\nP1:" << pl1[1].x << "\nP2:" << pl1[2].x << "\nP3:" << pl1[3].x;
-		pl1.del_Point(1);
-		pl1.del_Point(2);
-		std::cout << "\n\nP0:" << pl1[0].x << "\nP1:" << pl1[1].x << "\nSize:" << pl1.size();
+		N2B_Container *box1 = new N2B_Container(0, 0, 200, 200);
+		box1->add_shape(N2B_Line(N2B_Point(10, 10), N2B_Point(100,  100)));
+
+		win1.add_Container(*box1);
+
+		win1.resizable(win1);
+		win1.show();
+		return N2B_run();
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what();
 	}
-	char ch;
-	std::cin >> ch;
-	return 0;
 }
