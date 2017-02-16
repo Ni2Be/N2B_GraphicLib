@@ -1,9 +1,9 @@
+/*
 #pragma once
-//std c++
-#include <vector>
 
-//FLTK 1.3.4
-#include <FL/fl_draw.H>
+#define N2B_GRAPHICS
+
+#include "N2B_Include.h"
 
 //Visual Studio 2015
 #ifdef _DEBUG
@@ -13,7 +13,6 @@
 namespace N2B
 {
 	class N2B_Point;
-	class N2B_Color;
 	class N2B_Shape;
 	class N2B_Line;
 	class N2B_Ployline;
@@ -52,41 +51,17 @@ namespace N2B
 		return (lhs.x == rhs.x && lhs.y == rhs.y);
 	}
 
-	//TODO
-	class N2B_Color
-	{
-		friend class N2B_Shape;
-	public:
-		const static int BLACK = FL_BLACK;
-		const static int RED = FL_RED;
-		const static int GREEN = FL_GREEN;
-		const static int YELLOW = FL_YELLOW;
-		const static int BLUE = FL_BLUE;
-		const static int MAGENTA = FL_MAGENTA;
-		const static int CYAN = FL_CYAN;
-		const static int WHITE = FL_WHITE;
-		const static int GRAY = FL_GRAY;
-
-		N2B_Color(int color)
-		: c(color) {}
-	private:
-		Fl_Color c;
-
-		N2B_Color()
-		: c(GRAY) {}
-
-		Fl_Color get_color()
-		{
-			return c;
-		}
+	enum N2B_Color 
+	{	N2B_BLACK = FL_BLACK, N2B_RED = FL_RED, N2B_GREEN = FL_GREEN
+		, N2B_YELLOW = FL_YELLOW, N2B_BLUE = FL_BLUE, N2B_MAGENTA = FL_MAGENTA
+		, N2B_CYAN = FL_CYAN, N2B_WHITE = FL_WHITE, N2B_GRAY = FL_GRAY
 	};
 
 	class N2B_Shape
 	{
-		friend class N2B_Color;
 	protected:
 		N2B_Shape() 
-		:color(color.BLACK) {}
+		:color(N2B_BLACK) {}
 
 		N2B_Color color;
 		std::vector<N2B_Point> points;
@@ -121,9 +96,7 @@ namespace N2B
 		}
 	protected:
 		void draw()
-		{
-			fl_line(p1().x, p1().y, p2().x, p2().y);
-		}
+		{}
 	};
 
 	class Polyline : public N2B_Shape
@@ -202,3 +175,4 @@ namespace N2B
 		}
 	};
 }
+*/

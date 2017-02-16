@@ -1,10 +1,9 @@
 #include <iostream>
 #include <FL/Fl.H>
 
+#include "N2B_Window.h"
+#include "N2B_Box.h"
 #include "N2B_Graphics.h"
-#include "N2B_Coordinate_System.h"
-#include "N2B_Container.h"
-#include "N2B_MainWin.h"
 
 using namespace N2B;
 int main() 
@@ -13,10 +12,7 @@ int main()
 	{
 		N2B_Window win1(200, 200, "win1");
 
-		N2B_Container *box1 = new N2B_Container(0, 0, 200, 200);
-		box1->add_shape(N2B_Line(N2B_Point(10, 10), N2B_Point(100,  100)));
-
-		win1.add_Container(*box1);
+		win1.attatch(N2B_Box(0,0,0,0));
 
 		win1.resizable(win1);
 		win1.show();

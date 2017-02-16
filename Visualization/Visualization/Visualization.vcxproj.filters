@@ -18,18 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="N2B_Window.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N2B_Graphics.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="N2B_MainWin.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="N2B_Coordinate_System.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="N2B_Container.h">
+    <ClInclude Include="N2B_Box.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="N2B_Window.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="N2B_Include.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,7 @@
-﻿  main.cpp
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_graphics.h(150): warning C4129: "d": nicht erkannte Folge von Escapesequenz
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_graphics.h(148): warning C4018: ">=": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(45): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(49): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_container.h(34): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_container.h(38): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_mainwin.h(22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_mainwin.h(31): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol ""public: void __thiscall N2B::N2B_Shape::draw(void)" (?draw@N2B_Shape@N2B@@QAEXXZ)" in Funktion ""public: void __thiscall N2B::N2B_Container::draw(void)" (?draw@N2B_Container@N2B@@QAEXXZ)".
-D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe : fatal error LNK1120: 1 nicht aufgelöste Externe
+﻿  N2B_Window.cpp
+  Code wird generiert...
+  Kompilieren...
+  main.cpp
+  Code wird generiert...
+main.obj : error LNK2019: Verweis auf nicht aufgel÷stes externes Symbol ""public: void __thiscall N2B::N2B_Window::attatch(class N2B::N2B_Box)" (?attatch@N2B_Window@N2B@@QAEXVN2B_Box@2@@Z)" in Funktion "_main".
+D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe : fatal error LNK1120: 1 nicht aufgel÷ste Externe
