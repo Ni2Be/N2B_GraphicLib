@@ -1,7 +1,7 @@
-﻿  N2B_Window.cpp
+﻿  main.cpp
   Code wird generiert...
   Kompilieren...
-  main.cpp
+  N2B_Window.cpp
+  N2B_Box.cpp
   Code wird generiert...
-main.obj : error LNK2019: Verweis auf nicht aufgel÷stes externes Symbol ""public: void __thiscall N2B::N2B_Window::attatch(class N2B::N2B_Box)" (?attatch@N2B_Window@N2B@@QAEXVN2B_Box@2@@Z)" in Funktion "_main".
-D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe : fatal error LNK1120: 1 nicht aufgel÷ste Externe
+  Visualization.vcxproj -> D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe

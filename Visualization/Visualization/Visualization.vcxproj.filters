@@ -21,6 +21,12 @@
     <ClCompile Include="N2B_Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="N2B_Box.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="N2B_Graphics.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N2B_Graphics.h">

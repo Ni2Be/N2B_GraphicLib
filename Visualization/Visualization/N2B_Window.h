@@ -11,9 +11,10 @@ namespace N2B
 	public:
 		N2B_Window(int width, int height, const char* title = "")
 			:Fl_Double_Window(width, height, title) {}
+		~N2B_Window();
 
-		void attatch(N2B_Box box);
-		//void draw() {}
+		void attatch(N2B_Box& box);
+		void draw();
 
 	private:
 		std::vector<N2B_Box*> boxes;
