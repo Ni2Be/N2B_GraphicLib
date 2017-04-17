@@ -10,7 +10,11 @@ namespace N2B
 {
 	class N2B_Box
 	{
-	private:
+	protected:
+		int x;
+		int y;
+		int width;
+		int height;
 		double width_percentage;
 		double height_percentage;
 		double x_percentage;
@@ -20,13 +24,13 @@ namespace N2B
 		std::vector<N2B_Shape*> shapes;
 	public:
 		N2B_Box(int x, int y, int width, int height)
-			{}
+			:x(x), y(y), width(width), height(height) {}
 		~N2B_Box();
-		void draw();
+		virtual void draw();
 
 
 		template <class AShape>
-		void attach(AShape& shape)
+		void add(AShape& shape)
 		{
 			std::unique_ptr<AShape> sh(new AShape(shape));
 			this->shapes.push_back(sh.release());

@@ -1,7 +1,4 @@
 ﻿  main.cpp
-  Code wird generiert...
-  Kompilieren...
-  N2B_Window.cpp
-  N2B_Box.cpp
-  Code wird generiert...
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\main.cpp(24): warning C4244: "return": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\main.cpp(30): warning C4244: "return": Konvertierung von "double" in "int", möglicher Datenverlust
   Visualization.vcxproj -> D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe

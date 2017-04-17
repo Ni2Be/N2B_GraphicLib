@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="N2B_Box.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="N2B_Coordinate_System.cpp" />
     <ClCompile Include="N2B_Graphics.cpp" />
     <ClCompile Include="N2B_Window.cpp" />
   </ItemGroup>

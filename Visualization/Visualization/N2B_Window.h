@@ -16,6 +16,12 @@ namespace N2B
 		void attatch(N2B_Box& box);
 		void draw();
 
+		template <class ABox>
+		void add(ABox& shape)
+		{
+			std::unique_ptr<ABox> bo(new ABox(shape));
+			this->boxes.push_back(bo.release());
+		}
 	private:
 		std::vector<N2B_Box*> boxes;
 	};

@@ -12,7 +12,8 @@ void N2B::N2B_Window::attatch(N2B::N2B_Box& box)
 void N2B::N2B_Window::draw()
 {
 	Fl_Window::draw();
-
-	for (auto i : this->boxes)
-		i->draw();
+	for (std::vector<N2B::N2B_Box*>::iterator itr = boxes.begin(); itr < boxes.end(); itr++)
+	{
+		(*itr)->draw();
+	}
 }
