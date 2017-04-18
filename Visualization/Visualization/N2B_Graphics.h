@@ -26,7 +26,7 @@ namespace N2B
 		int y;
 
 		N2B_Point()
-			:x(0), y(0){}
+			:x(0), y(0) {}
 		N2B_Point(int x, int y)
 			:x(x), y(y) {}
 
@@ -35,8 +35,9 @@ namespace N2B
 	};
 	inline bool operator==(const N2B_Point& lhs, const N2B_Point& rhs);
 
-	enum N2B_Color 
-	{	N2B_BLACK = FL_BLACK, N2B_RED = FL_RED, N2B_GREEN = FL_GREEN
+	enum N2B_Color
+	{
+		N2B_BLACK = FL_BLACK, N2B_RED = FL_RED, N2B_GREEN = FL_GREEN
 		, N2B_YELLOW = FL_YELLOW, N2B_BLUE = FL_BLUE, N2B_MAGENTA = FL_MAGENTA
 		, N2B_CYAN = FL_CYAN, N2B_WHITE = FL_WHITE, N2B_GRAY = FL_GRAY
 	};
@@ -49,7 +50,7 @@ namespace N2B
 	public:
 		N2B_Shape()
 			:color(N2B_BLACK) {}
-		
+
 		N2B_Shape(N2B_Shape&);
 		virtual void draw();
 	};
@@ -57,7 +58,7 @@ namespace N2B
 	class N2B_Line : public N2B_Shape
 	{
 	public:
-		N2B_Line(N2B_Point point1, N2B_Point point2) 
+		N2B_Line(N2B_Point point1, N2B_Point point2)
 			: N2B_Shape()
 		{
 			points.push_back(N2B::N2B_Point(point1));

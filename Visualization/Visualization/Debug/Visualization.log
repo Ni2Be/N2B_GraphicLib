@@ -1,5 +1,13 @@
-﻿  N2B_Coordinate_System.cpp
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(17): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(24): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(59): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
-  Visualization.vcxproj -> D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe
+﻿  N2B_Window.cpp
+  N2B_Graphics.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(16): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(56): warning C4018: ">=": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(58): warning C4129: "d": nicht erkannte Folge von Escapesequenz
+  N2B_Coordinate_System.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(17): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(24): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(65): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+  main.cpp
+  N2B_Box.cpp
+  Code wird generiert...
+  Visualization.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\Visualization\Debug\Visualization.exe

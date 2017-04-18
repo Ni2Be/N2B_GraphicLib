@@ -7,7 +7,7 @@ N2B::N2B_Box::~N2B_Box()
 		delete i;
 }
 
-void N2B::N2B_Box::draw() 
+void N2B::N2B_Box::draw()
 {
 	for (std::vector<N2B::N2B_Shape*>::iterator itr = shapes.begin(); itr < shapes.end(); itr++)
 	{

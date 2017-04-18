@@ -26,5 +26,5 @@ namespace N2B
 		std::vector<N2B_Box*> boxes;
 	};
 
-	
+
 }

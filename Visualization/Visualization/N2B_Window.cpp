@@ -16,4 +16,5 @@ void N2B::N2B_Window::draw()
 	{
 		(*itr)->draw();
 	}
+
 }

@@ -28,7 +28,13 @@ void N2B::N2B_Coordinate_System::draw()
 			fl_line(5 + width / 2, i, -5 + width / 2, i);
 		}
 	}
+	//functions
+	for (std::vector<N2B::N2B_Function_Graph*>::iterator itr = functions.begin(); itr < functions.end(); itr++)
+	{
+		(*itr)->draw();
+	}
 
+	//shapes
 	N2B_Box::draw();
 }
 
@@ -38,24 +44,24 @@ void N2B::N2B_Function_Graph::draw()
 	double y_factor = (root->p_Y - root->n_Y) / root->height;
 	fl_color(FL_BLACK);
 
-	//1 should be a variable like "resulution" of root
+	//3 should be a variable like "resulution" of root
 	int res = 3;
 
 	int pix_to_null = (root->width / 2) % res;
 	for (int i = pix_to_null - (root->width / 2); i < (root->width / 2) + res; i += res)
 	{
-		double real_x_prev = (i - res) * x_factor;
-		double real_y_prev = func(real_x_prev);
-		double new_y_prev = root->height / 2 - real_y_prev / y_factor;
+		double real_x_prev = (i - res) * x_factor; //like f(real_x)=real_x^2   
+		double real_y_prev = func(real_x_prev);//like f(x)=real_y
+		double screen_y_prev = root->height / 2 - real_y_prev / y_factor;//real y position on screen
 
 		double real_x = i * x_factor;
 		double real_y = func(real_x);
-		double new_y = root->height / 2 - real_y / y_factor;
+		double screen_y = root->height / 2 - real_y / y_factor;
 
 		//draw line
 		fl_line((root->width / 2) + i - res,
-			new_y_prev,
+			screen_y_prev,
 			(root->width / 2) + i,
-			new_y);
+			screen_y);
 	}
 }

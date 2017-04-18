@@ -7,29 +7,29 @@
 #include "N2B_Coordinate_System.h"
 
 using namespace N2B;
-int main() 
+int main()
 {
-	try 
+	try
 	{
 		N2B_Window win1(400, 400, "win1");
-		//N2B_Box b1(0, 0, 200, 200);
-		//b1.add(N2B_Line(N2B_Point(20, 20), N2B_Point(220, 120)));
-		//b1.add(N2B_Mark(N2B_Point(20, 20), "x"));
-		//win1.attatch(b1);
-		
-		N2B_Coordinate_System co(0, 0, 399, 399, -5, 5, -5, 5, true);
+		N2B_Box b1(0, 0, 200, 200);
+		b1.add(N2B_Line(N2B_Point(20, 20), N2B_Point(220, 120)));
+		b1.add(N2B_Mark(N2B_Point(20, 20), "x"));
+		win1.attatch(b1);
+
+		N2B_Coordinate_System co(0, 0, 400, 400, -3, 5, -2, 5, true);
 
 		auto sin_function = [](double x) -> double
 		{
 			return std::sin(x);
 		};
-		co.add(N2B_Function_Graph((sin_function), co));
+		co.add(N2B_Function_Graph(sin_function));
 
 		auto exp_function = [](double x) -> double
 		{
 			return std::pow(x, 2) + 0.6;
 		};
-		co.add(N2B_Function_Graph((exp_function), co));
+		co.add(N2B_Function_Graph(exp_function));
 		win1.attatch(co);
 
 
