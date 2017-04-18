@@ -20,12 +20,13 @@ namespace N2B
 		friend class N2B_Function_Graph;
 	private:
 		double n_X, p_X, n_Y, p_Y;
-		bool vis;
+		bool is_vis;
 	public:
-		N2B_Coordinate_System(int x, int y, int width, int height, double negative_X,
-				double positive_X, double negative_Y, double positive_Y, bool is_visible = true)
+		N2B_Coordinate_System(int x, int y, int width, int height, 
+			double negative_X, double positive_X, double negative_Y, double positive_Y,
+			bool is_visible = true)
 			:N2B_Box(x, y, width, height), n_X(negative_X), p_X(positive_X)
-						, n_Y(negative_Y), p_Y(positive_Y), vis(is_visible) {}
+						, n_Y(negative_Y), p_Y(positive_Y), is_vis(is_visible) {}
 
 		//change axes visibility
 		void set_visible(bool is_visible);
@@ -53,14 +54,14 @@ namespace N2B
 	{
 		friend class N2B_Coordinate_System;
 	public:
-		N2B_Function_Graph(int (*function)(int), N2B_Coordinate_System& root)
-		:N2B_Shape(), intfunc(0), root(&root)
+		N2B_Function_Graph(double (*function)(double), N2B_Coordinate_System& root)
+		:N2B_Shape(), func(0), root(&root)
 		{
-			intfunc = function;
+			func = function;
 		}
 	private:
 		N2B_Coordinate_System* root;
 		void draw();
-		int(*intfunc)(int);
+		double(*func)(double);
 	};
 }

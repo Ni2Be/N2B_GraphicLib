@@ -17,17 +17,17 @@ int main()
 		//b1.add(N2B_Mark(N2B_Point(20, 20), "x"));
 		//win1.attatch(b1);
 		
-		N2B_Coordinate_System co(0, 0, 400, 400, 0, 0, 0, 0, true);
+		N2B_Coordinate_System co(0, 0, 399, 399, -5, 5, -5, 5, true);
 
-		auto sin_function = [](int x) -> int
+		auto sin_function = [](double x) -> double
 		{
-			return std::sin(x) * 10;
+			return std::sin(x);
 		};
-		//co.add(N2B_Function_Graph((sin_function), co));
+		co.add(N2B_Function_Graph((sin_function), co));
 
-		auto exp_function = [](int x) -> int
+		auto exp_function = [](double x) -> double
 		{
-			return std::pow(x, 6) * 0.001 - std::pow(x, 4) * 0.01 + x - 25;
+			return std::pow(x, 2) + 0.6;
 		};
 		co.add(N2B_Function_Graph((exp_function), co));
 		win1.attatch(co);

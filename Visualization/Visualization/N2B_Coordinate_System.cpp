@@ -2,7 +2,7 @@
 
 void N2B::N2B_Coordinate_System::set_visible(bool is_visible)
 {
-	vis = is_visible;
+	is_vis = is_visible;
 }
 
 void N2B::N2B_Coordinate_System::draw()
@@ -11,16 +11,51 @@ void N2B::N2B_Coordinate_System::draw()
 	fl_line(N2B_Box::x, N2B_Box::height / 2, N2B_Box::width, N2B_Box::height / 2);
 	fl_line(N2B_Box::width / 2, N2B_Box::y, N2B_Box::width / 2, N2B_Box::height);
 
+	if (is_vis)
+	{
+		//axis
+		int x_pixel = width / (p_X - n_X);
+		int pix_to_null = (width / 2) % x_pixel;
+		for (int i = pix_to_null; i < width; i += x_pixel)
+		{
+			fl_line(i, 5 + height / 2, i, -5 + height / 2);
+		}
+
+		int y_pixel = height / (p_Y - n_Y);
+		pix_to_null = (height / 2) % y_pixel;
+		for (int i = pix_to_null; i < height; i += y_pixel)
+		{
+			fl_line(5 + width / 2, i, -5 + width / 2, i);
+		}
+	}
+
 	N2B_Box::draw();
 }
 
 void N2B::N2B_Function_Graph::draw()
 {
+	double x_factor = (root->p_X - root->n_X) / root->width;
+	double y_factor = (root->p_Y - root->n_Y) / root->height;
 	fl_color(FL_BLACK);
-	for (int i = 1; i < root->width; i++)
+
+	//1 should be a variable like "resulution" of root
+	int res = 3;
+
+	int pix_to_null = (root->width / 2) % res;
+	for (int i = pix_to_null - (root->width / 2); i < (root->width / 2) + res; i += res)
 	{
-		fl_line(i - 1, 
-			root->height / 2 - intfunc(i - 1 - (root->width / 2)), i,
-			root->height / 2 - intfunc(i - (root->width / 2)));
+		double real_x_prev = (i - res) * x_factor;
+		double real_y_prev = func(real_x_prev);
+		double new_y_prev = root->height / 2 - real_y_prev / y_factor;
+
+		double real_x = i * x_factor;
+		double real_y = func(real_x);
+		double new_y = root->height / 2 - real_y / y_factor;
+
+		//draw line
+		fl_line((root->width / 2) + i - res,
+			new_y_prev,
+			(root->width / 2) + i,
+			new_y);
 	}
 }

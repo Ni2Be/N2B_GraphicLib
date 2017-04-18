@@ -1,4 +1,5 @@
-﻿  main.cpp
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\main.cpp(24): warning C4244: "return": Konvertierung von "double" in "int", möglicher Datenverlust
-d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\main.cpp(30): warning C4244: "return": Konvertierung von "double" in "int", möglicher Datenverlust
+﻿  N2B_Coordinate_System.cpp
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(17): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(24): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphiclib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(59): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
   Visualization.vcxproj -> D:\Programmieren\GraphicLib\N2B_GraphicLib\Visualization\Debug\Visualization.exe
