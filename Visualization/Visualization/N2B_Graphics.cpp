@@ -1,14 +1,14 @@
 #include "N2B_Graphics.h"
 
 
-N2B::N2B_Shape::N2B_Shape(N2B_Shape& s)
+NB::NB_Shape::NB_Shape(NB_Shape& s)
 {
 	this->color = s.color;
 	this->points.resize(s.points.size());
 	std::copy(s.points.begin(), s.points.end(), this->points.begin());
 }
 
-void N2B::N2B_Shape::draw()
+void NB::NB_Shape::draw()
 {
 	fl_color(FL_BLACK);
 	if (this->points.size() > 1)
@@ -21,7 +21,7 @@ void N2B::N2B_Shape::draw()
 }
 
 
-N2B::N2B_Point& N2B::N2B_Point::operator=(const N2B_Point& other)
+NB::NB_Point& NB::NB_Point::operator=(const NB_Point& other)
 {
 #ifdef DEBUG
 	if (this == &other)
@@ -34,23 +34,23 @@ N2B::N2B_Point& N2B::N2B_Point::operator=(const N2B_Point& other)
 	return *this;
 }
 
-N2B::N2B_Point::N2B_Point(const N2B::N2B_Point& point)
+NB::NB_Point::NB_Point(const NB::NB_Point& point)
 {
 	this->x = point.x;
 	this->y = point.y;
 }
 
-inline bool N2B::operator==(const N2B::N2B_Point& lhs, const N2B::N2B_Point& rhs)
+inline bool NB::operator==(const NB::NB_Point& lhs, const NB::NB_Point& rhs)
 {
 	return (lhs.x == rhs.x && lhs.y == rhs.y);
 }
 
-void N2B::Polyline::add_Point(N2B_Point& point)
+void NB::Polyline::add_Point(NB_Point& point)
 {
 	points.push_back(point);
 }
 
-void N2B::Polyline::del_Point(int idx)
+void NB::Polyline::del_Point(int idx)
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
@@ -61,12 +61,12 @@ void N2B::Polyline::del_Point(int idx)
 	points.erase(points.begin() + idx, points.begin() + idx + 1);
 }
 
-int N2B::Polyline::size()
+int NB::Polyline::size()
 {
 	return points.size();
 }
 
-N2B::N2B_Point& N2B::Polyline::operator[](std::size_t idx)
+NB::NB_Point& NB::Polyline::operator[](std::size_t idx)
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
@@ -76,7 +76,7 @@ N2B::N2B_Point& N2B::Polyline::operator[](std::size_t idx)
 #endif // DEBUG
 	return points[idx];
 }
-const N2B::N2B_Point& N2B::Polyline::operator[](std::size_t idx) const
+const NB::NB_Point& NB::Polyline::operator[](std::size_t idx) const
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
@@ -87,7 +87,7 @@ const N2B::N2B_Point& N2B::Polyline::operator[](std::size_t idx) const
 	return points[idx];
 }
 
-void N2B::N2B_Mark::draw()
+void NB::NB_Mark::draw()
 {
 	fl_color(FL_BLACK);
 	fl_font(FL_HELVETICA, 16);

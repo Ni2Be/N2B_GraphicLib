@@ -1,15 +1,15 @@
 #include "N2B_Coordinate_System.h"
 
-void N2B::N2B_Coordinate_System::set_visible(bool is_visible)
+void NB::NB_Coordinate_System::set_visible(bool is_visible)
 {
 	is_vis = is_visible;
 }
 
-void N2B::N2B_Coordinate_System::draw()
+void NB::NB_Coordinate_System::draw()
 {
 	fl_color(FL_BLACK);
-	fl_line(N2B_Box::x, N2B_Box::height / 2, N2B_Box::width, N2B_Box::height / 2);
-	fl_line(N2B_Box::width / 2, N2B_Box::y, N2B_Box::width / 2, N2B_Box::height);
+	fl_line(NB_Box::x, NB_Box::height / 2, NB_Box::width, NB_Box::height / 2);
+	fl_line(NB_Box::width / 2, NB_Box::y, NB_Box::width / 2, NB_Box::height);
 
 	if (is_vis)
 	{
@@ -29,16 +29,16 @@ void N2B::N2B_Coordinate_System::draw()
 		}
 	}
 	//functions
-	for (std::vector<N2B::N2B_Function_Graph*>::iterator itr = functions.begin(); itr < functions.end(); itr++)
+	for (std::vector<NB::NB_Function_Graph*>::iterator itr = functions.begin(); itr < functions.end(); itr++)
 	{
 		(*itr)->draw();
 	}
 
 	//shapes
-	N2B_Box::draw();
+	NB_Box::draw();
 }
 
-void N2B::N2B_Function_Graph::draw()
+void NB::NB_Function_Graph::draw()
 {
 	double x_factor = (root->p_X - root->n_X) / root->width;
 	double y_factor = (root->p_Y - root->n_Y) / root->height;

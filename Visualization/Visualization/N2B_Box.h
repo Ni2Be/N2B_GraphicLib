@@ -6,9 +6,9 @@
 
 #include "N2B_Graphics.h"
 
-namespace N2B
+namespace NB
 {
-	class N2B_Box
+	class NB_Box
 	{
 	protected:
 		int x;
@@ -21,11 +21,11 @@ namespace N2B
 		double y_percentage;
 		//N2B_Color background;
 		//std::vector<N2B_Box*> boxes;
-		std::vector<N2B_Shape*> shapes;
+		std::vector<NB_Shape*> shapes;
 	public:
-		N2B_Box(int x, int y, int width, int height)
+		NB_Box(int x, int y, int width, int height)
 			:x(x), y(y), width(width), height(height) {}
-		~N2B_Box();
+		~NB_Box();
 		virtual void draw();
 
 

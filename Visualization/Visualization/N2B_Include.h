@@ -9,7 +9,7 @@
 
 #include <FL/fl_draw.H>
 
-namespace N2B
+namespace NB
 {
 	static int N2B_run()
 	{

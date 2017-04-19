@@ -4,16 +4,16 @@
 #include "N2B_Include.h"
 #include "N2B_Box.h"
 
-namespace N2B
+namespace NB
 {
-	class N2B_Window : public Fl_Double_Window
+	class NB_Window : public Fl_Double_Window
 	{
 	public:
-		N2B_Window(int width, int height, const char* title = "")
+		NB_Window(int width, int height, const char* title = "")
 			:Fl_Double_Window(width, height, title) {}
-		~N2B_Window();
+		~NB_Window();
 
-		void attatch(N2B_Box& box);
+		void attatch(NB_Box& box);
 		void draw();
 
 		template <class ABox>
@@ -23,7 +23,7 @@ namespace N2B
 			this->boxes.push_back(bo.release());
 		}
 	private:
-		std::vector<N2B_Box*> boxes;
+		std::vector<NB_Box*> boxes;
 	};
 
 
