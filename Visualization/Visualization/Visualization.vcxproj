@@ -153,6 +153,7 @@
     <ClCompile Include="N2B_Coordinate_System.cpp" />
     <ClCompile Include="N2B_Graphics.cpp" />
     <ClCompile Include="N2B_Window.cpp" />
+    <ClCompile Include="Test_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N2B_Box.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="N2B_Include.h" />
     <ClInclude Include="N2B_Window.h" />
     <ClInclude Include="N2B_Graphics.h" />
+    <ClInclude Include="Test_Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

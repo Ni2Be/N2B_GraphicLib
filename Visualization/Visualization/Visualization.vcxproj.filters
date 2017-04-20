@@ -30,6 +30,9 @@
     <ClCompile Include="N2B_Coordinate_System.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Test_Window.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N2B_Graphics.h">
@@ -45,6 +48,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="N2B_Include.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

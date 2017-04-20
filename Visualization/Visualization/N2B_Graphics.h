@@ -45,11 +45,11 @@ namespace NB
 	class NB_Shape
 	{
 	protected:
+		NB_Shape(NB_Color c = NB_BLACK)
+			:color(c) {}
 		NB_Color color;
 		std::vector<NB_Point> points;
 	public:
-		NB_Shape()
-			:color(NB_BLACK) {}
 
 		NB_Shape(NB_Shape&);
 		virtual void draw();
@@ -58,22 +58,27 @@ namespace NB
 	class NB_Line : public NB_Shape
 	{
 	public:
-		NB_Line(NB_Point point1, NB_Point point2)
-			: NB_Shape()
+		NB_Line(NB_Point point1, NB_Point point2, NB_Color c = NB_BLACK)
+			: NB_Shape(c)
 		{
 			points.push_back(NB::NB_Point(point1));
 			points.push_back(NB::NB_Point(point2));
 		}
 	};
 
-	class Polyline : public NB_Shape
+	class NB_Polyline : public NB_Shape
 	{
 	public:
-		Polyline(NB_Point p0)
-			: NB_Shape()
+		template <class STLContainer>
+		NB_Polyline(STLContainer& containerP, NB_Color c = NB_BLACK)
+			: NB_Shape(c)
 		{
-			points.push_back(NB::NB_Point(p0));
+			for (auto i : containerP)
+			{
+				this->points.push_back(NB_Point(i));
+			}
 		}
+
 		void add_Point(NB_Point& point);
 		void del_Point(int idx);
 		int size();
@@ -85,13 +90,43 @@ namespace NB
 	{
 	public:
 		std::string m;
-		NB_Mark(NB_Point point, std::string mark)
-			: NB_Shape(), m(mark)
+		NB_Mark(NB_Point point, std::string mark, NB_Color c = NB_BLACK)
+			: NB_Shape(c), m(mark)
 		{
 			points.push_back(NB::NB_Point(point));
 		}
 
 	protected:
+		void draw();
+	};
+
+	class NB_Rect : public NB_Shape
+	{
+	public:
+		NB_Rect(NB_Point p, int width, int height, NB_Color c = NB_BLACK)
+			: NB_Shape(c), width(width), height(height)
+		{
+			points.push_back(NB_Point(p));
+		}
+	private:
+		int width;
+		int height;
+		
+		void draw();
+	};
+
+	class NB_RectF: public NB_Shape
+	{
+	public:
+		NB_RectF(NB_Point p, int width, int height, NB_Color c = NB_WHITE)
+			: NB_Shape(c), width(width), height(height)
+		{
+			points.push_back(NB_Point(p));
+		}
+	private:
+		int width;
+		int height;
+
 		void draw();
 	};
 }

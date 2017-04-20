@@ -9,22 +9,14 @@ namespace NB
 	class NB_Window : public Fl_Double_Window
 	{
 	public:
-		NB_Window(int width, int height, const char* title = "")
-			:Fl_Double_Window(width, height, title) {}
-		~NB_Window();
-
-		void attatch(NB_Box& box);
-		void draw();
-
-		template <class ABox>
-		void add(ABox& shape)
+		NB_Window(int width, int height, const char* title, NB_Color c = NB_WHITE)
+			:Fl_Double_Window(width, height, title) 
 		{
-			std::unique_ptr<ABox> bo(new ABox(shape));
-			this->boxes.push_back(bo.release());
+			this->color(c);
 		}
+		void attach(NB_Box& box);
+		void draw();
 	private:
 		std::vector<NB_Box*> boxes;
 	};
-
-
 }

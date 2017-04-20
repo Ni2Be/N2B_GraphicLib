@@ -1,12 +1,9 @@
 #include "N2B_Window.h"
 
-NB::NB_Window::~NB_Window()
-{
-}
-
-void NB::NB_Window::attatch(NB::NB_Box& box)
+void NB::NB_Window::attach(NB::NB_Box& box)
 {
 	this->boxes.push_back(&box);
+	box.root = this;
 }
 
 void NB::NB_Window::draw()
@@ -16,5 +13,4 @@ void NB::NB_Window::draw()
 	{
 		(*itr)->draw();
 	}
-
 }
