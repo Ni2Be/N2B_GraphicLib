@@ -1,3 +1,18 @@
+/**
+*N2B_Box.h
+*Purpose:
+Allows to store Shapes like a NB_Window
+so that you can seperate shapes into
+different mor complicated objects.
+
+#TODO
+-	make it resizable
+-	maybe inheritance class like complex shape
+	that uses std::vector<NB_Shape*> owned_shapes
+
+@author Jordan
+@version 1.0 04/21/17
+*/
 #pragma once
 
 #define N2B_BOX

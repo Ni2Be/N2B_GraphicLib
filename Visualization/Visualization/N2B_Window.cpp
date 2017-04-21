@@ -8,7 +8,10 @@ void NB::NB_Window::attach(NB::NB_Box& box)
 
 void NB::NB_Window::draw()
 {
+	//draws widgets and background
 	Fl_Window::draw();
+	
+	//draws boxes
 	for (std::vector<NB::NB_Box*>::iterator itr = boxes.begin(); itr < boxes.end(); itr++)
 	{
 		(*itr)->draw();

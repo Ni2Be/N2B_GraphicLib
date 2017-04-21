@@ -30,7 +30,13 @@
     <ClCompile Include="N2B_Coordinate_System.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Test_Window.cpp">
+    <ClCompile Include="Test_Window_Event.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Window_Coordinate_System_v1.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Window_Coordinate_System_v2.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +56,13 @@
     <ClInclude Include="N2B_Include.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Test_Window.h">
+    <ClInclude Include="Test_Window_Event.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Window_Coordinate_System_v1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Window_Coordinate_System_v2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

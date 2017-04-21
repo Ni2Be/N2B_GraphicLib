@@ -1,7 +1,18 @@
+/**
+*N2B_Graphics.h
+*Purpose:
+Allows to create simple graphic elements
+that know how to draw them selfe.
+
+#TODO
+-	make them resizable
+
+@author Jordan
+@version 1.0 04/21/17
+*/
 
 #pragma once
-
-#define N2B_GRAPHICS
+#define NB_GRAPHICS
 
 #include "N2B_Include.h"
 #include <iostream>
@@ -111,11 +122,11 @@ namespace NB
 	private:
 		int width;
 		int height;
-		
+
 		void draw();
 	};
 
-	class NB_RectF: public NB_Shape
+	class NB_RectF : public NB_Shape
 	{
 	public:
 		NB_RectF(NB_Point p, int width, int height, NB_Color c = NB_WHITE)

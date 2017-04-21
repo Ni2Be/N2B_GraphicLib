@@ -1,3 +1,14 @@
+/**
+*N2B_Window.h
+*Purpose:
+A Window that can store NB_Boxes
+
+#TODO
+-	make them resizable
+
+@author Jordan
+@version 1.0 04/21/17
+*/
 #pragma once
 
 #define N2B_WINDOW
@@ -15,6 +26,7 @@ namespace NB
 			this->color(c);
 		}
 		void attach(NB_Box& box);
+
 		void draw();
 	private:
 		std::vector<NB_Box*> boxes;

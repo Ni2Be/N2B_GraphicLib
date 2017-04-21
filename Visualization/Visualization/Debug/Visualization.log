@@ -1,10 +1,23 @@
-﻿  Test_Window.cpp
-d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(65): warning C4129: "N": nicht erkannte Folge von Escapesequenz
-d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(67): warning C4129: "N": nicht erkannte Folge von Escapesequenz
+﻿  N2B_Box.cpp
   Code wird generiert...
   Kompilieren...
   main.cpp
-d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(65): warning C4129: "N": nicht erkannte Folge von Escapesequenz
-d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.h(67): warning C4129: "N": nicht erkannte Folge von Escapesequenz
+  Test_Window_Event.cpp
+  Test_Window_Coordinate_System_v2.cpp
+  Test_Window_Coordinate_System_v1.cpp
+  N2B_Window.cpp
+  N2B_Graphics.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(16): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(57): warning C4018: ">=": Konflikt zwischen "signed" und "unsigned"
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_graphics.cpp(59): warning C4129: "d": nicht erkannte Folge von Escapesequenz
+  N2B_Coordinate_System.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(13): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(20): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(27): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(70): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(78): warning C4129: "s": nicht erkannte Folge von Escapesequenz
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(85): warning C4129: "s": nicht erkannte Folge von Escapesequenz
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(92): warning C4129: "s": nicht erkannte Folge von Escapesequenz
+d:\programmieren\graphic_lib\n2b_graphiclib\visualization\visualization\n2b_coordinate_system.cpp(99): warning C4129: "s": nicht erkannte Folge von Escapesequenz
   Code wird generiert...
   Visualization.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\Visualization\Debug\Visualization.exe

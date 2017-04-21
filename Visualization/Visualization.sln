@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Visualization", "Visualization\Visualization.vcxproj", "{CC3A8212-F917-411A-8D1F-506CE334D56D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Function_Plotter", "Function_Plotter\Function_Plotter.vdproj", "{6FEA3B78-E94E-4503-ADAF-9F400497358D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{CC3A8212-F917-411A-8D1F-506CE334D56D}.Release|x64.Build.0 = Release|x64
 		{CC3A8212-F917-411A-8D1F-506CE334D56D}.Release|x86.ActiveCfg = Release|Win32
 		{CC3A8212-F917-411A-8D1F-506CE334D56D}.Release|x86.Build.0 = Release|Win32
+		{6FEA3B78-E94E-4503-ADAF-9F400497358D}.Debug|x64.ActiveCfg = Debug
+		{6FEA3B78-E94E-4503-ADAF-9F400497358D}.Debug|x86.ActiveCfg = Debug
+		{6FEA3B78-E94E-4503-ADAF-9F400497358D}.Release|x64.ActiveCfg = Release
+		{6FEA3B78-E94E-4503-ADAF-9F400497358D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
