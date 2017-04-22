@@ -30,13 +30,16 @@
     <ClCompile Include="N2B_Coordinate_System.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Test_Window_Event.cpp">
+    <ClCompile Include="Example_Window_Coordinate_System_v1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Test_Window_Coordinate_System_v1.cpp">
+    <ClCompile Include="Example_Window_Coordinate_System_v2.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Test_Window_Coordinate_System_v2.cpp">
+    <ClCompile Include="Example_Window_Event.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Example_Window_File_Browser.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,13 +59,16 @@
     <ClInclude Include="N2B_Include.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Test_Window_Event.h">
+    <ClInclude Include="Example_Window_Coordinate_System_v1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Test_Window_Coordinate_System_v1.h">
+    <ClInclude Include="Example_Window_Coordinate_System_v2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Test_Window_Coordinate_System_v2.h">
+    <ClInclude Include="Example_Window_Event.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Example_Window_File_Browser.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

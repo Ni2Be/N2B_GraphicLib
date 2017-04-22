@@ -10,8 +10,11 @@ void NB::NB_Coordinate_System::draw()
 	Fl_Color old_c = fl_color();
 	fl_color(color);
 
-	fl_line(neg_x, x_axis, NB_Box::width, x_axis);
-	fl_line(y_axis, NB_Box::y, y_axis, NB_Box::height);
+	fl_clip(this->x, this->y, this->width, this->height);
+	//x-axis
+	fl_line(neg_x + x, x_axis + y, width + x, x_axis + y);
+	//y-axis
+	fl_line(y_axis + x, y, y_axis + x, height + y);
 
 	if (is_vis)
 	{
@@ -19,16 +22,16 @@ void NB::NB_Coordinate_System::draw()
 		int unit_pix = 5;
 		int x_pixel = width / (pos_x - neg_x);
 		int pix_to_null = (y_axis) % x_pixel;
-		for (int i = pix_to_null; i < width; i += x_pixel)
+		for (int i = pix_to_null + x; i < width + x; i += x_pixel)
 		{
-			fl_line(i, unit_pix + x_axis, i, -unit_pix + x_axis);
+			fl_line(i, unit_pix + x_axis + y, i, -unit_pix + x_axis + y);
 		}
 
 		int y_pixel = height / (pos_y - neg_y);
 		pix_to_null = (x_axis) % y_pixel;
-		for (int i = pix_to_null; i < height; i += y_pixel)
+		for (int i = pix_to_null + y; i < height + y; i += y_pixel)
 		{
-			fl_line(unit_pix + y_axis, i, -unit_pix + y_axis, i);
+			fl_line(unit_pix + y_axis + x, i, -unit_pix + y_axis + x, i);
 		}
 	}
 	//functions
@@ -36,8 +39,10 @@ void NB::NB_Coordinate_System::draw()
 	{
 		(*itr)->draw();
 	}
+	fl_pop_clip();
 
 	fl_color(old_c);
+
 	//shapes
 	NB_Box::draw();
 }
@@ -49,25 +54,24 @@ void NB::NB_Function_Graph::draw()
 
 	Fl_Color old_c = fl_color();
 	fl_color(color);
-
-	//3 should be a variable like "resulution" of root
+	//3 should be a variable like "resulution", of root
 	int res = 3;
 	int pix_to_null = (root->y_axis) % res;
-	for (int i = pix_to_null - (root->y_axis); i < (root->y_axis) + res; i += res)
+	for (int i = pix_to_null - (root->y_axis); i < (root->width) + res; i += res)
 	{
-		double real_x_prev = (i - res) * x_factor; //like f(real_x)=real_x^2   
-		double real_y_prev = func(real_x_prev);//like f(x)=real_y
-		double screen_y_prev = root->x_axis - real_y_prev / y_factor;//real y position on screen
-
+		double real_x_prev = (i - res) * x_factor;    
+		double real_y_prev = func(real_x_prev);
+		double screen_y_prev = root->x_axis - real_y_prev / y_factor;
+		
 		double real_x = i * x_factor;
 		double real_y = func(real_x);
 		double screen_y = root->x_axis - real_y / y_factor;
 
 		//draw line
-		fl_line((root->y_axis) + i - res,
-			screen_y_prev,
-			(root->y_axis) + i,
-			screen_y);
+		fl_line((root->y_axis) + i - res + root->x,
+			screen_y_prev + root->y,
+			(root->y_axis) + i + root->x,
+			screen_y + root->y);
 	}
 	fl_color(old_c);
 }

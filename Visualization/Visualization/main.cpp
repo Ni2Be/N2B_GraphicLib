@@ -7,23 +7,30 @@
 #include "N2B_Graphics.h"
 #include "N2B_Coordinate_System.h"
 
-#include "Test_Window_Coordinate_System_v1.h"
-#include "Test_Window_Coordinate_System_v2.h"
-#include "Test_Window_Event.h"
+#include "Example_Window_Coordinate_System_v1.h"
+#include "Example_Window_Coordinate_System_v2.h"
+#include "Example_Window_Event.h"
+#include "Example_Window_File_Browser.h"
 
 using namespace NB;
-using namespace Test;
+using namespace Example;
 int main()
 {
 	try
 	{
-		Test_Window_Event event_test;
+		Example_Window_File_Browser file_test;
+		file_test.show();
+
+		Example_Window_Event event_test;
+		event_test.resizable(&event_test);
 		event_test.show();
 
-		Test_Window_Coordinate_System_v1 coordinate_test_v1;
+		Example_Window_Coordinate_System_v1 coordinate_test_v1;
+		coordinate_test_v1.resizable(&coordinate_test_v1);
 		coordinate_test_v1.show();
 
-		Test_Window_Coordinate_System_v2 coordinate_test_v2;
+		Example_Window_Coordinate_System_v2 coordinate_test_v2;
+		coordinate_test_v2.resizable(&coordinate_test_v2);
 		coordinate_test_v2.show();
 
 		return NB_run();

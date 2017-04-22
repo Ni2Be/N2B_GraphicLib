@@ -37,7 +37,7 @@ namespace NB
 		double y_percentage;
 
 		std::vector<NB_Box*> boxes;
-		//std::vector<NB_Shape*> owned_shapes;
+		std::vector<NB_Shape*> owned_shapes;
 		std::vector<NB_Shape*> shapes;
 		NB_Window* root;
 		NB_Box* root_b;
@@ -73,13 +73,11 @@ namespace NB
 			boxes.erase(std::find(boxes.begin(), boxes.end(), &box));
 		}
 
-		/* not used
 		template <class AShape>
 		void add(AShape& shape)
 		{
 			std::unique_ptr<AShape> sh(new AShape(shape));
 			this->owned_shapes.push_back(sh.release());
 		}
-		*/
 	};
 }

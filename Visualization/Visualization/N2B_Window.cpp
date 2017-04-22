@@ -16,4 +16,8 @@ void NB::NB_Window::draw()
 	{
 		(*itr)->draw();
 	}
+
+	//draws widgets again
+	for (int i = 0; i < this->children(); i++)
+		this->child(i)->draw();
 }

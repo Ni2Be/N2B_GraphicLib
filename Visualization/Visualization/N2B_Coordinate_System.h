@@ -4,12 +4,10 @@
 Allows to display a function on a NB_Window
 
 #TODO
--	if the system axis are in the left the function
-	is not drawn properly
 -	make it resizable
 
 @author Jordan
-@version 0.1 04/21/17
+@version 1.0 04/22/17
 */
 #pragma once
 
@@ -105,7 +103,7 @@ namespace NB
 		double get_pX() { return pos_x; }
 		double get_pY() { return pos_y; }
 
-		//change axes visibility
+		//change axis visibility
 		void set_visible(bool is_visible);
 		void draw();
 

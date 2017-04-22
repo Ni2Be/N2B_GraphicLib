@@ -58,10 +58,9 @@ namespace NB
 	protected:
 		NB_Shape(NB_Color c = NB_BLACK)
 			:color(c) {}
+	public:
 		NB_Color color;
 		std::vector<NB_Point> points;
-	public:
-
 		NB_Shape(NB_Shape&);
 		virtual void draw();
 	};
@@ -119,25 +118,23 @@ namespace NB
 		{
 			points.push_back(NB_Point(p));
 		}
-	private:
 		int width;
 		int height;
-
+	private:
 		void draw();
 	};
 
 	class NB_RectF : public NB_Shape
 	{
 	public:
-		NB_RectF(NB_Point p, int width, int height, NB_Color c = NB_WHITE)
+		NB_RectF(NB_Point p, int width, int height, NB_Color c = NB_BLACK)
 			: NB_Shape(c), width(width), height(height)
 		{
 			points.push_back(NB_Point(p));
 		}
-	private:
 		int width;
 		int height;
-
+	private:
 		void draw();
 	};
 }

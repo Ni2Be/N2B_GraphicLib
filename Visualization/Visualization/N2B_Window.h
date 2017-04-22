@@ -23,6 +23,7 @@ namespace NB
 		NB_Window(int width, int height, const char* title, NB_Color c = NB_WHITE)
 			:Fl_Double_Window(width, height, title) 
 		{
+			Fl::visual(FL_DOUBLE | FL_INDEX);
 			this->color(c);
 		}
 		void attach(NB_Box& box);

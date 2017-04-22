@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fltkd.lib;wsock32.lib;comctl32.lib;fltkjpegd.lib;fltkimagesd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -153,9 +153,10 @@
     <ClCompile Include="N2B_Coordinate_System.cpp" />
     <ClCompile Include="N2B_Graphics.cpp" />
     <ClCompile Include="N2B_Window.cpp" />
-    <ClCompile Include="Test_Window_Coordinate_System_v1.cpp" />
-    <ClCompile Include="Test_Window_Coordinate_System_v2.cpp" />
-    <ClCompile Include="Test_Window_Event.cpp" />
+    <ClCompile Include="Example_Window_Coordinate_System_v1.cpp" />
+    <ClCompile Include="Example_Window_Coordinate_System_v2.cpp" />
+    <ClCompile Include="Example_Window_Event.cpp" />
+    <ClCompile Include="Example_Window_File_Browser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="N2B_Box.h" />
@@ -163,9 +164,10 @@
     <ClInclude Include="N2B_Include.h" />
     <ClInclude Include="N2B_Window.h" />
     <ClInclude Include="N2B_Graphics.h" />
-    <ClInclude Include="Test_Window_Coordinate_System_v1.h" />
-    <ClInclude Include="Test_Window_Coordinate_System_v2.h" />
-    <ClInclude Include="Test_Window_Event.h" />
+    <ClInclude Include="Example_Window_Coordinate_System_v1.h" />
+    <ClInclude Include="Example_Window_Coordinate_System_v2.h" />
+    <ClInclude Include="Example_Window_Event.h" />
+    <ClInclude Include="Example_Window_File_Browser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
