@@ -117,10 +117,10 @@ void Example::Example_Window_Event::game_loop()
 {
 	//movement depending on time, not on frame rate
 	//other ways possible but this way is short and easy to understand
-	double time_stack = 0;
-	std::chrono::system_clock::time_point last_frame = std::chrono::system_clock::now();
+	__int64 time_stack = 0;
+	auto last_frame = std::chrono::system_clock::now();
 	std::chrono::system_clock::time_point this_frame;
-	double time_step;
+	__int64 time_step;
 	while (1)
 	{
 		this_frame = std::chrono::system_clock::now();
@@ -152,4 +152,7 @@ void Example::Example_Window_Event::moving()
 		square.points[0].x--;
 	if (right)
 		square.points[0].x++;
+	//recolor square based on new position
+	square.color = NB_rgb_color(square.points[0].x / 2, square.points[0].y / 2, 
+								square.points[0].y / 4 + square.points[0].x / 4);
 }

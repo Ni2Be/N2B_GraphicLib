@@ -3,7 +3,7 @@
 
 void Example::Example_Window_File_Browser::cb_open(Fl_Widget* w, void* window)
 {
-	Example_Window_File_Browser* o = (Example_Window_File_Browser*)window;
+	auto o = static_cast<Example::Example_Window_File_Browser*> (window);
 	o->open();
 }
 

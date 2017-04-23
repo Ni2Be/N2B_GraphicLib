@@ -24,7 +24,7 @@ namespace NB
 			:Fl_Double_Window(width, height, title) 
 		{
 			Fl::visual(FL_DOUBLE | FL_INDEX);
-			this->color(c);
+			this->color(c.color);
 		}
 		void attach(NB_Box& box);
 

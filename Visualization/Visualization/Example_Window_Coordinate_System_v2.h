@@ -19,6 +19,7 @@ Version 2 shows usage of add() of NB_Box
 
 #include "N2B_Window.h"
 #include "N2B_Coordinate_System.h"
+#include "N2B_Graphics.h"
 
 namespace Example
 {
@@ -42,7 +43,7 @@ namespace Example
 			co_system(0, 0, 400, 400, -5, 5, -5, 5, true),
 			graph(showed_function_v2)
 		{
-			this->begin();//starts adding widgets to this window
+			this->begin();//start adding widgets to this window
 			btn_left = new Fl_Button(40, 30	, 20, 20, "<");
 			widgets.push_back(btn_left);
 			btn_right = new Fl_Button(80, 30, 20, 20, ">");
@@ -55,8 +56,9 @@ namespace Example
 			widgets.push_back(slider_x);
 			slider_y = new Fl_Slider(20, 95, 100, 20);
 			widgets.push_back(slider_y);
-			this->end();//ends adding widgets to this window
+			this->end();//end adding widgets to this window
 
+			//set the slider bounds and cbs
 			slider_x->type(1);
 			slider_x->bounds(1, 100);
 			slider_x->value(5);
@@ -66,13 +68,18 @@ namespace Example
 			slider_y->bounds(1, 100);
 			slider_y->value(5);
 			slider_y->callback(cb_slider_y, this);
+			//
 
+			//btn cbs
 			btn_left->callback(cb_btn_left, this);
 			btn_right->callback(cb_btn_right, this);
 			btn_up->callback(cb_btn_up, this);
 			btn_down->callback(cb_btn_down, this);
+			//
 
+			//attach the graph to the system
 			co_system.attach(graph);
+			//attach the system to the window
 			this->attach(co_system);
 
 			box.add(NB_RectF(NB_Point(10, 5), 120, 120, NB_WHITE));

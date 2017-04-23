@@ -14,16 +14,26 @@ void NB::NB_Box::draw()
 	{
 		b->draw();
 	}
-	
-	for (std::vector<NB::NB_Shape*>::iterator itr = owned_shapes.begin(); itr < owned_shapes.end(); itr++)
+	for (auto itr : owned_shapes)
+	{
+		itr->draw();
+	}
+
+	for (auto itr : shapes)
+	{
+		itr->draw();
+	}
+	/*
+	for (auto itr = owned_shapes.begin(); itr < owned_shapes.end(); itr++)
 	{
 		(*itr)->draw();
 	}
 	
-	for (std::vector<NB::NB_Shape*>::iterator itr = shapes.begin(); itr < shapes.end(); itr++)
+	for (auto itr = shapes.begin(); itr < shapes.end(); itr++)
 	{
 		(*itr)->draw();
 	}
+	*/
 	fl_pop_clip();
 }
 

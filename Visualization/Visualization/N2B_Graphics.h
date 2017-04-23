@@ -4,11 +4,14 @@
 Allows to create simple graphic elements
 that know how to draw them selfe.
 
+since v1.1
+now with RGB colors
+
 #TODO
 -	make them resizable
 
 @author Jordan
-@version 1.0 04/21/17
+@version 1.1 04/23/17
 */
 
 #pragma once
@@ -29,13 +32,35 @@ namespace NB
 	class NB_Line;
 	class NB_Ployline;
 	class NB_Mark;
+	class NB_Color;
 
-	enum NB_Color
+	enum NB_COLORS
 	{
 		NB_BLACK = FL_BLACK, NB_RED = FL_RED, NB_GREEN = FL_GREEN
 		, NB_YELLOW = FL_YELLOW, NB_BLUE = FL_BLUE, NB_MAGENTA = FL_MAGENTA
 		, NB_CYAN = FL_CYAN, NB_WHITE = FL_WHITE, NB_GRAY = FL_GRAY
 	};
+
+	class NB_Color
+	{
+	public:
+		NB_Color()
+			: color(NB_BLACK) {}
+
+		NB_Color(NB_COLORS c)
+			: color(c) {}
+
+		NB_Color(Fl_Color c)
+			: color(c) {}
+
+		NB_Color& operator=(NB_Color& c)
+		{
+			this->color = c.color;
+			return *this;
+		}
+		Fl_Color color;
+	};
+	NB_Color NB_rgb_color(uchar r, uchar g, uchar b);
 
 	class NB_Point
 	{
@@ -63,6 +88,13 @@ namespace NB
 		std::vector<NB_Point> points;
 		NB_Shape(NB_Shape&);
 		virtual void draw();
+
+	protected:
+		void add_Point(NB_Point& point);
+		void del_Point(unsigned int idx);
+		int size();
+		NB_Point& operator[](std::size_t idx);
+		const NB_Point& operator[](std::size_t idx) const;
 	};
 
 	class NB_Line : public NB_Shape
@@ -85,15 +117,16 @@ namespace NB
 		{
 			for (auto i : containerP)
 			{
-				this->points.push_back(NB_Point(i));
+				this->points.push_back(NB::NB_Point(i));
 			}
 		}
+		NB_Polyline(NB_Color c = NB_BLACK)
+			: NB_Shape(c) {}
 
-		void add_Point(NB_Point& point);
-		void del_Point(int idx);
-		int size();
-		NB_Point& operator[](std::size_t idx);
-		const NB_Point& operator[](std::size_t idx) const;
+		void add_Point(NB_Point p) 
+		{
+			NB_Shape::add_Point(p);
+		}
 	};
 
 	class NB_Mark : public NB_Shape

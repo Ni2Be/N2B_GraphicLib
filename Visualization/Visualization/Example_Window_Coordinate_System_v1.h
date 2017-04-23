@@ -47,7 +47,7 @@ namespace Example
 		{
 			this->end();//ends adding widgets to this window
 
-			//set up the sliders
+			//set the slider bounds and cbs
 			slider_x.type(1);
 			slider_x.bounds(1, 100);
 			slider_x.value(5);
@@ -57,16 +57,18 @@ namespace Example
 			slider_y.bounds(1, 100);
 			slider_y.value(5);
 			slider_y.callback(cb_slider_y, this);
+			//
 
-
-			//set up the buttons
+			//btn cbs
 			btn_left.callback(cb_btn_left, this);
 			btn_right.callback(cb_btn_right, this);
 			btn_up.callback(cb_btn_up, this);
 			btn_down.callback(cb_btn_down, this);
+			//
 
-			//set up the coordinate system
+			//attach the graph to the system
 			co_system.attach(graph);
+			//attach the system to the window
 			this->attach(co_system);
 		}
 

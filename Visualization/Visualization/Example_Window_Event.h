@@ -5,14 +5,17 @@ An Example that shows the main events that can be
 catched by overwriting the FLTK handle() function.
 
 since v. 1.1
-Also a litte example of a game loop
+Example of a game loop
+
+since v. 1.2
+Exaple of rgb color
 
 int handle(int) is a FLTK function.
 It is called every time the system recognizes an
 event like a mouse move, or a pushed key.
 
 @author Jordan
-@version 1.1 04/22/17
+@version 1.2 04/23/17
 */
 #pragma once
 #include <FL/Fl_Button.H>
@@ -31,7 +34,7 @@ namespace Example {
 		Example_Window_Event()
 			:NB_Window(400, 400, "Event"),
 			b(0, 0, 400, 400),
-			square(NB_Point(180, 180), 20, 20, NB_BLUE)
+			square(NB_Point(180, 180), 20, 20, NB_rgb_color(90, 90, 90))
 		{
 			b.attach(square);
 			this->attach(b);

@@ -8,7 +8,7 @@ void NB::NB_Coordinate_System::set_visible(bool is_visible)
 void NB::NB_Coordinate_System::draw()
 {
 	Fl_Color old_c = fl_color();
-	fl_color(color);
+	fl_color(color.color);
 
 	fl_clip(this->x, this->y, this->width, this->height);
 	//x-axis
@@ -35,14 +35,13 @@ void NB::NB_Coordinate_System::draw()
 		}
 	}
 	//functions
-	for (std::vector<NB::NB_Function_Graph*>::iterator itr = graphs.begin(); itr < graphs.end(); itr++)
+	for (auto itr : graphs) 
 	{
-		(*itr)->draw();
+		(itr)->draw();
 	}
 	fl_pop_clip();
 
 	fl_color(old_c);
-
 	//shapes
 	NB_Box::draw();
 }
@@ -53,12 +52,17 @@ void NB::NB_Function_Graph::draw()
 	double y_factor = (root->pos_y - root->neg_y) / root->height;
 
 	Fl_Color old_c = fl_color();
-	fl_color(color);
+	fl_color(color.color);
 	//3 should be a variable like "resulution", of root
 	int res = 3;
 	int pix_to_null = (root->y_axis) % res;
 	for (int i = pix_to_null - (root->y_axis); i < (root->width) + res; i += res)
 	{
+		//calc y position on the screen
+		double screen_y_prev = root->x_axis - func((i - res) * x_factor) / y_factor;
+		double screen_y = root->x_axis - func(i * x_factor) / y_factor;
+		/* is the same as:
+
 		double real_x_prev = (i - res) * x_factor;    
 		double real_y_prev = func(real_x_prev);
 		double screen_y_prev = root->x_axis - real_y_prev / y_factor;
@@ -66,6 +70,7 @@ void NB::NB_Function_Graph::draw()
 		double real_x = i * x_factor;
 		double real_y = func(real_x);
 		double screen_y = root->x_axis - real_y / y_factor;
+		*/
 
 		//draw line
 		fl_line((root->y_axis) + i - res + root->x,
@@ -79,27 +84,27 @@ void NB::NB_Function_Graph::draw()
 void NB::NB_Coordinate_System::set_nX(double x)
 {
 	if (x >= 0)
-		throw std::runtime_error("\nclass NB_Coordinate_System\set_nX():\nWrong nx\n");
+		throw std::runtime_error("\nclass NB_Coordinate_System\nset_nX():\nWrong nx\n");
 	this->neg_x = x;
 }
 
 void NB::NB_Coordinate_System::set_nY(double y)
 {
 	if (y >= 0)
-		throw std::runtime_error("\nclass NB_Coordinate_System\set_nX():\nWrong ny\n");
+		throw std::runtime_error("\nclass NB_Coordinate_System\nset_nX():\nWrong ny\n");
 	this->neg_y = y;
 }
 
 void NB::NB_Coordinate_System::set_pX(double x) 
 {
 	if (x <= 0)
-		throw std::runtime_error("\nclass NB_Coordinate_System\set_nX():\nWrong px\n");
+		throw std::runtime_error("\nclass NB_Coordinate_System\nset_nX():\nWrong px\n");
 	this->pos_x = x;
 }
 
 void NB::NB_Coordinate_System::set_pY(double y)
 {
 	if (y <= 0)
-		throw std::runtime_error("\nclass NB_Coordinate_System\set_nX():\nWrong py\n");
+		throw std::runtime_error("\nclass NB_Coordinate_System\nset_nX():\nWrong py\n");
 	this->pos_y = y;
 }

@@ -1,8 +1,14 @@
-﻿  Test_Window_Event.cpp
+﻿  N2B_Box.cpp
   main.cpp
-  Code wird generiert.
-  0 of 370 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    8 functions had inline decision re-evaluated but remain unchanged
-  Codegenerierung ist abgeschlossen.
-  Visualization.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\Visualization\Release\Visualization.exe
+  N2B_Coordinate_System.cpp
+N2B_Coordinate_System.cpp(15): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+N2B_Coordinate_System.cpp(23): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+N2B_Coordinate_System.cpp(30): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+N2B_Coordinate_System.cpp(79): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+  N2B_Graphics.cpp
+  N2B_Window.cpp
+  Example_Window_Coordinate_System_v1.cpp
+  Example_Window_Coordinate_System_v2.cpp
+  Example_Window_Event.cpp
+  Example_Window_File_Browser.cpp
+  Visualization.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\Visualization\Release\Visualization.lib

@@ -1,5 +1,11 @@
 #include "N2B_Graphics.h"
 
+
+NB::NB_Color NB::NB_rgb_color(uchar r, uchar g, uchar b)
+{
+	return NB_Color(fl_rgb_color(r, g, b));
+}
+
 NB::NB_Shape::NB_Shape(NB_Shape& s)
 {
 	this->color = s.color;
@@ -10,10 +16,10 @@ NB::NB_Shape::NB_Shape(NB_Shape& s)
 void NB::NB_Shape::draw()
 {
 	Fl_Color old_c = fl_color();
-	fl_color(color);
+	fl_color(color.color);
 	if (this->points.size() > 1)
 	{
-		for (int i = 1; i < this->points.size(); i++)
+		for (unsigned int i = 1; i < this->points.size(); i++)
 		{
 			fl_line(points[i - 1].x, points[i - 1].y, points[i].x, points[i].y);
 		}
@@ -46,28 +52,28 @@ inline bool NB::operator==(const NB::NB_Point& lhs, const NB::NB_Point& rhs)
 	return (lhs.x == rhs.x && lhs.y == rhs.y);
 }
 
-void NB::NB_Polyline::add_Point(NB_Point& point)
+void NB::NB_Shape::add_Point(NB_Point& point)
 {
 	points.push_back(point);
 }
 
-void NB::NB_Polyline::del_Point(int idx)
+void NB::NB_Shape::del_Point(unsigned int idx)
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
 	{
-		throw std::runtime_error("\nclass Polyline\del_Point(int idx):\nout of bounds\n");
+		throw std::runtime_error("\nclass Polyline\ndel_Point(int idx):\nout of bounds\n");
 	}
 #endif // DEBUG
 	points.erase(points.begin() + idx, points.begin() + idx + 1);
 }
 
-int NB::NB_Polyline::size()
+int NB::NB_Shape::size()
 {
 	return points.size();
 }
 
-NB::NB_Point& NB::NB_Polyline::operator[](std::size_t idx)
+NB::NB_Point& NB::NB_Shape::operator[](std::size_t idx)
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
@@ -77,7 +83,7 @@ NB::NB_Point& NB::NB_Polyline::operator[](std::size_t idx)
 #endif // DEBUG
 	return points[idx];
 }
-const NB::NB_Point& NB::NB_Polyline::operator[](std::size_t idx) const
+const NB::NB_Point& NB::NB_Shape::operator[](std::size_t idx) const
 {
 #ifdef DEBUG
 	if (idx >= points.size() || idx < 0)
@@ -91,7 +97,7 @@ const NB::NB_Point& NB::NB_Polyline::operator[](std::size_t idx) const
 void NB::NB_Mark::draw()
 {
 	Fl_Color old_c = fl_color();
-	fl_color(color);
+	fl_color(color.color);
 	fl_font(FL_HELVETICA, 16);
 	fl_draw(m.c_str(), points[0].x - 4, points[0].y + 4);
 	fl_color(old_c);
@@ -99,10 +105,10 @@ void NB::NB_Mark::draw()
 
 void NB::NB_Rect::draw()
 {
-	fl_rect(points[0].x, points[0].y, width, height, color);
+	fl_rect(points[0].x, points[0].y, width, height, color.color);
 }
 
 void NB::NB_RectF::draw()
 {
-	fl_rectf(points[0].x, points[0].y, width, height, color);
+	fl_rectf(points[0].x, points[0].y, width, height, color.color);
 }
