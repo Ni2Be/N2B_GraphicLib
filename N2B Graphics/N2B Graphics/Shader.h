@@ -12,7 +12,7 @@ public:
 	Shader(const std::string& fileName);
 	~Shader();
 
-	inline void use();
+	void use();
 private:
 	//no copy
 	Shader(const Shader&) {}

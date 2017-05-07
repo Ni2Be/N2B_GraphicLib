@@ -5,6 +5,7 @@
 
 void error_log(const std::string location, const std::string error)
 {
+	NB::NB_Err.log(NB::NB_ERROR, location, error);
 	std::cerr << std::endl << "In " << location << std::endl << error << std::endl;
 }
 
