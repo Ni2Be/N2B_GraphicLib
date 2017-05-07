@@ -155,10 +155,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Display.h" />
+    <ClInclude Include="NB_Utility.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NB_Utility.cpp" />
+    <ClCompile Include="Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\example.png" />
+    <Image Include="res\textures\Holz.jpg" />
+    <Image Include="res\textures\Stein.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shader\basic_shader.frag" />
+    <None Include="res\shader\basic_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

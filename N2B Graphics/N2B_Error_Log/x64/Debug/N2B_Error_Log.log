@@ -1,0 +1,5 @@
+﻿  main.cpp
+d:\programmieren\boost_1_64_0\boost\preprocessor\library.hpp(16): fatal error C1083: Datei (Include) kann nicht geöffnet werden: "boost/preprocessor/arithmetic.hpp": No such file or directory
+  NB_Error_Log.cpp
+d:\programmieren\boost_1_64_0\boost\preprocessor\library.hpp(16): fatal error C1083: Datei (Include) kann nicht geöffnet werden: "boost/preprocessor/arithmetic.hpp": No such file or directory
+  Code wird generiert...

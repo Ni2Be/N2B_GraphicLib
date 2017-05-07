@@ -1,5 +1,1 @@
-﻿  main.cpp
-  Display.cpp
-  Code wird generiert...
-LINK : warning LNK4098: Standardbibliothek "MSVCRT" steht in Konflikt mit anderen Bibliotheken; /NODEFAULTLIB:Bibliothek verwenden.
-  N2B Graphics.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B Graphics.exe
+﻿  N2B Graphics.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B Graphics.exe

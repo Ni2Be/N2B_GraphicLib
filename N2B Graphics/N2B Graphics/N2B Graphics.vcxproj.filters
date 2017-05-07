@@ -13,9 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Ressourcendateien\Textures">
+      <UniqueIdentifier>{6eac4e24-f25e-4d28-82ba-8a8f8060c62e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressourcendateien\shader">
+      <UniqueIdentifier>{25ce7557-68f5-431e-aa39-519a2f0f3afd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Display.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Utility.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,5 +38,30 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NB_Utility.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\example.png">
+      <Filter>Ressourcendateien\Textures</Filter>
+    </Image>
+    <Image Include="res\textures\Holz.jpg">
+      <Filter>Ressourcendateien\Textures</Filter>
+    </Image>
+    <Image Include="res\textures\Stein.jpg">
+      <Filter>Ressourcendateien\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shader\basic_shader.vert">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\basic_shader.frag">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

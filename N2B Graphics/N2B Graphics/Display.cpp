@@ -1,13 +1,12 @@
 #include "Display.h"
-
+#include "NB_Utility.h"
 
 
 NB::Display::Display(int width, int height, const std::string title = "window 1")
 {
-
 	if (!glfwInit())
 	{
-		std::cerr << "Failed to initiate GLFW" << std::endl;
+		error_log(__func__, "Failed to initiate GLFW");
 		exit(EXIT_FAILURE);
 	}
 
@@ -19,7 +18,7 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 	this->window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 	if (this->window == nullptr)
 	{
-		std::cerr << "Failed to create GLFW window" << std::endl;
+		error_log(__func__, "Failed to create GLFW window");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
@@ -29,7 +28,7 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		std::cout << "Failed to initialize GLEW" << std::endl;
+		error_log(__func__, "Failed to initialize GLEW");
 		exit(EXIT_FAILURE);
 	}
 
