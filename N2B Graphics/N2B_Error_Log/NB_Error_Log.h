@@ -5,9 +5,12 @@
 #include <iomanip>
 #include <mutex>
 #include <queue>
+#include <iostream>
 
 namespace NB
 {
+	static void test(std::thread th);
+
 	enum NB_Error
 	{
 		NB_FATAL_ERROR = 1,

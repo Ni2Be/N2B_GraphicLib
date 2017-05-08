@@ -5,6 +5,12 @@
 #include <time.h>
 #include <thread>
 
+void NB::test(std::thread th)
+{
+	std::cerr << "static void test()";
+	th.~thread();
+}
+
 //CLASS ERROR
 NB::Error::Error(NB_Error signature, const std::string location, const std::string error)
 	:signature(signature), location(location), error_name(error)
@@ -32,15 +38,17 @@ std::ostream& NB::operator<<(std::ostream& os, const Error& err)
 //CLASS ERROR_LOG
 NB::NB_Error_Log::NB_Error_Log() 
 {
-	std::thread log_handle(this->handle_work);
+	std::thread work_handle;
 }
 
 NB::NB_Error_Log::~NB_Error_Log()
 {
 	//ensure that work_q is empty
 	while (work_q.size() > 0)
+	{
 		std::this_thread::sleep_for(std::chrono::seconds(1));
-
+		std::cerr << "Work size: " << work_q.size() << std::endl;
+	}
 	//try to save to file
 	//show on console if failed
 	std::ofstream file;
@@ -86,7 +94,9 @@ void NB::NB_Error_Log::handle_work()
 	while (1)
 	{
 		//wait for input
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::this_thread::sleep_for(std::chrono::microseconds(100));
+
+		std::cerr << "Work size: " << work_q.size() << std::endl;
 		if (work_q.size() > 0)
 		{
 			std::unique_lock<std::mutex> lock(this->mutex);

@@ -28,7 +28,7 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		error_log(__func__, "Failed to initialize GLEW");
+		error_log(__func__, "Failed to initialize GLFW");
 		exit(EXIT_FAILURE);
 	}
 

@@ -18,16 +18,20 @@ int main()
 		t2.join();
 		t3.join();
 		t4.join();
+		
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what();
+		std::cerr << "Error: " << e.what();
 	}
+	std::cout << "End!";
+	char ch;
+	std::cin >> ch;
 }
 
 
 void error_test() 
 {
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 10; i++)
 		NB::NB_Err.log(NB::NB_FATAL_ERROR, "error_test", "Test Error!");
 }
