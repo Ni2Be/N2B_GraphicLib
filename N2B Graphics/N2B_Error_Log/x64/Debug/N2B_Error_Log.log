@@ -1,46 +1,5 @@
-﻿  main.cpp
-  NB_Error_Log.cpp
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(238): error C2672: "std::invoke": keine übereinstimmende überladene Funktion gefunden
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(247): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "void std::_LaunchPad<_Target>::_Execute<0>(std::tuple<void (__cdecl *)(std::thread)> &,std::integer_sequence<_Ty,0>)".
-          with
-          [
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>,
-              _Ty=size_t
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(245): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "void std::_LaunchPad<_Target>::_Execute<0>(std::tuple<void (__cdecl *)(std::thread)> &,std::integer_sequence<_Ty,0>)".
-          with
-          [
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>,
-              _Ty=size_t
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(242): note: Bei der Kompilierung der Klassen-template der "void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept"-Memberfunktion
-          with
-          [
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(230): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept".
-          with
-          [
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(256): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "std::_LaunchPad<_Target>".
-          with
-          [
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thread(52): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "void std::_Launch<std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<_Ty>>>(_Thrd_t *,_Target &&)".
-          with
-          [
-              _Ty=std::tuple<void (__cdecl *)(std::thread)>,
-              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(std::thread)>,std::default_delete<std::tuple<void (__cdecl *)(std::thread)>>>
-          ]
-  d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b_error_log\nb_error_log.cpp(41): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "std::thread::thread<void(__cdecl &)(std::thread),,void>(_Fn)".
-          with
-          [
-              _Fn=void (__cdecl &)(std::thread)
-          ]
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(238): error C2893: Funktionsvorlage "unknown-type std::invoke(_Callable &&,_Types &&...)" konnte nicht spezialisiert werden
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(238): note: Mit den folgenden Vorlagenargumenten:
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(238): note: "_Callable=void (__cdecl *)(std::thread)"
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\thr\xthread(238): note: "_Types={}"
+﻿  NB_Error_Log.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b_error_log\nb_error_log.cpp(117): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  main.cpp
   Code wird generiert...
+  N2B_Error_Log.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B_Error_Log.lib

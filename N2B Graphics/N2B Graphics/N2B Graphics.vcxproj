@@ -171,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\basic_shader.frag" />
-    <None Include="res\shader\basic_shader.vert" />
+    <None Include="res\shader\basic_shfdgader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

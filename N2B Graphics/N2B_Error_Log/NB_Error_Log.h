@@ -1,16 +1,11 @@
 #pragma once
 #include <vector>
-#include <chrono>
 #include <ctime>
-#include <iomanip>
 #include <mutex>
 #include <queue>
-#include <iostream>
 
 namespace NB
 {
-	static void test(std::thread th);
-
 	enum NB_Error
 	{
 		NB_FATAL_ERROR = 1,
@@ -27,29 +22,46 @@ namespace NB
 		std::string location;
 		std::string error_name;
 		std::time_t time_stamp;
-
+		int id;
 
 		friend std::ostream& operator<<(std::ostream& os, const Error& err);
 	};
 	std::ostream& operator<<(std::ostream& os, const Error& err);
 
+	template <class T>
+	class Thread_Queue : std::queue<T>
+	{
+		friend class NB_Error_Log;
+		std::mutex mutex;
+	};
+
 	class NB_Error_Log
 	{
 	public:
-		NB_Error_Log();
+		NB_Error_Log(const std::string log_name = "error.log",
+			const std::string final_log_name = "final_error.log");
 		~NB_Error_Log();
 		
 		
 		void log(NB_Error signature, const std::string location, const std::string error);
-		void print_errors();
+		void print_errors(bool emty_queue = false);
 
 	private:
-		[[noreturn]] void handle_work();
-		void save_error(const Error& err);
-		std::mutex mutex;
+		void handle_work();
+		void get_queue_ready();
+		void save_error(const Error& err, std::ofstream& file);
+		void open_file_app(const std::string& file_name, std::ofstream& file);
+	
+
+		std::string log_file_name;
+		std::string final_log_file_name;
+
+		int error_id;
 		std::vector<Error*> log_vec;
-		std::queue<Error*> work_q;
+		Thread_Queue<Error*> work_q;
+		std::thread work_handler;
+		bool is_running;
 	};
 
-	static NB_Error_Log NB_Err;
+
 }

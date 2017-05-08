@@ -1,10 +1,12 @@
-At: 2017-05-07 22:32:46
+Error Nr. 0
+At: 2017-05-08 19:38:23
 in: load_file_to_string
 Unable to load File: ./res/shader/basic_shader.vert
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
 
-At: 2017-05-07 22:32:46
+Error Nr. 1
+At: 2017-05-08 19:38:23
 in: error_check
 Error in ./res/shader/basic_shader
 Shader linking fail: Vertex info
@@ -19,7 +21,8 @@ Fragment info
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
 
-At: 2017-05-07 22:32:46
+Error Nr. 2
+At: 2017-05-08 19:38:23
 in: error_check
 Error in ./res/shader/basic_shader
 Program is invalid: 
