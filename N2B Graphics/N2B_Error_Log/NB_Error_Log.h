@@ -4,6 +4,7 @@
 #include <ctime>
 #include <iomanip>
 #include <mutex>
+#include <queue>
 
 namespace NB
 {
@@ -32,7 +33,7 @@ namespace NB
 	class NB_Error_Log
 	{
 	public:
-		NB_Error_Log() {}
+		NB_Error_Log();
 		~NB_Error_Log();
 		
 		
@@ -40,9 +41,11 @@ namespace NB
 		void print_errors();
 
 	private:
+		[[noreturn]] void handle_work();
 		void save_error(const Error& err);
 		std::mutex mutex;
 		std::vector<Error*> log_vec;
+		std::queue<Error*> work_q;
 	};
 
 	static NB_Error_Log NB_Err;

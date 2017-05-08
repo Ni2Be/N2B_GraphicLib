@@ -30,8 +30,19 @@ std::ostream& NB::operator<<(std::ostream& os, const Error& err)
 }
 
 //CLASS ERROR_LOG
+NB::NB_Error_Log::NB_Error_Log() 
+{
+	std::thread log_handle(this->handle_work);
+}
+
 NB::NB_Error_Log::~NB_Error_Log()
 {
+	//ensure that work_q is empty
+	while (work_q.size() > 0)
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+
+	//try to save to file
+	//show on console if failed
 	std::ofstream file;
 	file.open("final_error.log", std::ios::app);
 	if (!file)
@@ -67,7 +78,27 @@ void NB::NB_Error_Log::save_error(const Error& err)
 void NB::NB_Error_Log::log(NB_Error signature, const std::string location, const std::string error)
 {
 	std::lock_guard<std::mutex> lk1(this->mutex);
-	
-	log_vec.push_back(new Error(signature, location, error));
-	save_error(*log_vec.back());
+	work_q.emplace(new Error(signature, location, error));
+}
+
+void NB::NB_Error_Log::handle_work()
+{
+	while (1)
+	{
+		//wait for input
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+		if (work_q.size() > 0)
+		{
+			std::unique_lock<std::mutex> lock(this->mutex);
+			Error* err = work_q.front();
+			lock.release();
+
+			log_vec.push_back(err);
+			save_error(*err);
+
+			lock.lock();
+			work_q.pop();
+			lock.release();
+		}
+	}
 }
