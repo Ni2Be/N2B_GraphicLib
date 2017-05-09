@@ -131,9 +131,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NB_Error_Log.cpp" />
+    <ClCompile Include="NB_Test_Error_Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NB_Error_Log.h" />
+    <ClInclude Include="NB_Test_Error_Log.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Error_Log_Tests.txt" />

@@ -5,6 +5,7 @@
 #include <string>
 #include <thread>
 #include <iterator>
+#include <regex>
 
 //CLASS ERROR
 /*
@@ -44,14 +45,40 @@ std::ostream& NB::operator<<(std::ostream& os, const Error& err)
 When NB_Error_Log is initialized it will start his work handler
 and new logs can be added with the function log()
 */
-NB::NB_Error_Log::NB_Error_Log(const std::string log_name,
-	const std::string final_log_name) 
+NB::NB_Error_Log::NB_Error_Log() 
 	: is_running(true),
-	log_file_name(log_name),
-	final_log_file_name(final_log_name),
+	log_file_name("error.log"),
+	final_log_file_name("final_error.log"),
 	error_id(0)
 {
 	work_handler = std::thread(&NB::NB_Error_Log::handle_work, this);
+}
+
+//throws runtime_error if name is not valid
+void NB::NB_Error_Log::set_log_name(const std::string log_file_name)
+{
+	if (is_name_valid(log_file_name))
+		this->log_file_name = log_file_name;
+}
+
+//throws runtime_error if name is not valid
+void NB::NB_Error_Log::set_final_log_name(const std::string final_log_file_name)
+{
+	if (is_name_valid(final_log_file_name))
+		this->final_log_file_name = final_log_file_name;
+}
+
+bool NB::NB_Error_Log::is_name_valid(const std::string file_name)
+{
+	//if the given name is not valid there is no possible comeback without the risk
+	//of overwriting important data
+	//so the throw is considered the best alternative
+	std::regex invalid_chars("[\\/:*?\"<>|]");
+	if (std::regex_search(file_name, invalid_chars)
+		|| file_name.length() == 0)
+		throw std::runtime_error("NB::NB_Error_Log::NB_Error_Log()\n"
+			"\"" + file_name + "\" is not a valid filename\n");
+	return true;
 }
 
 /*

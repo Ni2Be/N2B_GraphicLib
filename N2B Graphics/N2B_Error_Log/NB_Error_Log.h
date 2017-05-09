@@ -38,11 +38,13 @@ namespace NB
 	class NB_Error_Log
 	{
 	public:
-		NB_Error_Log(const std::string log_name = "error.log",
-			const std::string final_log_name = "final_error.log");
+		NB_Error_Log();
 		~NB_Error_Log();
 		
-		
+
+		void set_log_name(const std::string log_file_name);
+		void set_final_log_name(const std::string final_log_file_name);
+
 		void log(NB_Error signature, const std::string location, const std::string error);
 		void print_errors(bool emty_queue = false);
 
@@ -51,7 +53,8 @@ namespace NB
 		void get_queue_ready();
 		void save_error(const Error& err, std::ofstream& file);
 		void open_file_append(const std::string& file_name, std::ofstream& file);
-	
+
+		bool is_name_valid(const std::string file_name);
 
 		std::string log_file_name;
 		std::string final_log_file_name;

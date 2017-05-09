@@ -21,9 +21,15 @@
     <ClCompile Include="NB_Error_Log.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="NB_Test_Error_Log.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NB_Error_Log.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Test_Error_Log.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
