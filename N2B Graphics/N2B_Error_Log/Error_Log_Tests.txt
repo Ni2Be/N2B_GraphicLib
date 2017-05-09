@@ -1,0 +1,43 @@
+Tests:
+
+small test size (number of Errors)
+
+big test size
+
+test size = 0
+
+invalid arguments
+
+big arguments (Large Error strings)
+
+small arguments
+
+test.log used by other prozess
+
+final.log used by other prozess
+
+test.log invalid outfile name
+
+final.log invalid outfile name
+
+
+Performance:
+
+much in the begin, then nothing
+
+nothing, the much in the end
+
+randomly over a long period
+
+waiting for one time point then fire Errors
+
+runtime compare with and without error_log
+
+Multithread:
+all tests above for:
+
+1 thread
+
+2 threads
+
+n threads

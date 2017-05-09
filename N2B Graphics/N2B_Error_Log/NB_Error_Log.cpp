@@ -124,7 +124,9 @@ void NB::NB_Error_Log::print_errors(bool emty_queue)
 }
 
 /*
-saves an error to a given file
+Saves an error to a given file.
+Just a function to make it easier to add additional
+Infromation to the saved Error if nessecary
 */
 void NB::NB_Error_Log::save_error(const Error& err, std::ofstream& file)
 {
@@ -134,7 +136,7 @@ void NB::NB_Error_Log::save_error(const Error& err, std::ofstream& file)
 /*
 Opens an file in append mode, prints error to console if failed
 */
-void NB::NB_Error_Log::open_file_app(const std::string& file_name, std::ofstream& file)
+void NB::NB_Error_Log::open_file_append(const std::string& file_name, std::ofstream& file)
 {
 	file.open(file_name, std::ios::app);
 	if (!file.is_open())
@@ -142,7 +144,7 @@ void NB::NB_Error_Log::open_file_app(const std::string& file_name, std::ofstream
 }
 
 /*
-Will push an error to the work_queue as fast as possible
+Will push an error to the work_queue as fast as possible (+ 1 virtual function table lookup)
 */
 void NB::NB_Error_Log::log(NB_Error signature, const std::string location, const std::string error)
 {
@@ -162,7 +164,7 @@ To do so it handles only one Error per second.
 If the programm terminates it will handle the remaining 
 Errors as fast as possible.
 */
-void NB::NB_Error_Log::handle_work()
+[[noreturn]] void NB::NB_Error_Log::handle_work()
 {
 	std::unique_lock<std::mutex> guard(work_q.mutex, std::defer_lock);
 	while (true)
@@ -179,7 +181,7 @@ void NB::NB_Error_Log::handle_work()
 
 			//open file while unlocked
 			std::ofstream file;
-			open_file_app(log_file_name, file);
+			open_file_append(log_file_name, file);
 
 			//lock and get the Error*
 			guard.lock();
@@ -224,7 +226,7 @@ void NB::NB_Error_Log::get_queue_ready()
 	std::ofstream file;
 	if (work_q.size() > 0)
 	{
-		open_file_app(log_file_name, file);
+		open_file_append(log_file_name, file);
 	}
 	while (work_q.size() > 0)
 	{

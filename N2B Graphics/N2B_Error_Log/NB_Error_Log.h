@@ -47,10 +47,10 @@ namespace NB
 		void print_errors(bool emty_queue = false);
 
 	private:
-		void handle_work();
+		[[noreturn]] void handle_work();
 		void get_queue_ready();
 		void save_error(const Error& err, std::ofstream& file);
-		void open_file_app(const std::string& file_name, std::ofstream& file);
+		void open_file_append(const std::string& file_name, std::ofstream& file);
 	
 
 		std::string log_file_name;
