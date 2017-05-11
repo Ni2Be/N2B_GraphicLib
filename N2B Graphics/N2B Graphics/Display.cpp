@@ -23,6 +23,7 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 		exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(this->window);
+	glfwSwapInterval(1);
 
 	//GLEW
 	glewExperimental = GL_TRUE;
@@ -32,12 +33,14 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 		exit(EXIT_FAILURE);
 	}
 
-	//not width and height to ensure proper work on high res screens
+	//not screen width and height but pixels to ensure proper work on high res screens
 	int w, h;
 	glfwGetFramebufferSize(window, &w, &h);
 	glViewport(0, 0, w, h);
 
 	//set up callback
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetWindowSizeCallback(window, window_size_callback);
 	glfwSetKeyCallback(this->window, key_callback);
 	glfwSetErrorCallback(error_callback);
 }
@@ -58,6 +61,16 @@ void NB::Display::clear()
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
+void NB::Display::update()
+{
+	glfwSwapBuffers(this->window);
+}
+
+void NB::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+}
+
 void NB::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
@@ -67,4 +80,11 @@ void NB::key_callback(GLFWwindow* window, int key, int scancode, int action, int
 void NB::error_callback(int error, const char* description)
 {
 	fputs(description, stderr);
+}
+
+void NB::window_size_callback(GLFWwindow* window, int width, int height)
+{
+	int w, h;
+	glfwGetFramebufferSize(window, &w, &h);
+	glViewport(0, 0, w, h);
 }

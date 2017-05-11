@@ -1,46 +1,43 @@
 #include "Shader.h"
 #include "NB_Utility.h"
 
-Shader::Shader(const std::string& fileName)
+NB::Shader::Shader(const std::string& fileName)
 {
-	m_program = glCreateProgram();
-	m_shaders[0] = create_shader(fileName + ".vert", GL_VERTEX_SHADER);
-	m_shaders[1] = create_shader(fileName + ".frag", GL_FRAGMENT_SHADER);
+	GLuint program = glCreateProgram();
+	GLuint vetex_shader = create_shader(fileName + ".vert", GL_VERTEX_SHADER);
+	GLuint fragment_shader = create_shader(fileName + ".frag", GL_FRAGMENT_SHADER);
 
-	for (unsigned int i = 0; i < NUM_SHADERS; i++)
-		glAttachShader(m_program, m_shaders[i]);
+	glAttachShader(program, vetex_shader);
+	glAttachShader(program, fragment_shader);
+
+	glBindAttribLocation(program, 0, "position");
+	glBindAttribLocation(program, 1, "texture_coordinate");
 
 
-	glBindAttribLocation(m_program, 0, "position");
-	glBindAttribLocation(m_program, 1, "texture_coordinate");
+	glLinkProgram(program);
+	error_check(program, GL_LINK_STATUS, true, "Shader linking fail: ", fileName);
 
+	glValidateProgram(program);
+	error_check(program, GL_VALIDATE_STATUS, true, "Program is invalid: ", fileName);
 
-	glLinkProgram(m_program);
-	error_check(m_program, GL_LINK_STATUS, true, "Shader linking fail: ", fileName);
+	m_uniforms[TRANSFORM_U] = glGetUniformLocation(program, "transform");
 
-	glValidateProgram(m_program);
-	error_check(m_program, GL_VALIDATE_STATUS, true, "Program is invalid: ", fileName);
-
-	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
+	glDeleteShader(vetex_shader);
+	glDeleteShader(fragment_shader);
 }
 
-Shader::~Shader()
+NB::Shader::~Shader()
 {
-	for (unsigned int i = 0; i < NUM_SHADERS; i++)
-	{
-		glDetachShader(m_program, m_shaders[i]);
-		glDeleteShader(m_shaders[i]);
-	}
-	glDeleteProgram(m_program);
+	glDeleteProgram(program);
 }
 
-void Shader::use()
+void NB::Shader::use()
 {
-	glUseProgram(m_program);
+	glUseProgram(program);
 }
 
 
-GLuint Shader::create_shader(const std::string& file_name, const GLenum shader_type)
+GLuint NB::Shader::create_shader(const std::string& file_name, const GLenum shader_type)
 {
 	GLuint shader = glCreateShader(shader_type);
 	if (shader == 0)
@@ -61,7 +58,7 @@ GLuint Shader::create_shader(const std::string& file_name, const GLenum shader_t
 
 
 
-void Shader::error_check(GLuint get_checked, GLuint flag, bool is_program, const std::string& error_message, const std::string& file_name)
+void NB::Shader::error_check(GLuint get_checked, GLuint flag, bool is_program, const std::string& error_message, const std::string& file_name)
 {
 	GLint success = 0;
 	if (is_program)
@@ -77,7 +74,6 @@ void Shader::error_check(GLuint get_checked, GLuint flag, bool is_program, const
 		else
 			glGetShaderInfoLog(get_checked, sizeof(error), NULL, error);
 
-		std::string send_error = "Error in " + file_name + "\n" + error_message;
-		error_log(__func__, send_error + error);
+		error_log(__func__, "Error in " + file_name + "\n" + error_message + error);
 	}
 }

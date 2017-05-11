@@ -12,15 +12,16 @@ int main()
 {
 	NB::Display display(800, 600, "Window");
 
-	Shader shader("./res/shader/basic_shader");
+	NB::Shader shader("./res/shader/basic_shader");
+
 
 	while (!glfwWindowShouldClose(&display))
 	{
 		glfwPollEvents();
-
 		display.clear();
 
-		glfwSwapBuffers(&display);
+
+		display.update();
 	}
 	glfwTerminate();
 	exit(EXIT_SUCCESS);

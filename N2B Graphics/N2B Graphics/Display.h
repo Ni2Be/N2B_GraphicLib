@@ -18,6 +18,7 @@ namespace NB
 		~Display();
 
 		void clear();
+		void update();
 
 		GLFWwindow* operator&() const;
 	private:
@@ -26,4 +27,6 @@ namespace NB
 
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 	static void error_callback(int error, const char* description);
+	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+	static void window_size_callback(GLFWwindow* window, int width, int height);
 }

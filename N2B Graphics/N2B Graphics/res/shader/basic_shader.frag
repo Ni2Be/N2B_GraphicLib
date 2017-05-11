@@ -1,10 +1,8 @@
-#version 400
+#version 330 core
 
-uniform sampler2D diffuse;
-
-varying vec2 texture_coordinate0;
+out vec4 color;
 
 void main()
 {
-	gl_FragColor = texture2D(diffuse, texture_coordinate0);
+	color = vec4(1.0f, 0.5f, 0.2f, 1.0f);
 }

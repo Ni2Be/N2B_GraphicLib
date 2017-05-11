@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "../N2B_Error_Log/NB_Error_Log.h"
+#include "../N2B_Error_Log/NB_Error_Log.hpp"
 
 void error_log(const std::string location, const std::string error);
 

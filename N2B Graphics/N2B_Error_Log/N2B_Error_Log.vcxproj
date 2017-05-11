@@ -38,13 +38,13 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -131,11 +131,9 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NB_Error_Log.cpp" />
-    <ClCompile Include="NB_Test_Error_Log.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NB_Error_Log.h" />
-    <ClInclude Include="NB_Test_Error_Log.h" />
+    <ClInclude Include="NB_Error_Log.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Error_Log_Tests.txt" />

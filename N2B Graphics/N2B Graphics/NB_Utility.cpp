@@ -3,10 +3,10 @@
 #include <iostream>
 #include <fstream>
 
-NB::NB_Error_Log NB_Err;
+NB::NB_Error_Log<> NB_Err;
 void error_log(const std::string location, const std::string error)
 {
-	NB_Err.log(NB::NB_ERROR, location, error);
+	NB_Err.log(new NB::Error(NB::NB_ERROR, location, error));
 	std::cerr << std::endl << "In " << location << std::endl << error << std::endl;
 }
 

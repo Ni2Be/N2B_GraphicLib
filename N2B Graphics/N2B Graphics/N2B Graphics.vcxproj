@@ -155,12 +155,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Display.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="NB_Utility.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="NB_Utility.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
@@ -171,7 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\basic_shader.frag" />
-    <None Include="res\shader\basic_shfdgader.vert" />
+    <None Include="res\shader\basic_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
