@@ -1,0 +1,113 @@
+Error Nr. 0
+At: 2017-05-13 12:17:38
+in: NB::load_file_to_string
+Unable to load File: ./res/shader/basic_shader.vert
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 1
+At: 2017-05-13 12:17:38
+in: NB::load_file_to_string
+Unable to load File: ./res/shader/basic_shader.frag
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 2
+At: 2017-05-13 12:17:38
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Shader linking fail: Vertex info
+-----------
+(0) : error C5145: must write to gl_Position
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 3
+At: 2017-05-13 12:17:38
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Program is invalid: 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 0
+At: 2017-05-13 12:25:45
+in: NB::load_file_to_string
+Unable to load File: ./res/shader/basic_shader.frag
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 0
+At: 2017-05-13 14:11:30
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader.frag
+Shader compilation fail: 0(11) : error C1008: undefined variable "vertexColor"
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 1
+At: 2017-05-13 14:11:30
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Shader linking fail: Fragment info
+-------------
+0(11) : error C1008: undefined variable "vertexColor"
+(0) : error C2003: incompatible options for link
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 2
+At: 2017-05-13 14:11:30
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Program is invalid: 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 0
+At: 2017-05-13 14:11:55
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader.frag
+Shader compilation fail: 0(11) : error C1008: undefined variable "vertexColor"
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 1
+At: 2017-05-13 14:11:55
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Shader linking fail: Fragment info
+-------------
+0(11) : error C1008: undefined variable "vertexColor"
+(0) : error C2003: incompatible options for link
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 2
+At: 2017-05-13 14:11:55
+in: NB::NB_Shader::error_check
+
+Error in ./res/shader/basic_shader
+Program is invalid: 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Error Nr. 0
+At: 2017-05-13 15:48:35
+in: NB::NB_Texture::NB_Texture
+Texture loading fail: ./res/textures/example.jpg
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+

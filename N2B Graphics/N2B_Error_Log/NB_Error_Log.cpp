@@ -5,9 +5,9 @@
 
 //CLASS ERROR
 /*
-Simple example error constructor that sets a time stamp
+Simple defaul error constructor that sets a time stamp
 */
-NB::Error::Error(NB_Error signature, const std::string location, const std::string error)
+NB::NB_Error::NB_Error(NB_Error_Flag signature, const std::string location, const std::string error)
 	:signature(signature), location(location), error_name(error)
 {
 	//set time
@@ -18,7 +18,7 @@ NB::Error::Error(NB_Error signature, const std::string location, const std::stri
 /*
 The output operator will print the log with seperation lines on it's bottom
 */
-std::ostream& NB::operator<<(std::ostream& os, const Error& err)
+std::ostream& NB::operator<<(std::ostream& os, const NB_Error& err)
 {
 	std::tm error_time;
 	localtime_s(&error_time, &err.time_stamp);

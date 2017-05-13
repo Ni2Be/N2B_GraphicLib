@@ -1,12 +1,32 @@
-#include "Display.h"
+#include "NB_Display.h"
 #include "NB_Utility.h"
 
 
-NB::Display::Display(int width, int height, const std::string title = "window 1")
+NB::NB_Display::NB_Display(int width, int height, const std::string title = "window 1")
+{
+	//set the window properties
+	set_up_glfw(width, height, title);
+
+	//set the openGL settings (openGL version is set in set_up_glfw())
+	set_up_glew();
+
+	//set up callbacks
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetWindowSizeCallback(window, window_size_callback);
+	glfwSetKeyCallback(this->window, key_callback);
+	glfwSetErrorCallback(error_callback);
+}
+
+NB::NB_Display::~NB_Display()
+{
+	glfwTerminate();
+}
+
+void NB::NB_Display::set_up_glfw(int width, int height, const std::string title)
 {
 	if (!glfwInit())
 	{
-		error_log(__func__, "Failed to initiate GLFW");
+		error_log("NB::NB_Display::NB_Display", "Failed to initiate GLFW");
 		exit(EXIT_FAILURE);
 	}
 
@@ -18,18 +38,20 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 	this->window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 	if (this->window == nullptr)
 	{
-		error_log(__func__, "Failed to create GLFW window");
+		error_log("NB::NB_Display::NB_Display", "Failed to create GLFW window");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(this->window);
 	glfwSwapInterval(1);
+}
 
-	//GLEW
+void NB::NB_Display::set_up_glew()
+{
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		error_log(__func__, "Failed to initialize GLFW");
+		error_log("NB::NB_Display::NB_Display", "Failed to initialize GLFW");
 		exit(EXIT_FAILURE);
 	}
 
@@ -38,32 +60,11 @@ NB::Display::Display(int width, int height, const std::string title = "window 1"
 	glfwGetFramebufferSize(window, &w, &h);
 	glViewport(0, 0, w, h);
 
-	//set up callback
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetWindowSizeCallback(window, window_size_callback);
-	glfwSetKeyCallback(this->window, key_callback);
-	glfwSetErrorCallback(error_callback);
 }
 
-
-NB::Display::~Display()
-{
-}
-
-GLFWwindow* NB::Display::operator&() const
+GLFWwindow* NB::NB_Display::operator&() const
 {
 	return this->window;
-}
-
-void NB::Display::clear()
-{
-	glClearColor(0.41f, 1.0f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
-
-void NB::Display::update()
-{
-	glfwSwapBuffers(this->window);
 }
 
 void NB::framebuffer_size_callback(GLFWwindow* window, int width, int height)

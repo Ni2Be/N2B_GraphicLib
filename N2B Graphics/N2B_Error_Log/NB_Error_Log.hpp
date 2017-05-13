@@ -1,4 +1,28 @@
+/*
+NB_Error_Log:
+Attention:
+	!Never use this Error_Log in an Application that must
+	run a long time without disabling the log vector!
+	It will be proved if the filenames of the logs are correct
+	but not if the files are openable.
+Purpose:
+	The NB_Error_Log should take less performance but give
+	Real-time feedback.
+	To achieve this, all errors that are send to the error log
+	are pushed into a queue. A thread is started in the constructor
+	that takes by default one error per second out of this queue
+	and pushes it into a log file.
+	It will also save all errors into a vector, this could be a
+	memory problem if too many errors occur.
+Usage:
+	The Error_Log can be initialized with an Error class, or by default
+	with the NB_Error.
+*/
+
+#define NB_PRAGMA_ONCE_SUPPORT
+#ifdef NB_PRAGMA_ONCE_SUPPORT
 #pragma once
+#endif
 #ifndef NB_ERROR_LOG_HPP_INCLUDED
 #define NB_ERROR_LOG_HPP_INCLUDED
 #include <vector>
@@ -13,28 +37,29 @@ namespace NB
 {
 	//CLASS NB_Error	
 	/*
-	Example Error class that defines the needed outstream operator and the needed int id
+	Default Error class that defines the needed outstream operator and the needed int id.
+	It sets a time stamp in the constructor, but is very simple.
 	*/
-	enum NB_Error
+	enum NB_Error_Flag
 	{
 		NB_FATAL_ERROR = 1,
 		NB_WARNING = 1 << 1,
 		NB_ERROR = 1 << 2
 	};
 
-	class Error
+	class NB_Error
 	{
 	public:
-		Error(NB_Error signature, const std::string location, const std::string error);
-		NB_Error signature;
+		NB_Error(NB_Error_Flag signature, const std::string location, const std::string error);
+		NB_Error_Flag signature;
 		std::string location;
 		std::string error_name;
 		std::time_t time_stamp;
 		int id;
 
-		friend std::ostream& operator<<(std::ostream& os, const Error& err);
+		friend std::ostream& operator<<(std::ostream& os, const NB_Error& err);
 	};
-	std::ostream& operator<<(std::ostream& os, const Error& err);
+	std::ostream& operator<<(std::ostream& os, const NB_Error& err);
 
 
 	//CLASS ERROR_LOG
@@ -42,9 +67,9 @@ namespace NB
 	class NB_Error_Log;
 
 	/*
-	The Thread_Queue is very simple at the moment.
-	If you want to implement a virtual table free, lock free version
-	feel free to do so.
+	The Thread_Queue is very simple now.
+	It would be possible to implement a virtual table free, lock free version.
+	But no need at the moment.
 	*/
 	template <class Error_T>
 	class Thread_Queue : private std::queue<Error_T*>
@@ -55,58 +80,88 @@ namespace NB
 	};
 
 
-	/*
-	The class NB_Error_Log needs to be initialized with an Error class
-	The class Error must implement an:
-	int id 
-	and the ostream operator:
-	ostream& operator<<(ostream&, const Error&)
+	/**NB_Error_Log
+	Attention:
+		Never use this Error_Log in an Application that has to
+		run a long time without disabling the log vector!
+	Purpose:
+		The NB_Error_Log should take less performance but give
+		Real-time feedback.
+		To achieve this, all errors that are send to the error log
+		are pushed into a queue. A thread is started in the constructor
+		that takes by default one error per second out of this queue
+		and pushes it into a log file.
+		It will also save all errors into a vector, this could be a
+		memory problem if too many errors occur.
+	Usage:
+		The Error_Log can be initialized with an Error class, or by default
+		with the NB_Error.
 
-	After initialization it will append the logged errors to a file
-	error.log (this file will never be deleted)
-	
-	and the final error log of the session to
-	final_error.log (this file will be overwritten every session)
+	Discription:
 
-	this names can be changed by calling
-	void set_log_name(const std::string)
-	and
-	void set_final_log_name(const std::string)
-	but both of this functions throw a 
-	std::runtime_error if the file name is invalid.
+	Initialization:
+		The class NB_Error_Log needs to be initialized with an Error class
+		The class Error must implement an:
+		int id
+		and the ostream operator:
+		ostream& operator<<(ostream&, const Error&)
+		@see NB::NB_Error
 
-	To log an error the error must be created and pass over to
-	the log(Error*) function. NB_Error_Log will now take care of
-	the memory.
+	Log Files:
+		After initialization it will append the logged errors to a file
+		error.log (this file will never be deleted)
 
-	In standard mode one thread will handle the errors that are
-	added to the work queue by calling the function log(Error_T*).
-	It will proove every second if there is something new in the 
-	work queue and push only one of the errors into the log file.
+		and the final error log of the session to
+		final_error.log (this file will be overwritten every session)
 
-	By calling the function set_log_rate(std::chrono::microseconds)
-	the rate can be changed. But it is also possible to print all
-	errors into the file by just calling get_queue_ready().
+		this names can be changed by calling
+		@see NB::NB_Error_Log::set_log_name()
+		and
+		@see NB::NB_Error_Log::set_final_log_name()
+		but both of this functions throw a
+		std::runtime_error if the file name is invalid.
 
-	The function std::stringstream print_errors(bool emty_queue = false) 
-	can be called to get a stringstream of all errors. If there are still
-	errors in the queue it will also print the number of not listet errors.
-	If it is called with the argument true it will first call get_queue_ready()
-	to ensure that there are no more Errors in the work_queue.
+	Log:
+		To log an error the new error must be created and pass over to
+		the err_log(Error*) function. NB_Error_Log will now take care of
+		the memory.
+		Example: my_log.err_log(new My_Error());
+		@see NB::NB_Error_Log::err_log()
+
+	Working method:
+		In standard mode one thread will handle the errors that are
+		added to the work queue by calling the function log(Error_T*).
+		It will prove every second if there is something new in the
+		work queue and push only one of the errors into the log file.
+		@see NB::NB_Error_Log::handle_work()
+
+		By calling the function set_log_rate(std::chrono::microseconds)
+		the rate can be changed. But it is also possible to print all
+		errors into the file by just calling get_queue_ready().
+		@see NB::NB_Error_Log::set_log_rate()
+		@see NB::NB_Error_Log::get_queue_ready()
+
+	Get Errors:
+		The function std::stringstream print_errors(bool emty_queue = false)
+		can be called to get a stringstream of all errors. If there are still
+		errors in the queue it will also print the number of not listed errors.
+		If it is called with the argument true it will first call get_queue_ready()
+		to ensure that there are no more Errors in the work_queue.
+		@see NB::NB_Error_Log::print_errors()
 	*/
-	template <class Error_T = Error>
+	template <class Error_T = NB_Error>
 	class NB_Error_Log
 	{
 	public:
 		NB_Error_Log();
 		~NB_Error_Log();
-		
+
 
 		void set_log_name(const std::string log_file_name);
 		void set_final_log_name(const std::string final_log_file_name);
 		void set_log_rate(const std::chrono::microseconds& rate);
 
-		void log(Error_T* err);
+		void err_log(Error_T&& err);
 
 		std::stringstream print_errors(bool emty_queue = false);
 		void get_queue_ready();
@@ -115,7 +170,7 @@ namespace NB
 		void save_error(const Error_T& err, std::ofstream& file);
 		void open_file_append(const std::string& file_name, std::ofstream& file);
 
-		bool is_name_valid (const std::string file_name);
+		bool is_name_valid(const std::string file_name);
 
 		std::string log_file_name;
 		std::string final_log_file_name;
@@ -161,12 +216,14 @@ void NB::NB_Error_Log<Error_T>::set_final_log_name(const std::string final_log_f
 		this->final_log_file_name = final_log_file_name;
 }
 
+
+/*
+if the given name is not valid there is no possible comeback without the risk
+of overwriting important data so, the throw is considered the best alternative
+*/
 template <class Error_T>
 bool NB::NB_Error_Log<Error_T>::is_name_valid(const std::string file_name)
 {
-	//if the given name is not valid there is no possible comeback without the risk
-	//of overwriting important data
-	//so the throw is considered the best alternative
 	std::regex invalid_chars("[\\/:*?\"<>|]");
 	if (std::regex_search(file_name, invalid_chars)
 		|| file_name.length() == 0)
@@ -175,7 +232,7 @@ bool NB::NB_Error_Log<Error_T>::is_name_valid(const std::string file_name)
 	return true;
 }
 
-//sets the rate with wich the work_queue will be emptied
+//sets the rate with which the work_queue will be emptied
 template <class Error_T>
 void NB::NB_Error_Log<Error_T>::set_log_rate(const std::chrono::microseconds& rate)
 {
@@ -183,7 +240,7 @@ void NB::NB_Error_Log<Error_T>::set_log_rate(const std::chrono::microseconds& ra
 }
 
 /*
-When the log is destroied it will ensure that the thread work_handler
+When the log is destroyed, it will ensure that the thread work_handler
 has consumed all waiting errors of the work_q.
 After that it will try to save a final version of the error log. If it
 fails it will put the information to the cerr console
@@ -228,7 +285,7 @@ NB::NB_Error_Log<Error_T>::~NB_Error_Log()
 }
 
 /*
-Prints all handeles errors to console
+Prints all handles errors to console
 */
 template <class Error_T>
 std::stringstream NB::NB_Error_Log<Error_T>::print_errors(bool emty_queue)
@@ -257,7 +314,7 @@ std::stringstream NB::NB_Error_Log<Error_T>::print_errors(bool emty_queue)
 /*
 Saves an error to a given file.
 Just a function to make it easier to add additional
-Infromation to the saved Error if nessecary
+Information to the saved Error if necessary
 */
 template <class Error_T>
 void NB::NB_Error_Log<Error_T>::save_error(const Error_T& err, std::ofstream& file)
@@ -266,7 +323,7 @@ void NB::NB_Error_Log<Error_T>::save_error(const Error_T& err, std::ofstream& fi
 }
 
 /*
-Opens an file in append mode, prints error to console if failed
+Opens a file in append mode, prints error to console if failed
 */
 template <class Error_T>
 void NB::NB_Error_Log<Error_T>::open_file_append(const std::string& file_name, std::ofstream& file)
@@ -280,22 +337,20 @@ void NB::NB_Error_Log<Error_T>::open_file_append(const std::string& file_name, s
 Will push an error to the work_queue as fast as possible (+ 1 virtual function table lookup)
 */
 template <class Error_T>
-void NB::NB_Error_Log<Error_T>::log(Error_T* err)
+void NB::NB_Error_Log<Error_T>::err_log(Error_T&& err)
 {
-	std::unique_lock<std::mutex> guard(work_q.mutex, std::defer_lock);
-	guard.lock();
-	work_q.push(err);
-	guard.unlock();
+	std::lock_guard<std::mutex> guard(work_q.mutex);
+	work_q.push(new Error_T(err));
 }
 
 /*
 Is only used by the thread work_handler.
 handel means it pushes the Errors into a vector and appends it to a file.
 
-Will emty the work_queue with as less as possible time owning it.
-To do so it handles only one Error per second.
+Will empty the work_queue with as less as possible time owning it.
+To reduce the owning time further it handles only one Error per second.
 
-If the programm terminates it will handle the remaining
+If the program terminates it will handle the remaining
 Errors as fast as possible.
 */
 template <class Error_T>
@@ -341,7 +396,7 @@ template <class Error_T>
 			guard.unlock();
 		}
 
-		//if the Desructor was called clean up the queue
+		//if the Destructor was called clean up the queue
 		if (!is_running)
 		{
 			get_queue_ready();
@@ -382,3 +437,4 @@ void NB::NB_Error_Log<Error_T>::get_queue_ready()
 }
 
 #endif // !NB_ERROR_LOG_HPP_INCLUDED
+

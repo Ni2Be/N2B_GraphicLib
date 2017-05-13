@@ -1,4 +1,16 @@
+/*
+NB_Shader:
+	Attention:
+	Purpose:
+	Usage:
+*/
+
+#ifdef NB_PRAGMA_ONCE_SUPPORT
 #pragma once
+#endif
+#ifndef NB_SHADER_H_INCLUDED
+#define NB_SHADER_H_INCLUDED
+
 #include <string>
 #include <GL/glew.h>
 #include <fstream>
@@ -7,17 +19,19 @@
 
 namespace NB
 {
-	class Shader
+	class NB_Shader
 	{
 	public:
-		Shader(const std::string& fileName);
-		~Shader();
+		NB_Shader(const std::string& fileName);
+		~NB_Shader();
 
 		void use();
+		GLuint uni_horizontal_offset;
+		GLuint program;
 	private:
 		//no copy
-		Shader(const Shader&) {}
-		Shader& operator=(const Shader&) {}
+		NB_Shader(const NB_Shader&) {}
+		NB_Shader& operator=(const NB_Shader&) {}
 		//
 
 		GLuint create_shader(const std::string& text, const GLenum sader_type);
@@ -25,14 +39,7 @@ namespace NB
 		void error_check(GLuint shader, GLuint flag, bool isProgram,
 			const std::string& errorMessage, const std::string& file_name);
 
-		enum
-		{
-			TRANSFORM_U,
-			NUM_UNIFORMS,
-			NUM_SHADERS = 2
-		};
-
-		GLuint program;
-		GLuint m_uniforms[NUM_UNIFORMS];
 	};
 }
+
+#endif //NB_SHADER_H_INCLUDED
