@@ -1,6 +1,9 @@
 //#include "NB_Error_Log.hpp"
 //#include <iostream>
+//#include <gtest/gtest.h>
+//
 //void test_err();
+//
 //
 //class My_Error
 //{
@@ -21,7 +24,7 @@
 //
 //
 //NB::NB_Error_Log<> err_Log;
-//int main()
+//int main(int argc, char* argv[])
 //{
 //	std::thread th1(test_err);
 //	std::thread th2(test_err);

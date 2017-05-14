@@ -60,6 +60,13 @@ void NB::NB_Display::set_up_glew()
 	glfwGetFramebufferSize(window, &w, &h);
 	glViewport(0, 0, w, h);
 
+	//z buffer
+	glEnable(GL_DEPTH_TEST);
+
+	//Enable alpha blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 }
 
 GLFWwindow* NB::NB_Display::operator&() const

@@ -1,6 +1,8 @@
 #include "NB_Shader.h"
 #include "NB_Utility.h"
 
+#include <gtc/type_ptr.hpp>
+
 NB::NB_Shader::NB_Shader(const std::string& fileName)
 {
 	//compile shaders
@@ -22,9 +24,6 @@ NB::NB_Shader::NB_Shader(const std::string& fileName)
 
 	glDeleteShader(vetex_shader);
 	glDeleteShader(fragment_shader);
-
-
-	uni_horizontal_offset = glGetUniformLocation(program, "horizontal_offset");
 }
 
 NB::NB_Shader::~NB_Shader()
@@ -35,6 +34,12 @@ NB::NB_Shader::~NB_Shader()
 void NB::NB_Shader::use()
 {
 	glUseProgram(program);
+}
+
+void NB::NB_Shader::update(const NB_Transformer& trans)
+{
+	GLuint transform = glGetUniformLocation(program, "transform");
+	glUniformMatrix4fv(transform, 1, GL_FALSE, glm::value_ptr(trans.get_model()));
 }
 
 GLuint NB::NB_Shader::create_shader(const std::string& file_name, const GLenum shader_type)

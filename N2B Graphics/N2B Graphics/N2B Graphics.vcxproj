@@ -163,6 +163,7 @@
     <ClInclude Include="NB_Utility.h" />
     <ClInclude Include="NB_Shader.h" />
     <ClInclude Include="NB_Texture.h" />
+    <ClInclude Include="NB_Transformer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NB_Display.cpp" />

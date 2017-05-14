@@ -17,6 +17,8 @@ NB_Shader:
 #include <iostream>
 #include <glm.hpp>
 
+#include "NB_Transformer.h"
+
 namespace NB
 {
 	class NB_Shader
@@ -26,7 +28,8 @@ namespace NB
 		~NB_Shader();
 
 		void use();
-		GLuint uni_horizontal_offset;
+		void update(const NB_Transformer& trans);
+
 		GLuint program;
 	private:
 		//no copy

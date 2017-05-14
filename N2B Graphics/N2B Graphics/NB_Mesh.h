@@ -27,8 +27,16 @@ namespace NB
 		friend class NB_Mesh;
 		friend class NB_EMesh;
 	public:
-		NB_Vertex(const glm::vec3& pos, const glm::vec4& color, const glm::vec2& texture = glm::vec2{ 1.0f, 1.0f })
+		NB_Vertex(
+			const glm::vec3& pos,
+			const glm::vec4& color = glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f },
+			const glm::vec2& texture = glm::vec2{ -1.0f, -1.0f })
 			:pos(pos), color(color), texture(texture) {}
+		NB_Vertex(
+			const glm::vec3& pos, 
+			GLfloat alpha = 1.0f, 
+			const glm::vec2& texture = glm::vec2{ 1.0f, 1.0f })
+			:pos(pos), color(glm::vec4{ 1.0f, 1.0f, 1.0f, alpha }), texture(texture) {}
 	private:
 		glm::vec3 pos;
 		glm::vec4 color;
