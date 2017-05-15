@@ -8,15 +8,18 @@
 
 //STL
 #include <vector>
-
+#include <random>
 //Project
 #define NB_PRAGMA_ONCE_SUPPORT
+
+
 #include "NB_Display.h"
 #include "NB_Utility.h"
 #include "NB_Shader.h"
 #include "NB_Mesh.h"
 #include "NB_Texture.h"
 #include "NB_Transformer.h"
+#include "NB_Camera.h"
 
 int main()
 {
@@ -29,6 +32,7 @@ int main()
 
 	NB::NB_Transformer trans1, trans2;
 
+	
 	//TEST
 	std::vector<NB::NB_Vertex> tri_vertices
 	{
@@ -113,7 +117,9 @@ int main()
 	};
 	NB::NB_Mesh cube(cube_vertices);
 
-	std::vector<glm::vec3> cubePositions = 
+
+
+	std::vector<glm::vec3> cubePositions =
 	{
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
@@ -130,24 +136,23 @@ int main()
 	{
 		return lhs.z < rhs.z;
 	});
+
+
+	display.cam1.look_at(
+		glm::vec3(0.0f, 0.0f, 3.0f),
+		glm::vec3(0.0f, 0.0f, -1.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f));
 	//END TEST
-
-
-
-	glm::mat4 projection;
-
-	projection = glm::perspective(45.0f, (GLfloat)800 / (GLfloat)600, 0.1f, 100.0f);
-	GLint projLoc = glGetUniformLocation(shader.program, "projection");
 
 	while (!glfwWindowShouldClose(&display))
 	{
 		glfwPollEvents();
 		display.clear();
+		display.camera_movement();
 
 		//Cool stuff
 		shader.use();
-		shader.update(trans1);
-
+		
 		texture1.bind(0);
 		glUniform1i(glGetUniformLocation(shader.program, "texture1"), 0);
 		texture2.bind(1);
@@ -156,26 +161,13 @@ int main()
 
 
 		float time = static_cast<float>(glfwGetTime());
-
-		//TEST
-		// Create transformations
-		glm::mat4 view;
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		// Get their uniform location
-		GLint viewLoc = glGetUniformLocation(shader.program, "view");
-		// Pass the matrices to the shader
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-		//ENDTEST
-
-
 		for (auto& i : cubePositions)
 		{
 			trans1.pos = i;
 			trans1.rot.y = (sin(time));
 			trans1.rot.x = (sin(time));
 
-			shader.update(trans1);
+			shader.update(trans1, display.cam1);
 			cube.draw();
 		}
 

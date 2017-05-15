@@ -18,6 +18,7 @@ NB_Shader:
 #include <glm.hpp>
 
 #include "NB_Transformer.h"
+#include "NB_Camera.h"
 
 namespace NB
 {
@@ -28,7 +29,7 @@ namespace NB
 		~NB_Shader();
 
 		void use();
-		void update(const NB_Transformer& trans);
+		void update(const NB_Transformer& trans, const NB::NB_Camera cam);
 
 		GLuint program;
 	private:
@@ -36,6 +37,13 @@ namespace NB
 		NB_Shader(const NB_Shader&) {}
 		NB_Shader& operator=(const NB_Shader&) {}
 		//
+
+
+		//uniforms
+		GLint uni_projection;
+		GLint uni_view;
+		GLint uni_transform;
+		void bind_uniforms();
 
 		GLuint create_shader(const std::string& text, const GLenum sader_type);
 

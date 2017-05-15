@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="NB_Camera.h" />
     <ClInclude Include="NB_Display.h" />
     <ClInclude Include="NB_Mesh.h" />
     <ClInclude Include="NB_Utility.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="NB_Transformer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="NB_Display.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NB_Mesh.cpp" />
