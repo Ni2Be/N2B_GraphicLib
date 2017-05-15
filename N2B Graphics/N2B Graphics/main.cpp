@@ -9,10 +9,14 @@
 //STL
 #include <vector>
 #include <random>
+#include <algorithm>
+#include <thread>
+
 //Project
 #define NB_PRAGMA_ONCE_SUPPORT
+//#define NB_DEBUG
 
-
+#include "NB_Utility.h"
 #include "NB_Display.h"
 #include "NB_Utility.h"
 #include "NB_Shader.h"
@@ -118,7 +122,19 @@ int main()
 	NB::NB_Mesh cube(cube_vertices);
 
 
+	std::random_device dev;
+	std::mt19937 gen(dev());
+	std::uniform_real_distribution<> z_dis(-200, 100);
+	std::uniform_real_distribution<> xy_dis(-100, 100);
 
+	std::vector<glm::vec3> cubePositions;
+	int cubes = 90000;
+	for (int i = 0; i < cubes; i++)
+	{
+		cubePositions.push_back(glm::vec3(xy_dis(gen), xy_dis(gen), z_dis(gen)));
+	}
+
+	/*
 	std::vector<glm::vec3> cubePositions =
 	{
 		glm::vec3(0.0f,  0.0f,  0.0f),
@@ -131,7 +147,7 @@ int main()
 		glm::vec3(1.5f,  2.0f, -2.5f),
 		glm::vec3(1.5f,  0.2f, -1.5f),
 		glm::vec3(-1.3f,  1.0f, -1.5f)
-	};
+	};*/
 	std::sort(std::begin(cubePositions), std::end(cubePositions), [](glm::vec3& lhs, glm::vec3& rhs) 
 	{
 		return lhs.z < rhs.z;
@@ -161,18 +177,17 @@ int main()
 
 
 		float time = static_cast<float>(glfwGetTime());
+		float sin_time = sin(time);
+
 		for (auto& i : cubePositions)
 		{
 			trans1.pos = i;
-			trans1.rot.y = (sin(time));
-			trans1.rot.x = (sin(time));
+			trans1.rot.y = sin_time;
+			trans1.rot.x = sin_time;
 
 			shader.update(trans1, display.cam1);
 			cube.draw();
 		}
-
-
-
 		//shader.update(trans2);
 		//triangle.draw();
 

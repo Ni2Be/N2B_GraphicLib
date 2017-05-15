@@ -12,7 +12,6 @@ Usage:
 #define NB_UTILITY_H_INCLUDED
 #include <string>
 
-#include "../N2B_Error_Log/NB_Error_Log.hpp"
 
 namespace NB
 {

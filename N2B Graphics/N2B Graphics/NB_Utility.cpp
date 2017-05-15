@@ -3,12 +3,18 @@
 #include <iostream>
 #include <fstream>
 
+#ifdef NB_DEBUG
+#include "../N2B_Error_Log/NB_Error_Log.hpp"
+
 
 //Set up the Error Log:
 NB::NB_Error_Log<> NB_Err;
+#endif
 void NB::error_log(const std::string location, const std::string error)
 {
+#ifdef NB_DEBUG
 	NB_Err.err_log(NB::NB_Error(NB::NB_ERROR, location, error));
+#endif
 	std::cerr << std::endl << "In " << location << std::endl << error << std::endl;
 }
 
