@@ -1,2 +1,5 @@
-﻿  N2B_Error_Log.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B_Error_Log.exe
-  N2B_Error_Log.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B_Error_Log.pdb (Partial PDB)
+﻿  NB_Error_Log.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b_error_log\nb_error_log.cpp(117): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  main.cpp
+  Code wird generiert...
+  N2B_Error_Log.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B_Error_Log.lib
