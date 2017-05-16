@@ -161,18 +161,22 @@
     <ClInclude Include="NB_Camera.h" />
     <ClInclude Include="NB_Display.h" />
     <ClInclude Include="NB_Mesh.h" />
+    <ClInclude Include="NB_Test_Shader.h" />
     <ClInclude Include="NB_Utility.h" />
     <ClInclude Include="NB_Shader.h" />
     <ClInclude Include="NB_Texture.h" />
     <ClInclude Include="NB_Transformer.h" />
+    <ClInclude Include="NB_Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="NB_Display.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NB_Mesh.cpp" />
+    <ClCompile Include="NB_Test_Shader.cpp" />
     <ClCompile Include="NB_Utility.cpp" />
     <ClCompile Include="NB_Shader.cpp" />
+    <ClCompile Include="NB_Object.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,8 +187,12 @@
     <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shader\basic_shader.frag" />
-    <None Include="res\shader\basic_shader.vert" />
+    <None Include="res\shader\light_shader.frag" />
+    <None Include="res\shader\light_shader.vert" />
+    <None Include="res\shader\texture_shader.frag" />
+    <None Include="res\shader\texture_shader.vert" />
+    <None Include="res\shader\color_shader.frag" />
+    <None Include="res\shader\color_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

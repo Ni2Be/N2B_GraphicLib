@@ -22,17 +22,8 @@ NB::NB_Shader::NB_Shader(const std::string& fileName)
 	glValidateProgram(program);
 	error_check(program, GL_VALIDATE_STATUS, true, "Program is invalid: ", fileName);
 
-	bind_uniforms();
-
 	glDeleteShader(vetex_shader);
 	glDeleteShader(fragment_shader);
-}
-
-void NB::NB_Shader::bind_uniforms()
-{
-	uni_transform = glGetUniformLocation(program, "transform");
-	uni_view = glGetUniformLocation(program, "view");
-	uni_projection = glGetUniformLocation(program, "projection");
 }
 
 NB::NB_Shader::~NB_Shader()
@@ -43,16 +34,6 @@ NB::NB_Shader::~NB_Shader()
 void NB::NB_Shader::use()
 {
 	glUseProgram(program);
-}
-
-void NB::NB_Shader::update(const NB_Transformer& trans, const NB::NB_Camera cam)
-{
-	//Transformer
-	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(trans.get_model()));
-
-	//Camera
-	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
-	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
 }
 
 GLuint NB::NB_Shader::create_shader(const std::string& file_name, const GLenum shader_type)

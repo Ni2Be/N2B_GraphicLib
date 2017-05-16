@@ -42,6 +42,12 @@
     <ClInclude Include="NB_Camera.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="NB_Object.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Test_Shader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +71,12 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="NB_Object.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NB_Test_Shader.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\example.png">
@@ -84,10 +96,22 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shader\basic_shader.vert">
+    <None Include="res\shader\texture_shader.frag">
       <Filter>Ressourcendateien\shader</Filter>
     </None>
-    <None Include="res\shader\basic_shader.frag">
+    <None Include="res\shader\texture_shader.vert">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\color_shader.frag">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\color_shader.vert">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\light_shader.frag">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\light_shader.vert">
       <Filter>Ressourcendateien\shader</Filter>
     </None>
   </ItemGroup>
