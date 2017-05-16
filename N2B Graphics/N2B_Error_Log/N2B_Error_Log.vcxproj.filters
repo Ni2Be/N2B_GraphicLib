@@ -23,13 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NB_Error_Log.h">
+    <Text Include="Error_Log_Tests.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NB_Error_Log.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Error_Log_Tests.txt">
-      <Filter>Ressourcendateien</Filter>
-    </Text>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

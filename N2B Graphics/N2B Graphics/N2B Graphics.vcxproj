@@ -74,18 +74,20 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glm\glm;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\include;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\stb-master;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glm\glm;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\include;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\include;$(IncludePath)</IncludePath>
     <ReferencePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(ReferencePath)</ReferencePath>
     <LibraryPath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glm\glm;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\include;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\include;$(IncludePath)</IncludePath>
-    <ReferencePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(ReferencePath)</ReferencePath>
-    <LibraryPath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\stb-master;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glm\glm;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\include;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\include;$(IncludePath)</IncludePath>
+    <ReferencePath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Release;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(ReferencePath)</ReferencePath>
+    <LibraryPath>D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Release;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glfw\lib-vc2015;D:\Programmieren\Graphic_lib\N2B_GraphicLib\Project\OGL\glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,6 +116,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;glew32.lib;glew32s.lib;openGL32.lib;N2B_Error_Log.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,28 +153,38 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;glew32.lib;glew32s.lib;openGL32.lib;N2B_Error_Log.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;glew32.lib;glew32s.lib;openGL32.lib;N2B_Error_Log.lib;user32.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Display.h" />
+    <ClInclude Include="NB_Camera.h" />
+    <ClInclude Include="NB_Display.h" />
+    <ClInclude Include="NB_Mesh.h" />
     <ClInclude Include="NB_Utility.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="NB_Shader.h" />
+    <ClInclude Include="NB_Texture.h" />
+    <ClInclude Include="NB_Transformer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="NB_Display.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NB_Mesh.cpp" />
     <ClCompile Include="NB_Utility.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="NB_Shader.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\awesomeface.png" />
     <Image Include="res\textures\example.png" />
     <Image Include="res\textures\Holz.jpg" />
     <Image Include="res\textures\Stein.jpg" />
+    <Image Include="res\textures\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\basic_shader.frag" />
-    <None Include="res\shader\basic_shfdgader.vert" />
+    <None Include="res\shader\basic_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

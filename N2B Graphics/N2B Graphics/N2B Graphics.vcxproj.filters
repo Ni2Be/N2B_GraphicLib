@@ -21,27 +21,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Display.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="NB_Utility.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Shader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Display.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Mesh.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Texture.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Transformer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NB_Camera.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Display.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="NB_Utility.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="NB_Utility.cpp">
+    <ClCompile Include="NB_Shader.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NB_Display.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NB_Mesh.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,12 +76,18 @@
     <Image Include="res\textures\Stein.jpg">
       <Filter>Ressourcendateien\Textures</Filter>
     </Image>
+    <Image Include="res\textures\awesomeface.png">
+      <Filter>Ressourcendateien\Textures</Filter>
+    </Image>
+    <Image Include="res\textures\wall.jpg">
+      <Filter>Ressourcendateien\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shader\basic_shader.frag">
+    <None Include="res\shader\basic_shader.vert">
       <Filter>Ressourcendateien\shader</Filter>
     </None>
-    <None Include="res\shader\basic_shfdgader.vert">
+    <None Include="res\shader\basic_shader.frag">
       <Filter>Ressourcendateien\shader</Filter>
     </None>
   </ItemGroup>

@@ -1,45 +1,52 @@
-#include "NB_Error_Log.h"
-#include <iostream>
-#include <string>
-#include <thread>
-#include <chrono>
-#include <sstream>
-void error_test();
-
-
-NB::NB_Error_Log NB_Err;
-int main()
-{
-	try
-	{
-		std::thread t1(error_test);
-		std::thread t2(error_test);
-		std::thread t3(error_test);
-		std::thread t4(error_test);
-
-		t1.join();
-		t2.join();
-		t3.join();
-		t4.join();
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Error: " << e.what();
-	}
-	std::this_thread::sleep_for(std::chrono::seconds(2));
-	std::cout << "End!" << std::endl;
-
-	char ch;
-	std::cin >> ch;
-}
-
-
-void error_test() 
-{
-	for (int i = 0; i < 10; i++)
-	{
-		std::stringstream info;
-		std::this_thread::get_id()._To_text(info);
-		NB_Err.log(NB::NB_FATAL_ERROR, "error_test " + std::to_string(i), "Test Error! \nThread: " + info.str());
-	}
-}
+//#include "NB_Error_Log.hpp"
+//#include <iostream>
+//#include <gtest/gtest.h>
+//
+//void test_err();
+//
+//
+//class My_Error
+//{
+//public:
+//	My_Error(const std::string location)
+//	:location(location) {}
+//	std::string location;
+//	int id;
+//
+//	friend std::ostream& operator<<(std::ostream& os, const My_Error& err);
+//};
+//std::ostream& operator<<(std::ostream& os, const My_Error& err)
+//{
+//	return os << err.id << " Test" << std::endl << err.location << std::endl;
+//}
+//
+//
+//
+//
+//NB::NB_Error_Log<> err_Log;
+//int main(int argc, char* argv[])
+//{
+//	std::thread th1(test_err);
+//	std::thread th2(test_err);
+//	std::thread th3(test_err);
+//	std::thread th4(test_err);
+//	std::thread th5(test_err);
+//	std::thread th6(test_err);
+//
+//	th1.join();
+//	th2.join();
+//	th3.join();
+//	th4.join();
+//	th5.join();
+//	th6.join();
+//
+//	char ch;
+//	std::cin >> ch;
+//}
+//
+//
+//void test_err()
+//{
+//	for (int i = 0; i < 1; i++)
+//		err_Log.err_log(NB::NB_Error(NB::NB_ERROR, "main()", "Test_Error"));
+//}
