@@ -25,6 +25,7 @@
 #include "NB_Transformer.h"
 #include "NB_Camera.h"
 #include "NB_Object.h"
+#include "NB_Light.h"
 
 //
 #include "NB_Test_Shader.h"
@@ -34,6 +35,7 @@ int main()
 	NB::NB_Display display{ 800, 600, "Window" };
 
 	NB::Test::Test_Shader_Texture texture_shader{ "./res/shader/texture_shader" };
+	NB::Test::Test_Shader_Color color_shader{ "./res/shader/color_shader" };
 	NB::Test::Test_Shader_Light light_shader{ "./res/shader/light_shader" };
 
 	NB::NB_Texture texture1{ "./res/textures/awesomeface.png" };
@@ -138,11 +140,13 @@ int main()
 		glm::vec3(0.0f, 1.0f, 0.0f));
 	//END TEST
 
-	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f }, 1.0f, 1.0f, 1.0f);
-	NB::NB_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f);
+	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.5f, 0.31f, 1.0f }, 1.0f, 1.0f, 1.0f);
+	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f);
 
 
-	glm::vec4 light = { 1.0f, 1.0f, 1.0f, 1.0f };
+	NB::NB_Ambient_light ambient = { glm::vec3{ 1.0f, 1.0f, 1.0f }, 0.1f };
+	display.set_background_color(ambient);
+
 
 	while (!glfwWindowShouldClose(&display))
 	{
@@ -172,14 +176,21 @@ int main()
 
 
 		//other cool stuff
-		//color_shader.use();
-		//color_shader.update(trans2, display.cam1);
+		float time = static_cast<float>(glfwGetTime());
+		light_cube_one.position.pos.x = - cos(time) * 5 + pow(sin(time), 2);
+		light_cube_one.position.pos.y = - cos(time) * 5 + sin(time) * 5;
+		light_cube_one.position.pos.z = - cos(time) * 5 + sin(time) * 5;
+
 		light_shader.use();
-		light_shader.update(cube_one.position, display.cam1, light);
+		light_shader.update(display.cam1, cube_one, ambient, light_cube_one);
 		cube_one.draw();
-		light_shader.update(light_cube_one.position, display.cam1, light);
+
+		color_shader.use();
+		color_shader.update(display.cam1, light_cube_one);
 		light_cube_one.draw();
-		//square.draw();
+
+
+		
 
 		//
 

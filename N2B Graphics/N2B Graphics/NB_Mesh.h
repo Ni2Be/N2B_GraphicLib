@@ -30,17 +30,27 @@ namespace NB
 		NB_Vertex(
 			const glm::vec3& pos,
 			const glm::vec4& color = glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f },
-			const glm::vec2& texture = glm::vec2{ -1.0f, -1.0f })
-			:pos(pos), color(color), texture(texture) {}
+			const glm::vec2& texture = glm::vec2{ -1.0f, -1.0f },
+			const glm::vec3& normal =  glm::vec3{ 0.0f, 0.0f, 0.0f })
+			:pos(pos), 
+			color(color), 
+			texture(texture), 
+			normal(normal) {}
+
 		NB_Vertex(
 			const glm::vec3& pos, 
 			GLfloat alpha = 1.0f, 
-			const glm::vec2& texture = glm::vec2{ 1.0f, 1.0f })
-			:pos(pos), color(glm::vec4{ 1.0f, 1.0f, 1.0f, alpha }), texture(texture) {}
+			const glm::vec2& texture = glm::vec2{ 1.0f, 1.0f },
+			const glm::vec3& normal = glm::vec3{ 0.0f, 0.0f, 0.0f })
+			:pos(pos), 
+			color(glm::vec4{ 1.0f, 1.0f, 1.0f, alpha }), 
+			texture(texture), 
+			normal(normal) {}
 	private:
 		glm::vec3 pos;
 		glm::vec4 color;
 		glm::vec2 texture;
+		glm::vec3 normal;
 	};
 
 	class NB_Mesh

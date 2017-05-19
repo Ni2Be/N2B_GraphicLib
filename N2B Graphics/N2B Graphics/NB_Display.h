@@ -24,6 +24,7 @@ Usage:
 
 //
 #include "NB_Camera.h"
+#include "NB_Light.h"
 
 namespace NB
 {
@@ -35,7 +36,7 @@ namespace NB
 
 		inline void clear()
 		{
-			glClearColor(0.41f, 1.0f, 1.0f, 1.0f);
+			glClearColor(background_color.r, background_color.g, background_color.b, background_color.a);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
@@ -54,7 +55,11 @@ namespace NB
 
 		NB::NB_Camera cam1;
 		void camera_movement();
+		void set_background_color(glm::vec4& color);
+		void set_background_color(NB::NB_Ambient_light& ambient);
 	private:
+		glm::vec4 background_color;
+
 		//no copy
 		NB_Display(const NB_Display&) 
 			:cam1(45.0f, (GLfloat)1 / (GLfloat)1, 0.1f, 1000.0f){}

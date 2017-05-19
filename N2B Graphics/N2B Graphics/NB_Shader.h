@@ -33,13 +33,13 @@ namespace NB
 	public:
 		void use();
 		virtual void update(const NB_Transformer& trans, const NB::NB_Camera cam) {}
+		GLuint program;
 	protected:
 		explicit NB_Shader(const std::string& fileName);
 		~NB_Shader();
 
 
 		virtual void bind_uniforms() {}
-		GLuint program;
 
 
 		GLuint create_shader(const std::string& text, const GLenum sader_type);

@@ -28,20 +28,25 @@ NB::NB_Mesh::NB_Mesh(const std::vector<NB_Vertex>& vertices)
 	//where is the vertex data is located that needs to be send to the shader
 	//index, how many at all, what type are the single values, normalized?, 
 	//how big is one vertex, offset
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture), 
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture), 
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*) sizeof(vertices[0].pos));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture),
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*) (sizeof(vertices[0].pos) + sizeof(vertices[0].color)));
 	glEnableVertexAttribArray(2);
+
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE,
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
+		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture)));
+	glEnableVertexAttribArray(3);
 
 	//unbinde
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -95,19 +100,24 @@ NB::NB_EMesh::NB_EMesh(const std::vector<NB_Vertex>& vertices, const std::vector
 	//index, how many at all, what type are the single values, normalized?, 
 	//how big is one vertex, offset
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture),
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture),
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*) sizeof(vertices[0].pos));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture),
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
 		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color)));
 	glEnableVertexAttribArray(2);
+
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE,
+		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
+		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture)));
+	glEnableVertexAttribArray(3);
 
 	//unbinde
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
