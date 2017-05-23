@@ -25,6 +25,8 @@ void NB::Test::Test_Shader_Color::bind_uniforms()
 	uni_transform = glGetUniformLocation(program, "transform");
 	uni_view = glGetUniformLocation(program, "view");
 	uni_projection = glGetUniformLocation(program, "projection");
+
+	uni_light_color = glGetUniformLocation(program, "light_color");
 }
 
 void  NB::Test::Test_Shader_Color::update(const NB::NB_Camera cam, NB::NB_Object& object)
@@ -35,6 +37,9 @@ void  NB::Test::Test_Shader_Color::update(const NB::NB_Camera cam, NB::NB_Object
 	//Camera
 	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
 	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
+
+	//
+	glUniform3f(uni_light_color, object.color.r, object.color.g, object.color.b);
 }
 //
 

@@ -143,7 +143,7 @@ int main()
 	NB::NB_Material sunlight{1.0f};
 	
 	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.5f, 0.31f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_GOLD);
-	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, sunlight);
+	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, sunlight);
 
 
 	NB::NB_Ambient_light ambient = { glm::vec3{ 1.0f, 1.0f, 1.0f }, 0.1f };
@@ -182,6 +182,7 @@ int main()
 		light_cube_one.position.pos.x = - cos(time) * 5 + pow(sin(time), 2);
 		light_cube_one.position.pos.y = - cos(time) * 5 + sin(time) * 5;
 		light_cube_one.position.pos.z = - cos(time) * 5 + sin(time) * 5;
+		light_cube_one.color.r = (cos(time) / 2) + 1;
 
 		light_shader.use();
 		light_shader.update(display.cam1, cube_one, ambient, light_cube_one);

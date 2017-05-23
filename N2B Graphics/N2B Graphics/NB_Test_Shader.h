@@ -58,6 +58,7 @@ namespace NB
 			GLint uni_projection;
 			GLint uni_view;
 			GLint uni_transform;
+			GLint uni_light_color;
 		};
 
 

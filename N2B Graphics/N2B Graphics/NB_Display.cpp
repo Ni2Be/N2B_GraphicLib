@@ -60,7 +60,7 @@ void NB::NB_Display::set_up_glfw(int width, int height, const std::string title)
 		exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(this->window);
-	//glfwSwapInterval(1);
+	glfwSwapInterval(1);
 }
 
 void NB::NB_Display::set_up_glew()
