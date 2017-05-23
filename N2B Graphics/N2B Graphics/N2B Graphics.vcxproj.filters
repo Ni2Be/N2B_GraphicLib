@@ -51,6 +51,9 @@
     <ClInclude Include="NB_Light.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="NB_Material.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -45,13 +45,23 @@ void NB::Test::Test_Shader_Light::bind_uniforms()
 	uni_transform = glGetUniformLocation(program, "transform");
 	uni_view = glGetUniformLocation(program, "view");
 	uni_projection = glGetUniformLocation(program, "projection");
-	uni_diffuse_pos = glGetUniformLocation(program, "diffuse_pos");
-	uni_diffuse_color = glGetUniformLocation(program, "diffuse_color");
+
+	uni_light_pos = glGetUniformLocation(program, "light.position");
+	uni_light_color = glGetUniformLocation(program, "light.color");
+	uni_light_strength = glGetUniformLocation(program, "light.strength");
+
 	uni_ambient_strength = glGetUniformLocation(program, "ambient_strength");
 	uni_ambient_color = glGetUniformLocation(program, "ambient_color");
+
+	uni_camera_pos = glGetUniformLocation(program, "camera_pos");
+
+	uni_material_shininess = glGetUniformLocation(program, "material.shininess");
+	uni_material_ambient = glGetUniformLocation(program, "material.ambient");
+	uni_material_diffuse = glGetUniformLocation(program, "material.diffuse");
+	uni_material_specular = glGetUniformLocation(program, "material.specular");
 }
 
-void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& diffuse_light)
+void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& light)
 {
 	//Transformer
 	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(object.position.get_model()));
@@ -59,12 +69,21 @@ void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object&
 	//Camera
 	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
 	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
-
+	glUniform3f(uni_camera_pos, cam.camera_pos.x, cam.camera_pos.y, cam.camera_pos.z);
+	
 	//Light
-	glUniform3f(uni_diffuse_pos, diffuse_light.position.pos.x, diffuse_light.position.pos.y, diffuse_light.position.pos.z);
-	glUniform3f(uni_diffuse_color, diffuse_light.color.r, diffuse_light.color.g, diffuse_light.color.b);
 	glUniform3f(uni_ambient_color, ambient.light_color.r, ambient.light_color.g, ambient.light_color.b);
 	glUniform1f(uni_ambient_strength, ambient.strength);
+
+	glUniform3f(uni_light_pos, light.position.pos.x, light.position.pos.y, light.position.pos.z);
+	glUniform3f(uni_light_color, light.color.r, light.color.g, light.color.b);
+	glUniform1f(uni_light_strength, light.material.shininess);
+
+	//Material
+	glUniform1f(uni_material_shininess, object.material.shininess);
+	glUniform3f(uni_material_ambient, object.material.ambient.r, object.material.ambient.g, object.material.ambient.b);
+	glUniform3f(uni_material_diffuse, object.material.diffuse.r, object.material.diffuse.g, object.material.diffuse.b);
+	glUniform3f(uni_material_specular, object.material.specular.r, object.material.specular.g, object.material.specular.b);
 }
 
 

@@ -76,10 +76,18 @@ namespace NB
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
-			GLint uni_transform;
+			GLint uni_transform; 
 
-			GLint uni_diffuse_pos;
-			GLint uni_diffuse_color;
+			GLint uni_camera_pos;
+
+			GLint uni_material_ambient;
+			GLint uni_material_diffuse;
+			GLint uni_material_specular;
+			GLint uni_material_shininess;
+
+			GLint uni_light_strength;
+			GLint uni_light_pos;
+			GLint uni_light_color;
 			GLint uni_ambient_strength;
 			GLint uni_ambient_color;
 		};

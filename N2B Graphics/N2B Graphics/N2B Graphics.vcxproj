@@ -161,6 +161,7 @@
     <ClInclude Include="NB_Light.h" />
     <ClInclude Include="NB_Camera.h" />
     <ClInclude Include="NB_Display.h" />
+    <ClInclude Include="NB_Material.h" />
     <ClInclude Include="NB_Mesh.h" />
     <ClInclude Include="NB_Test_Shader.h" />
     <ClInclude Include="NB_Utility.h" />

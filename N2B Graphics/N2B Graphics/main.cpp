@@ -26,7 +26,7 @@
 #include "NB_Camera.h"
 #include "NB_Object.h"
 #include "NB_Light.h"
-
+#include "NB_Material.h"
 //
 #include "NB_Test_Shader.h"
 
@@ -140,8 +140,10 @@ int main()
 		glm::vec3(0.0f, 1.0f, 0.0f));
 	//END TEST
 
-	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.5f, 0.31f, 1.0f }, 1.0f, 1.0f, 1.0f);
-	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f);
+	NB::NB_Material sunlight{1.0f};
+	
+	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.5f, 0.31f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_GOLD);
+	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, sunlight);
 
 
 	NB::NB_Ambient_light ambient = { glm::vec3{ 1.0f, 1.0f, 1.0f }, 0.1f };
@@ -183,6 +185,8 @@ int main()
 
 		light_shader.use();
 		light_shader.update(display.cam1, cube_one, ambient, light_cube_one);
+		cube_one.transform(cos(time) + 2, cos(time) + 2, cos(time) + 2);
+		cube_one.position.rot.y = ( 2 * (sin(time) + 1));
 		cube_one.draw();
 
 		color_shader.use();

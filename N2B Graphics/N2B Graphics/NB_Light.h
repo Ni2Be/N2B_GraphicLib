@@ -24,8 +24,8 @@ namespace NB
 	class NB_Light_Cube : public NB::NB_Cube
 	{
 	public:
-		NB_Light_Cube(glm::vec3 pos, glm::vec4 color, float width, float height, float depth)
-			:NB::NB_Cube(pos, color, width, height, depth) {}
+		NB_Light_Cube(glm::vec3 pos, glm::vec4 color, float width, float height, float depth, NB_Material light)
+			:NB::NB_Cube(pos, color, width, height, depth, light) {}
 		~NB_Light_Cube() {}
 	};
 
