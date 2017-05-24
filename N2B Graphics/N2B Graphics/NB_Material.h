@@ -17,8 +17,9 @@ namespace NB
 {
 	struct NB_Material
 	{
+		NB_Material() {}
 		NB_Material(float strength)
-			:shininess(strength) {};
+			:shininess(strength) {}
 		NB_Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess)
 			:ambient(ambient), diffuse(diffuse), specular(specular), shininess(shininess) {}
 		glm::vec3 ambient;

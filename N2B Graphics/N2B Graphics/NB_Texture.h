@@ -23,10 +23,7 @@ namespace NB
 	{
 	public:
 		NB_Texture(const std::string& file_name);
-
-		void bind(unsigned int unit);
-	private:
-		GLuint texture;
+		GLuint id;
 	};
 }
 

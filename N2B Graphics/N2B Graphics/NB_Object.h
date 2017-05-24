@@ -15,6 +15,7 @@ Usage:
 #include "NB_Transformer.h"
 #include "NB_Shader.h"
 #include "NB_Material.h"
+#include "NB_Texture.h"
 
 namespace NB
 {
@@ -27,6 +28,8 @@ namespace NB
 		{
 			delete mesh;
 		}
+
+		NB_Object(const NB_Object& lhs);
 
 		std::vector<NB::NB_Vertex> vertices;
 		NB::NB_Mesh* mesh;
@@ -120,58 +123,58 @@ namespace NB
 			NB_Object::vertices =
 			{
 				//Front
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, -height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -height, +depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
 				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f, 1.0f } },
 
 				//Back/
-				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
 				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 0.0f,-1.0f } },
 
 				//Right
-				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, +depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
 				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 1.0f, 0.0f, 0.0f } },
 
 				//Left/
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, -height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ -1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -height, +depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ -1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ -1.0f, 0.0f, 0.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ -1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ -1.0f, 0.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{-1.0f, 0.0f, 0.0f } },
 
 				//Top
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, +height, +depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, +height, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
 				NB::NB_Vertex{ glm::vec3{ -width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, +height, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f, 1.0f, 0.0f } },
 
 				//Bottom
-				NB::NB_Vertex{ glm::vec3{ -width, -width, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -width, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -width, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -width, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -width, +depth }, color, glm::vec2{ 0.0f, 0.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -width, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
 
-				NB::NB_Vertex{ glm::vec3{ -width, -width, +depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ -width, -width, +depth }, color, glm::vec2{ 0.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
 				NB::NB_Vertex{ glm::vec3{ -width, -width, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
-				NB::NB_Vertex{ glm::vec3{ +width, -width, -depth }, color, glm::vec2{ 1.0f, 1.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
+				NB::NB_Vertex{ glm::vec3{ +width, -width, -depth }, color, glm::vec2{ 1.0f, 0.0f }, glm::vec3{ 0.0f,-1.0f, 0.0f } },
 			};
 
 			NB_Object::mesh = new NB::NB_Mesh(NB_Object::vertices);

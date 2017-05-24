@@ -57,10 +57,6 @@ namespace NB {
 		glm::vec3 scale;
 
 	private:
-		//no copy
-		NB_Transformer(const NB_Transformer&) {}
-		NB_Transformer& operator=(const NB_Transformer&) {}
-		//
 	};
 }
 #endif

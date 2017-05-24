@@ -181,7 +181,7 @@
     <ClCompile Include="NB_Utility.cpp" />
     <ClCompile Include="NB_Shader.cpp" />
     <ClCompile Include="NB_Object.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="NB_Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\awesomeface.png" />

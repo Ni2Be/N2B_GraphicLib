@@ -1,23 +1,34 @@
 #include "NB_Test_Shader.h"
 #include <iostream>
 
-//void NB::Test::Test_Shader_Texture::bind_uniforms()
-//{
-//	uni_transform = glGetUniformLocation(program, "transform");
-//	uni_view = glGetUniformLocation(program, "view");
-//	uni_projection = glGetUniformLocation(program, "projection");
-//}
+void NB::Test::Test_Shader_Texture::bind_uniforms()
+{
+	uni_transform = glGetUniformLocation(program, "transform");
+	uni_view = glGetUniformLocation(program, "view");
+	uni_projection = glGetUniformLocation(program, "projection");
+	uni_texture1 = glGetUniformLocation(program, "texture1");
+	uni_texture2 = glGetUniformLocation(program, "texture2");
+}
+
+void NB::Test::Test_Shader_Texture::update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Texture texture1, NB::NB_Texture texture2)
+{
+	//Transformer
+	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(object.position.get_model()));
+	
+	//Camera
+	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
+	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
+
+	//Texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture1.id);
+	glUniform1i(uni_texture1, 0);
+
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, texture2.id);
+	glUniform1i(uni_texture2, 1);
+}
 //
-//void  NB::Test::Test_Shader_Texture::update(const NB::NB_Transformer& trans, const NB::NB_Camera cam)
-//{
-//	//Transformer
-//	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(trans.get_model()));
-//
-//	//Camera
-//	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
-//	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
-//}
-////
 
 
 void NB::Test::Test_Shader_Color::bind_uniforms()
