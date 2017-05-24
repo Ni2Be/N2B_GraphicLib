@@ -21,6 +21,6 @@ void main()
 	gl_Position = projection * view * transform * vec4(position.x, position.y, position.z, 1.0f);
 
 	vertex_color = color;
-	vertex_normal = vec3(transform * vec4(normal, 1.0f));//mat3(transpose(inverse(transform))) * normal;  
+	vertex_normal = mat3(transpose(inverse(transform))) * normal;  //vec3(transform * vec4(normal, 1.0f));
 	vertex_pos = vec3(transform * vec4(position, 1.0f));
 }

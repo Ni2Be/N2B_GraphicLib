@@ -1,23 +1,23 @@
 #include "NB_Test_Shader.h"
 #include <iostream>
 
-void NB::Test::Test_Shader_Texture::bind_uniforms()
-{
-	uni_transform = glGetUniformLocation(program, "transform");
-	uni_view = glGetUniformLocation(program, "view");
-	uni_projection = glGetUniformLocation(program, "projection");
-}
-
-void  NB::Test::Test_Shader_Texture::update(const NB::NB_Transformer& trans, const NB::NB_Camera cam)
-{
-	//Transformer
-	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(trans.get_model()));
-
-	//Camera
-	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
-	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
-}
+//void NB::Test::Test_Shader_Texture::bind_uniforms()
+//{
+//	uni_transform = glGetUniformLocation(program, "transform");
+//	uni_view = glGetUniformLocation(program, "view");
+//	uni_projection = glGetUniformLocation(program, "projection");
+//}
 //
+//void  NB::Test::Test_Shader_Texture::update(const NB::NB_Transformer& trans, const NB::NB_Camera cam)
+//{
+//	//Transformer
+//	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(trans.get_model()));
+//
+//	//Camera
+//	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
+//	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
+//}
+////
 
 
 void NB::Test::Test_Shader_Color::bind_uniforms()
@@ -35,8 +35,8 @@ void  NB::Test::Test_Shader_Color::update(const NB::NB_Camera cam, NB::NB_Object
 	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(object.position.get_model()));
 
 	//Camera
-	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
-	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
+	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
+	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
 
 	//
 	glUniform3f(uni_light_color, object.color.r, object.color.g, object.color.b);
@@ -72,10 +72,10 @@ void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object&
 	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(object.position.get_model()));
 
 	//Camera
-	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.view));
-	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.projection));
-	glUniform3f(uni_camera_pos, cam.camera_pos.x, cam.camera_pos.y, cam.camera_pos.z);
-	
+	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
+	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
+	glUniform3fv(uni_camera_pos, 1, glm::value_ptr(cam.get_camera_pos()));
+
 	//Light
 	glUniform3f(uni_ambient_color, ambient.light_color.r, ambient.light_color.g, ambient.light_color.b);
 	glUniform1f(uni_ambient_strength, ambient.strength);
@@ -85,7 +85,7 @@ void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object&
 	glUniform1f(uni_light_strength, light.material.shininess);
 
 	//Material
-	glUniform1f(uni_material_shininess, object.material.shininess);
+	glUniform1f(uni_material_shininess, object.material.shininess * 128);
 	glUniform3f(uni_material_ambient, object.material.ambient.r, object.material.ambient.g, object.material.ambient.b);
 	glUniform3f(uni_material_diffuse, object.material.diffuse.r, object.material.diffuse.g, object.material.diffuse.b);
 	glUniform3f(uni_material_specular, object.material.specular.r, object.material.specular.g, object.material.specular.b);

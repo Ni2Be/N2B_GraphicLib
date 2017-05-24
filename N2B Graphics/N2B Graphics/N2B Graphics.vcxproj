@@ -169,6 +169,7 @@
     <ClInclude Include="NB_Texture.h" />
     <ClInclude Include="NB_Transformer.h" />
     <ClInclude Include="NB_Object.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -196,6 +197,9 @@
     <None Include="res\shader\texture_shader.vert" />
     <None Include="res\shader\color_shader.frag" />
     <None Include="res\shader\color_shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="N2B Graphics.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

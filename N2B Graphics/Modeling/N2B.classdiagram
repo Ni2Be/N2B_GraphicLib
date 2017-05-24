@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="d5f16cb0-8413-4e5d-b266-e85e2766363e" name="N2B" linkedPackageId="c8c8bc39-5320-4f18-b501-599747e7683a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="5bb8e7e4-678b-47f0-9bc5-14e565127279" name="NB_Light">
+        <elementDefinition Id="21c299b7-ba89-4e5d-b7a4-52696957da6f" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="5377fa7b-1c0e-408c-8bd5-d4024f4dde65" name="NB_Ambient_light" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="d7eb0323-bb42-4daf-9090-7d30957bbb4a" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="a1e23de4-2784-44a0-b75a-488629aadf3f" name="NB_Light_Cube" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="3a53a0a9-0000-4269-b014-c1af5a804939" />
+              <generalsInternal>
+                <generalization Id="f98cfaca-c330-467b-ae0f-5fd6599eaa02" isSubstitutable="false">
+                  <classMoniker Id="f3bc2846-1081-4d7e-84b5-b7e8f853dfcd" LastKnownName="NB_Cube" />
+                  <elementDefinition Id="d13fdf1f-a3e5-4630-b8fc-daefc1da389e" />
+                </generalization>
+              </generalsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="6c04be56-2840-44e2-b9f6-55ba9d7af7ec" name="NB_Camera">
+        <elementDefinition Id="99061d5f-aa45-4d22-8de7-2159b1f8127f" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="173b594d-cc8b-4318-893c-a6d87f807707" name="NB_Camera" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="2e47fd1d-933c-45da-876c-2338f465441a" />
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="7e8bc7f8-eb00-4ce2-9dd5-fc02569b4209" name="NB_Display">
+        <elementDefinition Id="737190b4-d3b7-4c2d-a2dc-7736fb3256b1" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="9dabf9b3-14c3-4a7c-8153-3442001c723e" name="NB_Display" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="b5b775e5-c44a-44cf-98f7-e86597b2d03c" />
+              <targetEnds>
+                <association Id="cfb98b6a-ff27-402d-901f-a4413bc02a33" isDerived="false" sourceEndRoleName="NB_Display" targetEndRoleName="NB_Camera" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="173b594d-cc8b-4318-893c-a6d87f807707" LastKnownName="NB_Camera" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="63a8f991-ae8f-41a5-a044-61e7c8127cbe" name="NB_Display" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="874be8e3-ba93-429a-9340-b12902c87a6e" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="27c56eab-e5e7-4862-9221-fe77f75f684a" name="NB_Camera" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="d212d7df-df04-4383-aa77-7a374412241d" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="750fac09-f36a-420b-befb-46810f30a0b6" />
+                </association>
+                <association Id="c6af53d7-201d-4754-99cd-78446e688f3e" isDerived="false" sourceEndRoleName="NB_Display" targetEndRoleName="NB_Ambient_light" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="5377fa7b-1c0e-408c-8bd5-d4024f4dde65" LastKnownName="NB_Ambient_light" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="06523510-b77c-4c99-919f-5f6221f2f2b5" name="NB_Display" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="cc91d4e0-5072-4abf-b7f9-6d3be874cfeb" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="0f57d689-8fb9-4a48-a809-fadbdec4a0a9" name="NB_Ambient_light" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="137180f5-0edd-4dc8-874f-1489bfd702bd" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="2aede358-40eb-4dc0-8efb-4463a3dcc5ac" />
+                </association>
+                <association Id="24067e5a-e98a-4767-be49-53b267b5da10" isDerived="false" sourceEndRoleName="NB_Display" targetEndRoleName="NB_Object" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="724c08ce-8c2f-458f-ba3c-fc7d9a177c67" LastKnownName="NB_Object" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="530b720c-f936-4a01-b96c-2a0ffaf68aa9" name="NB_Display" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="452152b3-fe2e-4e0c-9ff0-20fd47143867" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="eb5c94ef-f624-4508-9dae-f028f6a48837" name="NB_Object" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <lowerValueInternal>
+                          <literalString Id="e6c267a3-d312-4417-9768-289f4e73ad67" name="Lower" value="*">
+                            <elementDefinition Id="af90719f-1a05-4ddb-885a-0d93e045504e" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="015088cd-f4ac-402b-acb3-6059435d5b3c" name="Upper" value="*">
+                            <elementDefinition Id="df30db57-dae4-4b54-a4a3-17028f0cfb10" />
+                          </literalString>
+                        </upperValueInternal>
+                        <elementDefinition Id="8c7c7493-4c64-4fcb-a963-5cdbdfb25bb5" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="e08f2e6f-43ce-4bf9-b6f2-c3143a2c1eab" />
+                </association>
+              </targetEnds>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="d92b5240-9759-459c-be1a-dc77aac6bb5a" name="NB_Shader">
+        <elementDefinition Id="193b6be9-e623-4a43-8362-83d5fd5b03b6" />
+        <suppliersInternal>
+          <dependency Id="85811d1f-124b-4ae7-a2cc-3a00e249d2fc">
+            <packageMoniker Id="424d48b2-2124-4e0f-96a1-1a05b098f43c" LastKnownName="Comp NB_Object" />
+            <elementDefinition Id="f658e3f4-ed1d-4b5c-ace7-99693916fd27" />
+          </dependency>
+          <dependency Id="74860d6a-eef2-4de4-8e6a-c61704682ff9">
+            <packageMoniker Id="5bb8e7e4-678b-47f0-9bc5-14e565127279" LastKnownName="NB_Light" />
+            <elementDefinition Id="924d67a0-32f1-4141-be15-0160b1757e10" />
+          </dependency>
+          <dependency Id="af752a22-559d-4a8d-b4b1-aa6519565b14">
+            <packageMoniker Id="6c04be56-2840-44e2-b9f6-55ba9d7af7ec" LastKnownName="NB_Camera" />
+            <elementDefinition Id="a32a83d6-2073-4f23-b273-d4b050e063b5" />
+          </dependency>
+        </suppliersInternal>
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="75072676-0cbf-49f9-b2f0-5f50e484c860" name="NB_Shader" isAbstract="true" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="8ba485e8-3a40-4a13-aaee-f39da5e1e833" />
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="9700b2a0-a37e-424f-b0ae-c43a379abe8e" name="NB_Test_Shader">
+        <elementDefinition Id="28ed5150-b4ae-4bf5-8591-9406e34cf013" />
+        <suppliersInternal>
+          <dependency Id="ffb722d9-953f-431e-90db-08630b4a4c47">
+            <packageMoniker Id="d92b5240-9759-459c-be1a-dc77aac6bb5a" LastKnownName="NB_Shader" />
+            <elementDefinition Id="95fbb755-c256-460b-8c6d-e0defec755aa" />
+          </dependency>
+        </suppliersInternal>
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="17aecf19-2608-4859-9822-0f86ce9ebf73" name="Test_Shader_Color" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="50113792-4c68-41bb-a141-ea6432257d18" />
+              <generalsInternal>
+                <generalization Id="2352c4eb-e660-479b-a524-c27de3202c54" isSubstitutable="false">
+                  <classMoniker Id="75072676-0cbf-49f9-b2f0-5f50e484c860" LastKnownName="NB_Shader" />
+                  <elementDefinition Id="9be15361-b856-49e6-859d-be6ea362af41" />
+                </generalization>
+              </generalsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="be7da7a4-f425-426c-bf2e-731797625bc2" name="Test_Shader_Light" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="fe61f391-8dfc-41a3-a183-12946aeb547a" />
+              <generalsInternal>
+                <generalization Id="e18a33e6-9e1a-4935-babc-87e6ea2e7ee8" isSubstitutable="false">
+                  <classMoniker Id="75072676-0cbf-49f9-b2f0-5f50e484c860" LastKnownName="NB_Shader" />
+                  <elementDefinition Id="e9640e18-0acf-4a58-a102-3f120ec22437" />
+                </generalization>
+              </generalsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="424d48b2-2124-4e0f-96a1-1a05b098f43c" name="Comp NB_Object">
+        <elementDefinition Id="c80ce71c-fe03-47be-bf99-cee7082f3c77" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <package Id="e6e351d4-b93b-4662-b227-7356588ac20d" name="NB_Texture">
+              <elementDefinition Id="bb6ae32c-3416-4cf5-95e0-10f59a990afe" />
+              <packagedElements>
+                <packageHasNamedElement>
+                  <class Id="af9c4ee8-76dd-479b-835c-ba8ede571d54" name="NB_Texture" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="9b46ef12-e2bf-40a6-b1a5-17b795473c33" />
+                  </class>
+                </packageHasNamedElement>
+              </packagedElements>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="7e6eeb33-3b39-43e9-9d8a-cf715b9a205d" name="NB_Object">
+              <elementDefinition Id="f6f5ad94-e5e6-4531-a884-b068ead46339" />
+              <packagedElements>
+                <packageHasNamedElement>
+                  <class Id="724c08ce-8c2f-458f-ba3c-fc7d9a177c67" name="NB_Object" isAbstract="true" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="a836397a-065b-4f0c-bf39-e6002bb4c050" />
+                    <targetEnds>
+                      <association Id="94bfaa2e-395e-406e-abad-d9a8de7613bd" isDerived="false" sourceEndRoleName="NB_Object" targetEndRoleName="NB_Material" isLeaf="false" isAbstract="false">
+                        <classMoniker Id="525bbbad-ac15-49ad-9e37-3417054473cc" LastKnownName="NB_Material" />
+                        <relationshipOwnedElementsInternal>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="689d3fa6-63ff-427e-a5ab-ea4029bb1615" name="NB_Object" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                              <lowerValueInternal>
+                                <literalString Id="aab3986c-db21-45a6-a6fe-77b12b36fce5" name="Lower" value="*">
+                                  <elementDefinition Id="21b08238-3745-4cc8-a703-e97d0fe92c43" />
+                                </literalString>
+                              </lowerValueInternal>
+                              <upperValueInternal>
+                                <literalString Id="1898dfef-ab05-49e8-8409-2cb172373d16" name="Upper" value="*">
+                                  <elementDefinition Id="351997fd-a0da-40ae-98b5-da3456d4b453" />
+                                </literalString>
+                              </upperValueInternal>
+                              <elementDefinition Id="0cf37338-b321-4804-8917-3895e3725a7a" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="55b79afc-f8aa-44f0-aba5-5c3345da70ba" name="NB_Material" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                              <elementDefinition Id="7146e5ed-cefd-4925-b145-256fa4854bb8" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                        </relationshipOwnedElementsInternal>
+                        <elementDefinition Id="67b9c086-7792-40fb-8204-b73701724e8f" />
+                      </association>
+                      <association Id="e6169490-95f2-4f08-b81f-f9af894075f5" isDerived="false" sourceEndRoleName="NB_Object" targetEndRoleName="NB_Mesh" isLeaf="false" isAbstract="false">
+                        <classMoniker Id="22c426aa-4146-4118-8a81-6e8656f7e2f2" LastKnownName="NB_Mesh" />
+                        <relationshipOwnedElementsInternal>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="9b0ccb9a-4d35-4d63-ba23-4fec2dd52d18" name="NB_Object" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                              <elementDefinition Id="46212c2d-0c95-4720-9be2-09d8efe8d5bd" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="c0c2ca45-8b01-4c8b-adbe-d2660b4964a0" name="NB_Mesh" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                              <elementDefinition Id="f81817ec-28f1-42db-8c5a-f4dd210292c9" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                        </relationshipOwnedElementsInternal>
+                        <elementDefinition Id="61b90497-8f5b-4710-9c35-dd4d6bab61a4" />
+                      </association>
+                      <association Id="0461ceaa-c397-4c68-836a-7242cccfb9ad" isDerived="false" sourceEndRoleName="NB_Object" targetEndRoleName="NB_Texture" isLeaf="false" isAbstract="false">
+                        <classMoniker Id="af9c4ee8-76dd-479b-835c-ba8ede571d54" LastKnownName="NB_Texture" />
+                        <relationshipOwnedElementsInternal>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="a6e2b34c-403c-4609-a46c-ff83d46cee29" name="NB_Object" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                              <lowerValueInternal>
+                                <literalString Id="0ed7b832-a7d2-4286-8948-d09f9735791e" name="Lower" value="*">
+                                  <elementDefinition Id="1926bd90-b045-4170-be6b-8b52376c85d6" />
+                                </literalString>
+                              </lowerValueInternal>
+                              <upperValueInternal>
+                                <literalString Id="e984154d-b0e2-4a84-b327-11b3177e3b88" name="Upper" value="*">
+                                  <elementDefinition Id="5a04260b-ed64-4e75-af88-1adbeb856a24" />
+                                </literalString>
+                              </upperValueInternal>
+                              <elementDefinition Id="7d39b6bf-027c-4455-b6cd-0aa25f80d014" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="06470841-d2c7-484f-a9f9-f4b14e5616d7" name="NB_Texture" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                              <lowerValueInternal>
+                                <literalString Id="59b5e84f-1f51-4001-8b3a-78f0ed4008e2" name="Lower" value="0">
+                                  <elementDefinition Id="498e4196-9705-4645-860e-1aac0a683f93" />
+                                </literalString>
+                              </lowerValueInternal>
+                              <upperValueInternal>
+                                <literalString Id="d22d0dcc-f969-4669-9721-73a9a3e79a32" name="Upper" value="1">
+                                  <elementDefinition Id="67ada951-a943-4c6a-83d7-428e0d1508fd" />
+                                </literalString>
+                              </upperValueInternal>
+                              <elementDefinition Id="51a9c8ec-6175-443b-9b09-08c060736291" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                        </relationshipOwnedElementsInternal>
+                        <elementDefinition Id="3bf5d01c-82b5-44a2-9ca3-df77a2ba889b" />
+                      </association>
+                      <association Id="550e3d27-0015-4d65-aa0c-2a8145ada054" isDerived="false" sourceEndRoleName="NB_Object" targetEndRoleName="NB_Transformer" isLeaf="false" isAbstract="false">
+                        <classMoniker Id="1c5b6969-3070-46ea-b9d4-ef52ca545a12" LastKnownName="NB_Transformer" />
+                        <relationshipOwnedElementsInternal>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="1adc983b-e5bb-4bbf-9ef9-431ca68a9def" name="NB_Object" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                              <elementDefinition Id="a3fa55fd-8a8e-4d87-997d-c2e2a29f3ebf" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="01515546-6231-422a-aade-14510dfb7fb0" name="NB_Transformer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                              <elementDefinition Id="b011cdcd-44da-4071-a6bd-ac6e680739a3" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                        </relationshipOwnedElementsInternal>
+                        <elementDefinition Id="8d70ed0f-ebfa-41e7-8862-0f445438202d" />
+                      </association>
+                    </targetEnds>
+                  </class>
+                </packageHasNamedElement>
+                <packageHasNamedElement>
+                  <class Id="f3bc2846-1081-4d7e-84b5-b7e8f853dfcd" name="NB_Cube" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="4eb93a35-fe02-4dfc-9ea5-911e926c1bbd" />
+                    <generalsInternal>
+                      <generalization Id="1f958391-b160-4bb1-bc83-9714e885bcad" isSubstitutable="false">
+                        <classMoniker Id="724c08ce-8c2f-458f-ba3c-fc7d9a177c67" LastKnownName="NB_Object" />
+                        <elementDefinition Id="03919237-68b7-4c49-b651-c290d637de0b" />
+                      </generalization>
+                    </generalsInternal>
+                  </class>
+                </packageHasNamedElement>
+              </packagedElements>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="1ae25ac3-45c6-4f28-83dd-2fd6dec52990" name="NB_Material">
+              <elementDefinition Id="f136d757-bb6e-4167-8f8b-48fa0f5192c1" />
+              <packagedElements>
+                <packageHasNamedElement>
+                  <class Id="525bbbad-ac15-49ad-9e37-3417054473cc" name="NB_Material" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="37b19225-ce45-42eb-828b-f0d93454c600" />
+                  </class>
+                </packageHasNamedElement>
+              </packagedElements>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="2aa8d9f8-feeb-4aa0-8eaa-5466a6a79fda" name="NB_Transformer">
+              <elementDefinition Id="d9590357-03a7-4862-abd3-1c7a508f8dfa" />
+              <packagedElements>
+                <packageHasNamedElement>
+                  <class Id="1c5b6969-3070-46ea-b9d4-ef52ca545a12" name="NB_Transformer" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="db843679-5648-4728-84c9-62769a8b2fde" />
+                  </class>
+                </packageHasNamedElement>
+              </packagedElements>
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="cd8bfee3-005f-44ed-9a52-ce10a33a5ec5" name="NB_Mesh">
+              <elementDefinition Id="5e244b02-6636-44ac-a367-366578155182" />
+              <packagedElements>
+                <packageHasNamedElement>
+                  <class Id="22c426aa-4146-4118-8a81-6e8656f7e2f2" name="NB_Mesh" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="c6cf96de-9dd6-49af-bf84-0c9457b2e72a" />
+                    <targetEnds>
+                      <association Id="5598b72f-bb2e-403c-a6e9-13e8fc9db06e" isDerived="false" sourceEndRoleName="NB_Mesh" targetEndRoleName="NB_Vertex" isLeaf="false" isAbstract="false">
+                        <classMoniker Id="29a73ada-576f-42d7-a227-e0ce0a85157f" LastKnownName="NB_Vertex" />
+                        <relationshipOwnedElementsInternal>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="e843fc56-487e-401a-8c81-b64c11203bfd" name="NB_Mesh" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                              <elementDefinition Id="0ce859b1-9b60-4539-8ffa-2d5a875a4250" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                          <associationHasOwnedEnds>
+                            <memberEnd Id="228e8f5a-97cc-4906-8490-22fe50425eac" name="NB_Vertex" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                              <lowerValueInternal>
+                                <literalString Id="8efe59d6-f060-4ee9-8992-63a7dcd9286d" name="Lower" value="3*1">
+                                  <elementDefinition Id="73db849c-421c-437d-81d7-960f96cf766f" />
+                                </literalString>
+                              </lowerValueInternal>
+                              <upperValueInternal>
+                                <literalString Id="42ef47e6-4b61-434f-8fda-3a5273403d70" name="Upper" value="n">
+                                  <elementDefinition Id="04cdd34f-a5f8-46f5-9379-d8e301067f5a" />
+                                </literalString>
+                              </upperValueInternal>
+                              <elementDefinition Id="1b3215d9-6607-4f82-964e-e1850dc44a0b" />
+                            </memberEnd>
+                          </associationHasOwnedEnds>
+                        </relationshipOwnedElementsInternal>
+                        <elementDefinition Id="b0881c88-6f84-4ea5-b0cc-7df96bd88a63" />
+                      </association>
+                    </targetEnds>
+                  </class>
+                </packageHasNamedElement>
+                <packageHasNamedElement>
+                  <class Id="29a73ada-576f-42d7-a227-e0ce0a85157f" name="NB_Vertex" isAbstract="false" isLeaf="false" isActiveClass="false">
+                    <elementDefinition Id="a1048620-175c-408d-970b-d595582a506c" />
+                  </class>
+                </packageHasNamedElement>
+              </packagedElements>
+            </package>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="c8c8bc39-5320-4f18-b501-599747e7683a" name="Modeling">
+    <elementDefinition Id="188b498a-6b64-4b68-bb39-7455d9f02c79" />
+    <profileInstances>
+      <packageHasProfileInstances Id="887708c4-bb8c-40a0-a00b-fa0c0713098d">
+        <profileInstance Id="6feae521-6409-4598-b480-3a4bc07a53f4" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="44e6ba05-0052-41c8-bf74-65d50d77117b">
+        <profileInstance Id="a3385a44-bbf2-4e40-8d6d-cb553737be44" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

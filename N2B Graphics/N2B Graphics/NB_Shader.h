@@ -32,7 +32,6 @@ namespace NB
 	{
 	public:
 		void use();
-		virtual void update(const NB_Transformer& trans, const NB::NB_Camera cam) {}
 		GLuint program;
 	protected:
 		explicit NB_Shader(const std::string& fileName);

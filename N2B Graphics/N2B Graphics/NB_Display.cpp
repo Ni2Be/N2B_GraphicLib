@@ -1,5 +1,7 @@
 #include "NB_Display.h"
 #include "NB_Utility.h"
+#include "NB_Light.h"
+#include "NB_Material.h"
 
 #include <iostream>
 
@@ -20,6 +22,9 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 	//set the openGL settings (openGL version is set in set_up_glfw())
 	set_up_glew();
 
+	//light
+	light_cube_one = new NB::NB_Light_Cube{ glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_SUNLIGHT };
+
 	//set up callbacks
 	glfwSetWindowUserPointer(window, (void*)this);
 
@@ -36,6 +41,7 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 
 NB::NB_Display::~NB_Display()
 {
+	delete light_cube_one;
 	glfwTerminate();
 }
 
@@ -167,7 +173,7 @@ void NB::cb_mouse_cursor(GLFWwindow* window, double xpos, double ypos)
 		front.x = cos(glm::radians(display->pitch)) * cos(glm::radians(display->yaw));
 		front.y = sin(glm::radians(display->pitch));
 		front.z = cos(glm::radians(display->pitch)) * sin(glm::radians(display->yaw));
-		display->cam1.camera_front = glm::normalize(front);
+		display->cam1.set_front(glm::normalize(front));
 	}
 }
 
@@ -176,31 +182,29 @@ void NB::cb_scroll(GLFWwindow* window, double xoffset, double yoffset)
 	//get display
 	NB::NB_Display* display = static_cast<NB::NB_Display*>(glfwGetWindowUserPointer(window));
 
-	if (display->cam1.fov >= glm::radians(1.0f) && display->cam1.fov <= glm::radians(45.0f))
-		display->cam1.fov -= glm::radians(yoffset);
+	if (display->cam1.get_fov() >= glm::radians(1.0f) && display->cam1.get_fov() <= glm::radians(45.0f))
+		display->cam1.set_fov(display->cam1.get_fov() - glm::radians(yoffset));
 
-	if (display->cam1.fov <= glm::radians(1.0f))
-		display->cam1.fov = glm::radians(1.0f);
-	if (display->cam1.fov >= glm::radians(45.0f))
-		display->cam1.fov = glm::radians(45.0f);
+	if (display->cam1.get_fov() <= glm::radians(1.0f))
+		display->cam1.set_fov(glm::radians(1.0f));
+	if (display->cam1.get_fov() >= glm::radians(45.0f))
+		display->cam1.set_fov(glm::radians(45.0f));
 }
 
 void NB::NB_Display::camera_movement()
 {
-	GLfloat cameraSpeed = 5.0f * delta_time;
 	if (keys[GLFW_KEY_W])
-		cam1.camera_pos -= cameraSpeed * cam1.camera_pos;
+		cam1.move_forward(delta_time);
 	if (keys[GLFW_KEY_S])
-		cam1.camera_pos += cameraSpeed * cam1.camera_pos;
+		cam1.move_backward(delta_time);
 	if (keys[GLFW_KEY_A])
-		cam1.camera_pos -= glm::normalize(glm::cross(cam1.camera_front, cam1.camera_up)) * cameraSpeed;
+		cam1.move_left(delta_time);
 	if (keys[GLFW_KEY_D])
-		cam1.camera_pos += glm::normalize(glm::cross(cam1.camera_front, cam1.camera_up)) * cameraSpeed;
+		cam1.move_right(delta_time);
 	if (keys[GLFW_KEY_LEFT_SHIFT])
-		cam1.camera_pos.y += cameraSpeed;
+		cam1.move_up(delta_time);
 	if (keys[GLFW_KEY_LEFT_CONTROL])
-		cam1.camera_pos.y -= cameraSpeed;
-	cam1.update();
+		cam1.move_down(delta_time);
 }
 
 void NB::cb_error(int error, const char* description)
@@ -213,4 +217,23 @@ void NB::cb_window_size(GLFWwindow* window, int width, int height)
 	int w, h;
 	glfwGetFramebufferSize(window, &w, &h);
 	glViewport(0, 0, w, h);
+}
+
+
+
+void NB::NB_Display::light_movement()
+{
+	GLfloat light_speed = 5.0f * delta_time;
+	if (keys[GLFW_KEY_UP])
+		light_cube_one->position.pos.z -= light_speed;
+	if (keys[GLFW_KEY_DOWN])
+		light_cube_one->position.pos.z += light_speed;
+	if (keys[GLFW_KEY_LEFT])
+		light_cube_one->position.pos.x -= light_speed;
+	if (keys[GLFW_KEY_RIGHT])
+		light_cube_one->position.pos.x += light_speed;
+	if (keys[GLFW_KEY_RIGHT_SHIFT])
+		light_cube_one->position.pos.y += light_speed;
+	if (keys[GLFW_KEY_RIGHT_CONTROL])
+		light_cube_one->position.pos.y -= light_speed;
 }

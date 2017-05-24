@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="193b6be9-e623-4a43-8362-83d5fd5b03b6"
+  name="NB_Shader" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="f658e3f4-ed1d-4b5c-ace7-99693916fd27">
+      <packageMoniker
+        Id="c80ce71c-fe03-47be-bf99-cee7082f3c77"
+        LastKnownName="Comp NB_Object"
+        LastKnownLocation="Package_1134.uml" />
+    </dependency>
+    <dependency
+      Id="924d67a0-32f1-4141-be15-0160b1757e10">
+      <packageMoniker
+        Id="21c299b7-ba89-4e5d-b7a4-52696957da6f"
+        LastKnownName="NB_Light"
+        LastKnownLocation="Package_0942.uml" />
+    </dependency>
+    <dependency
+      Id="a32a83d6-2073-4f23-b273-d4b050e063b5">
+      <packageMoniker
+        Id="99061d5f-aa45-4d22-8de7-2159b1f8127f"
+        LastKnownName="NB_Camera"
+        LastKnownLocation="Package_0945.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="8ba485e8-3a40-4a13-aaee-f39da5e1e833"
+        name="NB_Shader"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

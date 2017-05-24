@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="188b498a-6b64-4b68-bb39-7455d9f02c79"
+  name="Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="21c299b7-ba89-4e5d-b7a4-52696957da6f"
+        LastKnownName="NB_Light"
+        LastKnownLocation="Package_0942.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="99061d5f-aa45-4d22-8de7-2159b1f8127f"
+        LastKnownName="NB_Camera"
+        LastKnownLocation="Package_0945.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="737190b4-d3b7-4c2d-a2dc-7736fb3256b1"
+        LastKnownName="NB_Display"
+        LastKnownLocation="Package1_0945.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="193b6be9-e623-4a43-8362-83d5fd5b03b6"
+        LastKnownName="NB_Shader"
+        LastKnownLocation="Package_0955.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="28ed5150-b4ae-4bf5-8591-9406e34cf013"
+        LastKnownName="NB_Test_Shader"
+        LastKnownLocation="Package1_0955.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c80ce71c-fe03-47be-bf99-cee7082f3c77"
+        LastKnownName="Comp NB_Object"
+        LastKnownLocation="Package_1134.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="50817c6f-9985-4147-8216-33ebec217a1c"
+        name="NB_Object"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <part
+            Id="a052b21d-256c-4700-a9f2-b90ed719a52e"
+            name="NB_Object"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="Composite"
+            isComposite="true">
+            <type_NamedElement>
+              <componentMoniker
+                Id="901f3a73-3694-4b41-b0c7-81b96a90ae22"
+                LastKnownName="Component2"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </part>
+          <providedInterface
+            Id="43ce9605-5a4f-4ef5-adc5-d74cffac9a02"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="e90b35cf-a2cb-4b04-a5ea-610643235252"
+                LastKnownName="draw"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="901f3a73-3694-4b41-b0c7-81b96a90ae22"
+        name="Component2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="8c8e0bc6-b5e2-4a2b-83c1-88496b248989"
+        name="NB_Shader"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <part
+            Id="3dbaf7a0-ac81-4b03-a9e9-301aaab56735"
+            name="NB_Shader"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="Composite"
+            isComposite="true">
+            <type_NamedElement>
+              <componentMoniker
+                Id="79599204-582b-4858-a6ee-7a41b59f8330"
+                LastKnownName="Component1"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </part>
+          <requiredInterface
+            Id="f91336ce-d7a6-4f97-ae6b-dc678946dd2d"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="04c95ba8-5dcd-4ceb-ba42-4fb62bd857e3"
+                LastKnownName="draw"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <providedInterface
+            Id="d040e2ac-4e99-47d5-a550-ef2440d147a4"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="bea33b51-a363-4dc5-be3e-00e336b406ee"
+                LastKnownName="draw_object"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="79599204-582b-4858-a6ee-7a41b59f8330"
+        name="Component1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="e90b35cf-a2cb-4b04-a5ea-610643235252"
+        name="draw"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="04c95ba8-5dcd-4ceb-ba42-4fb62bd857e3"
+        name="draw"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="6d90dd22-f8a4-4978-9978-5efcd4ce4842"
+        name="NB_Camera"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="909049e3-69c2-4711-a7af-f290c971f4b9"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="a9f558cd-f049-48c7-af35-94bc674851ee"
+                LastKnownName="Interface1"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="a9f558cd-f049-48c7-af35-94bc674851ee"
+        name="Interface1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="c3aa3904-ed9f-410f-a512-0b8a570027d2"
+        name="NB_Display"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <part
+            Id="f4705720-eb6f-4bee-86fe-ffe6c493dc00"
+            name="NB_Camera"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="Composite"
+            isComposite="true">
+            <type_NamedElement>
+              <componentMoniker
+                Id="73256ef6-dce8-401b-8adb-a0e9fed1a10e"
+                LastKnownName="Component3"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </part>
+          <part
+            Id="1ca9d8e2-4ed2-4b25-a1b0-bf31097e6f33"
+            name="NB_Object"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="Composite"
+            isComposite="true">
+            <type_NamedElement>
+              <componentMoniker
+                Id="410310e9-f92a-4433-91b7-1f3a56ca2b22"
+                LastKnownName="Component4"
+                LastKnownLocation="Modeling.uml" />
+            </type_NamedElement>
+          </part>
+        </ownedAttributesInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="73256ef6-dce8-401b-8adb-a0e9fed1a10e"
+        name="Component3"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="6c5b94b0-0613-46af-802f-45f164d60919"
+        name="get_cam"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="462fee7c-a9aa-4ec5-964c-f45521b56918"
+        name="get_cam"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="410310e9-f92a-4433-91b7-1f3a56ca2b22"
+        name="Component4"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="077f29df-01f0-400d-b994-386e6f0160e0"
+        name="get_object"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="bea33b51-a363-4dc5-be3e-00e336b406ee"
+        name="draw_object"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

@@ -26,22 +26,22 @@ namespace NB
 	namespace Test
 	{
 		//
-		class Test_Shader_Texture : public NB::NB_Shader
-		{
-		public:
-			explicit Test_Shader_Texture(const std::string& fileName)
-				:NB_Shader(fileName) 
-			{
-				this->bind_uniforms();
-			}
+		//class Test_Shader_Texture : public NB::NB_Shader
+		//{
+		//public:
+		//	explicit Test_Shader_Texture(const std::string& fileName)
+		//		:NB_Shader(fileName) 
+		//	{
+		//		this->bind_uniforms();
+		//	}
 
-			void update(const NB::NB_Transformer& trans, const NB::NB_Camera cam);
-		private:
-			void bind_uniforms();
-			GLint uni_projection;
-			GLint uni_view;
-			GLint uni_transform;
-		};
+		//	void update(NB::NB_Camera& cam, const NB_Transformer& trans);
+		//private:
+		//	void bind_uniforms();
+		//	GLint uni_projection;
+		//	GLint uni_view;
+		//	GLint uni_transform;
+		//};
 
 		class Test_Shader_Color : public NB::NB_Shader
 		{
@@ -72,7 +72,7 @@ namespace NB
 			}
 
 			void draw_objects(std::vector<NB::NB_Object*>& objects) const;
-			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& diffuse_light);
+			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& light);
 		private:
 			void bind_uniforms();
 			GLint uni_projection;

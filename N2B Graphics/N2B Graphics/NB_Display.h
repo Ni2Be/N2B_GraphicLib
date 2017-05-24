@@ -36,6 +36,9 @@ namespace NB
 
 		inline void clear()
 		{
+			camera_movement();
+			light_movement();
+
 			glClearColor(background_color.r, background_color.g, background_color.b, background_color.a);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
@@ -54,15 +57,17 @@ namespace NB
 		GLFWwindow* operator&() const;
 
 		NB::NB_Camera cam1;
-		void camera_movement();
 		void set_background_color(glm::vec4& color);
 		void set_background_color(NB::NB_Ambient_light& ambient);
+		//Light
+		NB_Light_Cube* light_cube_one;
 	private:
 		glm::vec4 background_color;
 
 		//no copy
-		NB_Display(const NB_Display&) 
-			:cam1(45.0f, (GLfloat)1 / (GLfloat)1, 0.1f, 1000.0f){}
+		/*NB_Display(const NB_Display&)
+			:cam1(45.0f, (GLfloat)1 / (GLfloat)1, 0.1f, 1000.0f),
+			light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_Material{ 1.0f }) {}*/
 		NB_Display& operator=(const NB_Display&) {}
 		//
 
@@ -85,6 +90,9 @@ namespace NB
 		//Cam
 		GLfloat yaw;
 		GLfloat pitch;
+		void camera_movement();
+		//Light
+		void light_movement();
 		//call backs
 		friend static void cb_key(GLFWwindow* window, int key, int scancode, int action, int mode);
 		friend static void cb_mouse_button(GLFWwindow* window, int button, int action, int mods);

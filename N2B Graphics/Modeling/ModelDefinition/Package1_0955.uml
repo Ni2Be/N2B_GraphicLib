@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="28ed5150-b4ae-4bf5-8591-9406e34cf013"
+  name="NB_Test_Shader" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="95fbb755-c256-460b-8c6d-e0defec755aa">
+      <packageMoniker
+        Id="193b6be9-e623-4a43-8362-83d5fd5b03b6"
+        LastKnownName="NB_Shader"
+        LastKnownLocation="Package_0955.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="50113792-4c68-41bb-a141-ea6432257d18"
+        name="Test_Shader_Color"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="9be15361-b856-49e6-859d-be6ea362af41"
+            isSubstitutable="false">
+            <classMoniker
+              Id="8ba485e8-3a40-4a13-aaee-f39da5e1e833"
+              LastKnownName="NB_Shader"
+              LastKnownLocation="Package_0955.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fe61f391-8dfc-41a3-a183-12946aeb547a"
+        name="Test_Shader_Light"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="e9640e18-0acf-4a58-a102-3f120ec22437"
+            isSubstitutable="false">
+            <classMoniker
+              Id="8ba485e8-3a40-4a13-aaee-f39da5e1e833"
+              LastKnownName="NB_Shader"
+              LastKnownLocation="Package_0955.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

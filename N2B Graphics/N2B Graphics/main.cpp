@@ -34,7 +34,7 @@ int main()
 {
 	NB::NB_Display display{ 800, 600, "Window" };
 
-	NB::Test::Test_Shader_Texture texture_shader{ "./res/shader/texture_shader" };
+	//NB::Test::Test_Shader_Texture texture_shader{ "./res/shader/texture_shader" };
 	NB::Test::Test_Shader_Color color_shader{ "./res/shader/color_shader" };
 	NB::Test::Test_Shader_Light light_shader{ "./res/shader/light_shader" };
 
@@ -67,71 +67,11 @@ int main()
 		2, 3, 7, 2, 6, 7 };
 
 	NB::NB_EMesh square{ sqr_vertices, sqr_indices };*/
-	////
+	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	/*std::vector<NB::NB_Vertex> cube_vertices =
-	{
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f}, 1.0f, glm::vec2{ 0.0f, 0.0f}},
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, -0.5f},   1.0f, glm::vec2{ 1.0f, 0.0f} },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, -0.5f},   1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, -0.5f},  1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f, -0.5f},   1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f},   1.0f, glm::vec2{ 0.0f, 0.0f } },
-
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f,  0.5f},   1.0f, glm::vec2{ 0.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 0.0f } },
-
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f, -0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, -0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{   0.0f, 1.0 } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f, -0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, -0.5f }, 1.0f, glm::vec2{ 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 1.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f,  0.5f }, 1.0f, glm::vec2{ 0.0f, 0.0f } },
-		NB::NB_Vertex{ glm::vec3{ -0.5f,  0.5f, -0.5f }, 1.0f, glm::vec2{ 0.0f, 1.0f } }
-	};
-	NB::NB_Mesh cube(cube_vertices);
 
 
-	std::random_device dev;
-	std::mt19937 gen(dev());
-	std::uniform_real_distribution<> z_dis(-200, 100);
-	std::uniform_real_distribution<> xy_dis(-100, 100);
-
-	std::vector<glm::vec3> cubePositions;
-	int cubes = 90000;
-	for (int i = 0; i < cubes; i++)
-	{
-		cubePositions.push_back(glm::vec3(xy_dis(gen), xy_dis(gen), z_dis(gen)));
-	}
-	std::sort(std::begin(cubePositions), std::end(cubePositions), [](glm::vec3& lhs, glm::vec3& rhs)
-	{
-		return lhs.z < rhs.z;
-	});*/
 
 
 	display.cam1.look_at(
@@ -140,11 +80,38 @@ int main()
 		glm::vec3(0.0f, 1.0f, 0.0f));
 	//END TEST
 
-	NB::NB_Material sunlight{1.0f};
-	
-	NB::NB_Cube cube_one(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 0.5f, 0.31f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_GOLD);
-	NB::NB_Light_Cube light_cube_one(glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, sunlight);
+	std::vector<NB::NB_Cube*> cubes
+	{
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_EMERALD),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_JADE),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_OBSIDIAN),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PEARL),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBY),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_TURQUOISE),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_BRASS),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_BONZE),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_CHROME),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_COPPER),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_SILVER),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_GOLD),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_BLACK),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_CYAN),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_GREEN),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_RED),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_WHITE),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_PLASTIC_YELLOW),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_BLACK),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_CYAN),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_GREEN),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_RED),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_WHITE),
+		new NB::NB_Cube(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_RUBBER_YELLOW)
+	};
 
+	for (int i = 0; i < cubes.size(); i++)
+	{
+		cubes[i]->position.pos.x = i * 2 - 20;
+	}
 
 	NB::NB_Ambient_light ambient = { glm::vec3{ 1.0f, 1.0f, 1.0f }, 0.1f };
 	display.set_background_color(ambient);
@@ -154,48 +121,22 @@ int main()
 	{
 		glfwPollEvents();
 		display.clear();
-		display.camera_movement();
 
 		//Cool stuff
-		/*texture_shader.use();
-		texture1.bind(0);
-		glUniform1i(glGetUniformLocation(texture_shader.program, "texture1"), 0);
-		texture2.bind(1);
-		glUniform1i(glGetUniformLocation(texture_shader.program, "texture2"), 1);
-
 		float time = static_cast<float>(glfwGetTime());
-		float sin_time = sin(time);
-
-		for (auto& i : cubePositions)
-		{
-			trans1.pos = i;
-			trans1.rot.y = sin_time;
-			trans1.rot.x = sin_time;
-
-			texture_shader.update(trans1, display.cam1);
-			cube.draw();
-		}*/
-
-
-		//other cool stuff
-		float time = static_cast<float>(glfwGetTime());
-		light_cube_one.position.pos.x = - cos(time) * 5 + pow(sin(time), 2);
-		light_cube_one.position.pos.y = - cos(time) * 5 + sin(time) * 5;
-		light_cube_one.position.pos.z = - cos(time) * 5 + sin(time) * 5;
-		light_cube_one.color.r = (cos(time) / 2) + 1;
-
 		light_shader.use();
-		light_shader.update(display.cam1, cube_one, ambient, light_cube_one);
-		cube_one.transform(cos(time) + 2, cos(time) + 2, cos(time) + 2);
-		cube_one.position.rot.y = ( 2 * (sin(time) + 1));
-		cube_one.draw();
+		for (auto cube : cubes)
+		{
+			light_shader.update(display.cam1, *cube, ambient, *display.light_cube_one);
+			cube->draw();
+		}
 
 		color_shader.use();
-		color_shader.update(display.cam1, light_cube_one);
-		light_cube_one.draw();
+		color_shader.update(display.cam1, *display.light_cube_one);
+		display.light_cube_one->draw();
 
 
-		
+
 
 		//
 

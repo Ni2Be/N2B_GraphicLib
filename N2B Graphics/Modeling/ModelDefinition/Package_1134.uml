@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="c80ce71c-fe03-47be-bf99-cee7082f3c77"
+  name="Comp NB_Object" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="bb6ae32c-3416-4cf5-95e0-10f59a990afe"
+        LastKnownName="NB_Texture"
+        LastKnownLocation="Package_0957.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="f6f5ad94-e5e6-4531-a884-b068ead46339"
+        LastKnownName="NB_Object"
+        LastKnownLocation="Package_0943.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="f136d757-bb6e-4167-8f8b-48fa0f5192c1"
+        LastKnownName="NB_Material"
+        LastKnownLocation="Package_0948.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="d9590357-03a7-4862-abd3-1c7a508f8dfa"
+        LastKnownName="NB_Transformer"
+        LastKnownLocation="Package_0959.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="5e244b02-6636-44ac-a367-366578155182"
+        LastKnownName="NB_Mesh"
+        LastKnownLocation="Package_0951.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

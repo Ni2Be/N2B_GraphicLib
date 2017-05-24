@@ -1,7 +1,12 @@
-﻿  NB_Test_Shader.cpp
+﻿  NB_Display.cpp
+NB_Display.cpp(152): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+NB_Display.cpp(153): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+NB_Display.cpp(154): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+NB_Display.cpp(155): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+NB_Display.cpp(186): warning C4244: "Argument": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
   Code wird generiert.
-  35 of 542 functions ( 6.5%) were compiled, the rest were copied from previous compilation.
+  150 of 741 functions (20.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   N2B Graphics.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Release\N2B Graphics.exe

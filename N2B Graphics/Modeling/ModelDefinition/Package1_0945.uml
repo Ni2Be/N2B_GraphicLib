@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="737190b4-d3b7-4c2d-a2dc-7736fb3256b1"
+  name="NB_Display" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="b5b775e5-c44a-44cf-98f7-e86597b2d03c"
+        name="NB_Display"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="750fac09-f36a-420b-befb-46810f30a0b6"
+            isDerived="false"
+            sourceEndRoleName="NB_Display"
+            targetEndRoleName="NB_Camera"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2e47fd1d-933c-45da-876c-2338f465441a"
+              LastKnownName="NB_Camera"
+              LastKnownLocation="Package_0945.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="874be8e3-ba93-429a-9340-b12902c87a6e"
+                  name="NB_Display"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d212d7df-df04-4383-aa77-7a374412241d"
+                  name="NB_Camera"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2aede358-40eb-4dc0-8efb-4463a3dcc5ac"
+            isDerived="false"
+            sourceEndRoleName="NB_Display"
+            targetEndRoleName="NB_Ambient_light"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="d7eb0323-bb42-4daf-9090-7d30957bbb4a"
+              LastKnownName="NB_Ambient_light"
+              LastKnownLocation="Package_0942.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cc91d4e0-5072-4abf-b7f9-6d3be874cfeb"
+                  name="NB_Display"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="137180f5-0edd-4dc8-874f-1489bfd702bd"
+                  name="NB_Ambient_light"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e08f2e6f-43ce-4bf9-b6f2-c3143a2c1eab"
+            isDerived="false"
+            sourceEndRoleName="NB_Display"
+            targetEndRoleName="NB_Object"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="a836397a-065b-4f0c-bf39-e6002bb4c050"
+              LastKnownName="NB_Object"
+              LastKnownLocation="Package_0943.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="452152b3-fe2e-4e0c-9ff0-20fd47143867"
+                  name="NB_Display"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8c7c7493-4c64-4fcb-a963-5cdbdfb25bb5"
+                  name="NB_Object"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="af90719f-1a05-4ddb-885a-0d93e045504e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="df30db57-dae4-4b54-a4a3-17028f0cfb10"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
