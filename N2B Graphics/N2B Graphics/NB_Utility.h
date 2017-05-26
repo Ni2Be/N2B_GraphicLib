@@ -4,12 +4,15 @@ Attention:
 Purpose:
 Usage:
 */
-
-#ifdef NB_PRAGMA_ONCE_SUPPORT
-#pragma once
-#endif
 #ifndef NB_UTILITY_H_INCLUDED
 #define NB_UTILITY_H_INCLUDED
+
+#define NB_PRAGMA_ONCE_SUPPORT
+#ifdef _DEBUG
+#define NB_DEBUG
+#endif // _DEBUG
+
+
 #include <string>
 
 

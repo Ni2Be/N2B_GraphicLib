@@ -6,7 +6,12 @@
 #include <iostream>
 
 NB::NB_Display::NB_Display(int width, int height, const std::string title = "window 1")
-	: cam1(glm::radians(45.0f), (GLfloat)width / (GLfloat)height, 0.1f, 1000.0f),
+	: 
+	cam1(
+		glm::radians(45.0f), 
+		(GLfloat)width / (GLfloat)height, 
+		0.1f, 
+		1000.0f),
 	delta_time(0.0f),
 	last_frame(0.0f),
 	sensitivity(0.05f),
@@ -23,7 +28,7 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 	set_up_glew();
 
 	//light
-	light_cube_one = new NB::NB_Light_Cube{ glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_SUNLIGHT };
+	light_cube_one = new NB::NB_Light_Cube{ glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_LIGHT_WHITE };
 
 	//set up callbacks
 	glfwSetWindowUserPointer(window, (void*)this);
@@ -224,16 +229,19 @@ void NB::cb_window_size(GLFWwindow* window, int width, int height)
 void NB::NB_Display::light_movement()
 {
 	GLfloat light_speed = 5.0f * delta_time;
+
+	
 	if (keys[GLFW_KEY_UP])
-		light_cube_one->position.pos.z -= light_speed;
+		light_cube_one->move_z(-light_speed);
 	if (keys[GLFW_KEY_DOWN])
-		light_cube_one->position.pos.z += light_speed;
+		light_cube_one->move_z(light_speed);
 	if (keys[GLFW_KEY_LEFT])
-		light_cube_one->position.pos.x -= light_speed;
+		light_cube_one->move_x(-light_speed);
 	if (keys[GLFW_KEY_RIGHT])
-		light_cube_one->position.pos.x += light_speed;
+		light_cube_one->move_x(light_speed);
 	if (keys[GLFW_KEY_RIGHT_SHIFT])
-		light_cube_one->position.pos.y += light_speed;
+		light_cube_one->move_y(light_speed);
 	if (keys[GLFW_KEY_RIGHT_CONTROL])
-		light_cube_one->position.pos.y -= light_speed;
+		light_cube_one->move_y(-light_speed);
+	
 }

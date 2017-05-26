@@ -5,6 +5,8 @@ Purpose:
 Usage:
 */
 
+#include "NB_Utility.h"
+
 #ifdef NB_PRAGMA_ONCE_SUPPORT
 #pragma once
 #endif

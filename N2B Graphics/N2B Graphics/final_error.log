@@ -1,7 +1,7 @@
 Error Nr. 0
-At: 2017-05-13 15:48:35
-in: NB::NB_Texture::NB_Texture
-Texture loading fail: ./res/textures/example.jpg
+At: 2017-05-25 13:19:26
+in: NB::Test::Test_Shader_Texture::update
+No texture
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
 

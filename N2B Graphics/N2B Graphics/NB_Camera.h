@@ -20,6 +20,7 @@ Usage:
 #include <gtc/type_ptr.hpp>
 
 //
+#include "NB_Utility.h"
 #include "NB_Shader.h"
 
 namespace NB 

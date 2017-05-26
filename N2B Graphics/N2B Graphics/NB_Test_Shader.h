@@ -35,14 +35,29 @@ namespace NB
 				this->bind_uniforms();
 			}
 
-			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Texture texture1, NB::NB_Texture texture2);
+			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& light);
 		private:
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
 			GLint uni_transform;
-			GLuint uni_texture1;
-			GLuint uni_texture2;
+
+			GLint uni_camera_pos;
+
+			GLint uni_material_ambient;
+			GLint uni_material_diffuse;
+			GLint uni_material_specular;
+			GLint uni_material_shininess;
+
+			GLint uni_attenuation_const;
+			GLint uni_attenuation_lin;
+			GLint uni_attenuation_quad;
+			GLint uni_light_strength;
+			GLint uni_light_pos;
+			GLint uni_light_color;
+			GLint uni_light_ambient_strength;
+			GLint uni_material_texture;
+			GLint uni_material_specular_map;
 		};
 
 		class Test_Shader_Color : public NB::NB_Shader
@@ -54,7 +69,7 @@ namespace NB
 				this->bind_uniforms();
 			}
 
-			void update(const NB::NB_Camera cam, NB::NB_Object& object);
+			void update(const NB::NB_Camera cam, NB::NB_Light_Cube& object);
 		private:
 			void bind_uniforms();
 			GLint uni_projection;

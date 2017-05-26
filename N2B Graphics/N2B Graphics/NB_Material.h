@@ -5,6 +5,7 @@ Purpose:
 Usage:
 */
 
+#include "NB_Utility.h"
 #ifdef NB_PRAGMA_ONCE_SUPPORT
 #pragma once
 #endif
@@ -13,19 +14,37 @@ Usage:
 
 #include <glm.hpp>
 
+//
+#include "NB_Texture.h"
+
 namespace NB
 {
 	struct NB_Material
 	{
 		NB_Material() {}
-		NB_Material(float strength)
-			:shininess(strength) {}
+		NB_Material(float strength, float ambient_strength)
+			:strength(strength), ambient_strength(ambient_strength){}
 		NB_Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess)
 			:ambient(ambient), diffuse(diffuse), specular(specular), shininess(shininess) {}
+		NB_Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess, NB_Texture& texture, NB_Texture& diffuse_map)
+			:ambient(ambient), diffuse(diffuse), specular(specular), shininess(shininess), texture(&texture), specular_map(&diffuse_map) {}
 		glm::vec3 ambient;
 		glm::vec3 diffuse;
 		glm::vec3 specular;
 		float shininess;
+
+		//only used by light
+		float strength;
+		float ambient_strength;
+
+		NB_Texture* texture;
+		NB_Texture* specular_map;
+
+		inline void add_Texture(NB_Texture& texture, NB_Texture& diffuse_map)
+		{
+			this->texture = &texture;
+			this->specular_map = &diffuse_map;
+		}
 	};
 
 	const NB_Material NB_GOLD{
@@ -184,9 +203,11 @@ namespace NB
 		.078125f
 	};
 
-	const NB_Material NB_SUNLIGHT
+	//Light
+	const NB_Material NB_LIGHT_WHITE
 	{
-		1.0f
+		1.0f,
+		0.2f
 	};
 }
 #endif

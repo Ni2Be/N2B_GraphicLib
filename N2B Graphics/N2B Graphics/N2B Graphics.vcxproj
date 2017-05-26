@@ -185,6 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\awesomeface.png" />
+    <Image Include="res\textures\container2.png" />
+    <Image Include="res\textures\container2_specular.png" />
     <Image Include="res\textures\example.png" />
     <Image Include="res\textures\Holz.jpg" />
     <Image Include="res\textures\Stein.jpg" />

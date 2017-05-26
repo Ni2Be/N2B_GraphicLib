@@ -13,8 +13,6 @@
 #include <thread>
 
 //Project
-#define NB_PRAGMA_ONCE_SUPPORT
-#define NB_DEBUG
 
 #include "NB_Utility.h"
 #include "NB_Display.h"
@@ -38,8 +36,8 @@ int main()
 	NB::Test::Test_Shader_Color color_shader{ "./res/shader/color_shader" };
 	NB::Test::Test_Shader_Light light_shader{ "./res/shader/light_shader" };
 
-	NB::NB_Texture texture1{ "./res/textures/awesomeface.png" };
-	NB::NB_Texture texture2{ "./res/textures/wall.jpg" };
+	NB::NB_Texture texture1{ "./res/textures/container2.png" };
+	NB::NB_Texture texture2{ "./res/textures/container2_specular.png" };
 	
 	NB::NB_Transformer trans1, trans2;
 
@@ -110,6 +108,7 @@ int main()
 
 	for (int i = 0; i < cubes.size(); i++)
 	{
+		cubes[i].material.add_Texture(texture1, texture2);
 		cubes[i].position.pos.x = i - cubes.size() / 2;
 	}
 	std::vector<std::vector<NB::NB_Cube>> ground;
@@ -139,28 +138,32 @@ int main()
 
 		//Cool stuff
 		float time = static_cast<float>(glfwGetTime());
-		light_shader.use();
-		//texture_shader.use();
-		//for (auto& cube : cubes)
-		//{
-		//	//texture_shader.update(display.cam1, *cube, texture1, texture2);
-		//	light_shader.update(display.cam1, cube, ambient, *display.light_cube_one);
-		//	cube.draw();
-		//}
 
+		texture_shader.use();
 		for (int i = 0; i < ground.size(); i++)
+		{
+			for (int n = 0; n < ground[i].size(); n++)
+			{
+			texture_shader.update(display.cam1, ground[i][n], ambient, *display.light_cube_one);
+			ground[i][n].draw();
+			}
+		}
+
+		//light_shader.use();
+		/*for (int i = 0; i < ground.size(); i++)
 		{
 			for (int n = 0; n < ground[i].size(); n++)
 			{
 				light_shader.update(display.cam1, ground[i][n], ambient, *display.light_cube_one);
 				ground[i][n].draw();
 			}
-		}
+		}*/
+
 
 
 		color_shader.use();
 		color_shader.update(display.cam1, *display.light_cube_one);
-		display.light_cube_one->draw();
+		display.light_cube_one->cube.draw();
 		//
 
 		display.update();
