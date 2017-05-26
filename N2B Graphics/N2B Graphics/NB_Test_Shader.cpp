@@ -41,14 +41,14 @@ void NB::Test::Test_Shader_Texture::update(const NB::NB_Camera cam, NB::NB_Objec
 	glUniform3fv(uni_camera_pos, 1, glm::value_ptr(cam.get_camera_pos()));
 
 	//Light
-	glUniform1f(uni_attenuation_const, light.attenuation_const);
-	glUniform1f(uni_attenuation_lin, light.attenuation_lin);
-	glUniform1f(uni_attenuation_quad, light.attenuation_quad);
-	glUniform1f(uni_light_ambient_strength, light.ambient_strength);
+	glUniform1f(uni_attenuation_const, light.type.attenuation_const);
+	glUniform1f(uni_attenuation_lin, light.type.attenuation_lin);
+	glUniform1f(uni_attenuation_quad, light.type.attenuation_quad);
+	glUniform1f(uni_light_ambient_strength, light.type.ambient_strength);
 
 	glUniform3f(uni_light_pos, light.position.x, light.position.y, light.position.z);
-	glUniform3f(uni_light_color, light.color.r, light.color.g, light.color.b);
-	glUniform1f(uni_light_strength, light.strength);
+	glUniform3f(uni_light_color, light.type.color.r, light.type.color.g, light.type.color.b);
+	glUniform1f(uni_light_strength, light.type.strength);
 	//Material
 	glUniform1f(uni_material_shininess, object.material.shininess * 128);
 	glUniform3f(uni_material_ambient, object.material.ambient.r, object.material.ambient.g, object.material.ambient.b);
@@ -94,7 +94,7 @@ void  NB::Test::Test_Shader_Color::update(const NB::NB_Camera cam, NB::NB_Light_
 	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
 
 	//
-	glUniform3f(uni_light_color, light.color.r, light.color.g, light.color.b);
+	glUniform3f(uni_light_color, light.type.color.r, light.type.color.g, light.type.color.b);
 }
 //
 
@@ -136,8 +136,8 @@ void NB::Test::Test_Shader_Light::update(const NB::NB_Camera cam, NB::NB_Object&
 	glUniform1f(uni_ambient_strength, ambient.strength);
 
 	glUniform3f(uni_light_pos, light.position.x, light.position.y, light.position.z);
-	glUniform3f(uni_light_color, light.color.r, light.color.g, light.color.b);
-	glUniform1f(uni_light_strength, light.strength);
+	glUniform3f(uni_light_color, light.type.color.r, light.type.color.g, light.type.color.b);
+	glUniform1f(uni_light_strength, light.type.strength);
 
 	//Material
 	glUniform1f(uni_material_shininess, object.material.shininess * 128);

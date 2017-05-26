@@ -23,7 +23,7 @@ Usage:
 
 namespace NB
 {
-	struct NB_Light_Properties
+	struct NB_Light_Properties : public NB_Material
 	{
 		NB_Light_Properties(
 			glm::vec4 color,
@@ -53,31 +53,16 @@ namespace NB
 	protected:
 		NB_Light(
 			glm::vec3 position,
-			glm::vec4 color,
-			float strength,
-			float ambient_strength,
-			float attenuation_const = 1.0f,
-			float attenuation_lin = 0.09f,
-			float attenuation_quad = 0.032f)
+			NB_Light_Properties type)
 			:
 			position(position),
-			color(color),
-			strength(strength),
-			ambient_strength(ambient_strength),
-			attenuation_const(attenuation_const),
-			attenuation_lin(attenuation_lin),
-			attenuation_quad(attenuation_quad){}
+			type(type){}
 	public:
 		virtual void move_x(float delta);
 		virtual void move_y(float delta);
 		virtual void move_z(float delta);
 
-		float strength;
-		float ambient_strength;
-		glm::vec4 color;
-		float attenuation_const;
-		float attenuation_lin;
-		float attenuation_quad;
+		NB_Light_Properties type;
 
 		glm::vec3 position;
 	};
@@ -91,47 +76,18 @@ namespace NB
 			float width,
 			float height,
 			float depth,
-			NB_Material light)
+			NB_Light_Properties type)
 			:
 			NB_Light(
 				position,
-				color,
-				light.strength,
-				light.ambient_strength),
+				type),
 			cube(
 				position,
 				color,
 				width,
 				height,
 				depth,
-				light) {}
-
-		NB_Light_Cube(
-			glm::vec3 position,
-			glm::vec4 color,
-			float width,
-			float height,
-			float depth,
-			NB_Material light,
-			float attenuation_const,
-			float attenuation_lin,
-			float attenuation_quad)
-			:
-			NB_Light(
-				position,
-				color,
-				light.strength,
-				light.ambient_strength,
-				attenuation_const,
-				attenuation_lin,
-				attenuation_quad),
-			cube(
-				position,
-				color,
-				width,
-				height,
-				depth,
-				light) {}
+				type) {}
 
 		~NB_Light_Cube() {}
 
@@ -150,6 +106,16 @@ namespace NB
 			:light_color(color), strength(strength) {}
 		glm::vec3 light_color;
 		float strength;
+	};
+
+
+
+	//Light
+	const NB_Light_Properties NB_LIGHT_WHITE
+	{
+		glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
+		1.0f,
+		0.2f
 	};
 }
 #endif

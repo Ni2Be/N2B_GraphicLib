@@ -202,12 +202,5 @@ namespace NB
 		glm::vec3{ 0.7 ,0.7 ,0.04 },
 		.078125f
 	};
-
-	//Light
-	const NB_Material NB_LIGHT_WHITE
-	{
-		1.0f,
-		0.2f
-	};
 }
 #endif
