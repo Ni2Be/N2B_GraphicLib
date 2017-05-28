@@ -30,9 +30,12 @@
 
 int main()
 {
-	NB::NB_Display display{ 800, 600, "Window" };
+	
+	NB::NB_Display display{ 1200, 700, "Window" };
 
-	NB::Test::Test_Shader_Texture texture_shader{ "./res/shader/texture_shader" };
+	const int LIGHT_COUNT = 50;
+
+	NB::Test::Test_Shader_Texture texture_shader{ LIGHT_COUNT };
 	NB::Test::Test_Shader_Color color_shader{ "./res/shader/color_shader" };
 	NB::Test::Test_Shader_Light light_shader{ "./res/shader/light_shader" };
 
@@ -42,35 +45,7 @@ int main()
 	NB::NB_Transformer trans1, trans2;
 
 
-	//TEST
-
-	/*
-	std::vector<NB::NB_Vertex> sqr_vertices
-	{
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, 0.0f }, glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, 0.0f }, glm::vec4{ 1.0f, 1.0f, 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{-0.5f, -0.5f, 0.0f }, glm::vec4{ 1.0f, 0.0f, 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{-0.5f,  0.5f, 0.0f }, glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f,  0.5f, 1.0f }, glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{ 0.5f, -0.5f, 1.0f }, glm::vec4{ 1.0f, 1.0f, 0.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{-0.5f, -0.5f, 1.0f }, glm::vec4{ 1.0f, 0.0f, 1.0f, 1.0f } },
-		NB::NB_Vertex{ glm::vec3{-0.5f,  0.5f, 1.0f }, glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f } }
-	};
-	std::vector<GLuint> sqr_indices{
-		0, 1, 3, 1, 2, 3,
-		4, 5, 7, 5, 6, 7,
-		1, 5, 2, 2, 5, 6,
-		0, 4, 7, 0, 7, 3,
-		0, 1, 4, 1, 4, 5,
-		2, 3, 7, 2, 6, 7 };
-
-	NB::NB_EMesh square{ sqr_vertices, sqr_indices };*/
-	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-
-
-
 
 	display.cam1.look_at(
 		glm::vec3(0.0f, 0.0f, 3.0f),
@@ -115,21 +90,36 @@ int main()
 
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> dis(1, 2);
+	std::uniform_real_distribution<float> dis1_2(1, 2);
+	std::uniform_real_distribution<float> dis0_1(0.1, 0.9);
+	std::uniform_real_distribution<float> dis1_20(1, 20);
 	for (int i = 0; i < cubes.size(); i++)
 	{
 		for (auto& cube : cubes)
 		{
 			cube.position.pos.z = i;
-			cube.position.pos.y = static_cast<float>(dis(gen));
+			cube.position.pos.y = dis1_20(gen);
 		}
 		ground.push_back(cubes);
 	}
 
+	//DIR Light
+	NB::NB_Directional_Light sun = { glm::vec3{ 1.0f, 1.0f, 1.0f }, glm::vec3 { 0.3f, -1.0f, 0.2f }, 0.1f };
+	display.set_background_color(glm::vec4{ 0.02f, 0.02f, 0.02f, 1.0f });
 
-	NB::NB_Ambient_light ambient = { glm::vec3{ 1.0f, 1.0f, 1.0f }, 0.1f };
-	display.set_background_color(ambient);
 
+	//Point lights
+	std::vector<NB::NB_Light_Cube*> lights;
+	lights.push_back(display.light_cube_one);
+	for (int i = 1; i < LIGHT_COUNT; i++)
+	{
+		lights.push_back(new NB::NB_Light_Cube{ 
+			glm::vec3( dis1_20(gen), dis1_20(gen), dis1_20(gen)),
+			glm::vec4{ 0.3f, 1.0f, 1.0f, 1.0f }, 
+			0.5f, 0.5f, 0.5f, 
+			NB::NB_LIGHT_WHITE });
+		lights[i]->change_color(glm::vec4{ dis0_1(gen), dis0_1(gen), dis0_1(gen), 1.0f });
+	}
 
 	while (!glfwWindowShouldClose(&display))
 	{
@@ -144,27 +134,23 @@ int main()
 		{
 			for (int n = 0; n < ground[i].size(); n++)
 			{
-			texture_shader.update(display.cam1, ground[i][n], ambient, *display.light_cube_one);
-			ground[i][n].draw();
+				texture_shader.update(display.cam1, ground[i][n], sun, lights);
+				ground[i][n].draw();
 			}
 		}
 
-		//light_shader.use();
-		/*for (int i = 0; i < ground.size(); i++)
+		for (int i = 1; i < LIGHT_COUNT; i++)
 		{
-			for (int n = 0; n < ground[i].size(); n++)
-			{
-				light_shader.update(display.cam1, ground[i][n], ambient, *display.light_cube_one);
-				ground[i][n].draw();
-			}
-		}*/
-
-
-
-		color_shader.use();
-		color_shader.update(display.cam1, *display.light_cube_one);
-		display.light_cube_one->cube.draw();
-		//
+			lights[i]->move_y(0.1f * cos(time) * pow(-1, i));
+			lights[i]->move_z(0.7f * cos(time) * pow(-1, i));
+		}
+		
+		for (int i = 0; i < LIGHT_COUNT; i++)
+		{
+			color_shader.use();
+			color_shader.update(display.cam1, lights[i]);
+			lights[i]->cube.draw();
+		}
 
 		display.update();
 	}

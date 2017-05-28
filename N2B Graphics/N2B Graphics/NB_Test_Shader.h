@@ -25,18 +25,34 @@ namespace NB
 {
 	namespace Test
 	{
-		
+
 		class Test_Shader_Texture : public NB::NB_Shader
 		{
 		public:
-			explicit Test_Shader_Texture(const std::string& fileName)
-				:NB_Shader(fileName) 
+			Test_Shader_Texture(int light_count)
+				:
+				NB_Shader(),
+				shader_location("./res/shader/texture_shader"),
+				light_count(light_count),
+				uni_attenuation_const(light_count),
+				uni_attenuation_lin(light_count),
+				uni_attenuation_quad(light_count),
+				uni_light_strength(light_count),
+				uni_light_pos(light_count),
+				uni_light_color(light_count),
+				uni_light_ambient_strength(light_count)
 			{
+				change_light_count(light_count);
 				this->bind_uniforms();
 			}
 
-			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& light);
+			void update(
+				const NB::NB_Camera cam, 
+				NB::NB_Object& object, 
+				NB::NB_Directional_Light& ambient, 
+				std::vector<NB::NB_Light_Cube*>& lights);
 		private:
+			std::string shader_location;
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
@@ -49,13 +65,23 @@ namespace NB
 			GLint uni_material_specular;
 			GLint uni_material_shininess;
 
-			GLint uni_attenuation_const;
-			GLint uni_attenuation_lin;
-			GLint uni_attenuation_quad;
-			GLint uni_light_strength;
-			GLint uni_light_pos;
-			GLint uni_light_color;
-			GLint uni_light_ambient_strength;
+			//should be called before gameloop
+			//recompiling shader
+			void change_light_count(int new_count);
+
+			int light_count;
+			std::vector<GLint> uni_attenuation_const;
+			std::vector<GLint> uni_attenuation_lin;
+			std::vector<GLint> uni_attenuation_quad;
+			std::vector<GLint> uni_light_strength;
+			std::vector<GLint> uni_light_pos;
+			std::vector<GLint> uni_light_color;
+			std::vector<GLint> uni_light_ambient_strength;
+
+			GLint uni_dir_light_direction;
+			GLint uni_dir_light_color;
+			GLint uni_dir_light_strength;
+
 			GLint uni_material_texture;
 			GLint uni_material_specular_map;
 		};
@@ -69,7 +95,7 @@ namespace NB
 				this->bind_uniforms();
 			}
 
-			void update(const NB::NB_Camera cam, NB::NB_Light_Cube& object);
+			void update(const NB::NB_Camera cam, NB::NB_Light_Cube* light);
 		private:
 			void bind_uniforms();
 			GLint uni_projection;
@@ -89,12 +115,12 @@ namespace NB
 			}
 
 			void draw_objects(std::vector<NB::NB_Object*>& objects) const;
-			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Ambient_light& ambient, NB::NB_Light_Cube& light);
+			void update(const NB::NB_Camera cam, NB::NB_Object& object, NB::NB_Directional_Light& ambient, NB::NB_Light_Cube& light);
 		private:
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
-			GLint uni_transform; 
+			GLint uni_transform;
 
 			GLint uni_camera_pos;
 

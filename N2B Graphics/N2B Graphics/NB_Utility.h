@@ -20,7 +20,8 @@ namespace NB
 {
 	void error_log(const std::string location, const std::string error);
 
-	std::string load_file_to_string(const std::string& fileName);
+	std::string load_file_to_string(const std::string& file_name);
 
+	void search_replace(const std::string& file_name, const std::string& search, const std::string& replace);
 }
 #endif

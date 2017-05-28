@@ -3,24 +3,35 @@
 
 #include <gtc/type_ptr.hpp>
 
-NB::NB_Shader::NB_Shader(const std::string& fileName)
+NB::NB_Shader::NB_Shader(const std::string& file_name)
+	:program(-1)
 {
+	build_program(file_name);
+}
+
+void NB::NB_Shader::build_program(const std::string& file_name)
+{
+	if (program != -1)
+	{
+		glDeleteProgram(program);
+	}
+	program = glCreateProgram();
+
 	//compile shaders
-	GLuint vetex_shader = create_shader(fileName + ".vert", GL_VERTEX_SHADER);
-	GLuint fragment_shader = create_shader(fileName + ".frag", GL_FRAGMENT_SHADER);
+	GLuint vetex_shader = create_shader(file_name + ".vert", GL_VERTEX_SHADER);
+	GLuint fragment_shader = create_shader(file_name + ".frag", GL_FRAGMENT_SHADER);
 
 	//link to program
-	program = glCreateProgram();
 	glAttachShader(program, vetex_shader);
 	glAttachShader(program, fragment_shader);
-	
+
 	glBindAttribLocation(program, 0, "position");
 
 	glLinkProgram(program);
-	error_check(program, GL_LINK_STATUS, true, "Shader linking fail: ", fileName);
+	error_check(program, GL_LINK_STATUS, true, "Shader linking fail: ", file_name);
 
 	glValidateProgram(program);
-	error_check(program, GL_VALIDATE_STATUS, true, "Program is invalid: ", fileName);
+	error_check(program, GL_VALIDATE_STATUS, true, "Program is invalid: ", file_name);
 
 	glDeleteShader(vetex_shader);
 	glDeleteShader(fragment_shader);

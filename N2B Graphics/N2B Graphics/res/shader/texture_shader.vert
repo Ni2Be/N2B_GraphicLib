@@ -13,7 +13,7 @@ layout (location = 3) in vec3 normal;
 
 out vec4 vertex_color;
 out vec3 vertex_normal;
-out vec3 vertex_pos;
+out vec3 vertex_position;
 out vec2 vertex_texture_coo;
 
 void main()
@@ -23,5 +23,5 @@ void main()
 	vertex_color = color;
 	vertex_texture_coo = texture_coo;
 	vertex_normal = mat3(transpose(inverse(transform))) * normal;
-	vertex_pos = vec3(transform * vec4(position, 1.0f));
+	vertex_position = vec3(transform * vec4(position, 1.0f));
 }

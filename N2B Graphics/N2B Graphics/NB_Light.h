@@ -62,8 +62,8 @@ namespace NB
 		virtual void move_y(float delta);
 		virtual void move_z(float delta);
 
+		virtual void change_color(glm::vec4 color);
 		NB_Light_Properties type;
-
 		glm::vec3 position;
 	};
 
@@ -96,15 +96,18 @@ namespace NB
 		void move_x(float delta);
 		void move_y(float delta);
 		void move_z(float delta);
+
+		void change_color(glm::vec4 color);
 	};
 
 
-	class NB_Ambient_light
+	class NB_Directional_Light
 	{
 	public:
-		NB_Ambient_light(glm::vec3 color, float strength)
-			:light_color(color), strength(strength) {}
-		glm::vec3 light_color;
+		NB_Directional_Light(glm::vec3 color, glm::vec3 direction, float strength)
+			:color(color), direction(direction), strength(strength) {}
+		glm::vec3 color;
+		glm::vec3 direction;
 		float strength;
 	};
 

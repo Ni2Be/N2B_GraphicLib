@@ -59,7 +59,7 @@ namespace NB
 
 		NB::NB_Camera cam1;
 		void set_background_color(glm::vec4& color);
-		void set_background_color(NB::NB_Ambient_light& ambient);
+		void set_background_color(NB::NB_Directional_Light& ambient);
 		//Light
 		NB_Light_Cube* light_cube_one;
 	private:
@@ -76,6 +76,7 @@ namespace NB
 		void set_up_glew();
 
 		//Movement / physics
+		bool is_tablet;
 		bool keys[1024];
 		bool mouse_buttons[8];
 		//time frames

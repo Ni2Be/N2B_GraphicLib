@@ -19,7 +19,8 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 	y_offset(0.0f),
 	yaw(-90.0f),
 	pitch(0.0f),
-	background_color(0.41f, 1.0f, 1.0f, 1.0f)
+	background_color(0.41f, 1.0f, 1.0f, 1.0f),
+	is_tablet(true)
 {
 	//set the window properties
 	set_up_glfw(width, height, title);
@@ -72,6 +73,8 @@ void NB::NB_Display::set_up_glfw(int width, int height, const std::string title)
 	}
 	glfwMakeContextCurrent(this->window);
 	glfwSwapInterval(1);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 void NB::NB_Display::set_up_glew()
@@ -102,9 +105,9 @@ void NB::NB_Display::set_background_color(glm::vec4& color)
 	background_color = color;
 }
 
-void NB::NB_Display::set_background_color(NB::NB_Ambient_light& ambient)
+void NB::NB_Display::set_background_color(NB::NB_Directional_Light& ambient)
 {
-	background_color = glm::vec4(ambient.light_color, 1.0f) * ambient.strength;
+	background_color = glm::vec4(ambient.color, 1.0f) * ambient.strength;
 }
 
 GLFWwindow* NB::NB_Display::operator&() const
@@ -161,7 +164,7 @@ void NB::cb_mouse_cursor(GLFWwindow* window, double xpos, double ypos)
 
 
 
-	if (display->mouse_buttons[GLFW_MOUSE_BUTTON_MIDDLE])
+	if (display->is_tablet || display->mouse_buttons[GLFW_MOUSE_BUTTON_MIDDLE])
 	{
 		GLfloat x_move = display->x_offset * display->sensitivity;
 		GLfloat y_move = display->y_offset * display->sensitivity;
@@ -230,18 +233,34 @@ void NB::NB_Display::light_movement()
 {
 	GLfloat light_speed = 5.0f * delta_time;
 
-	
-	if (keys[GLFW_KEY_UP])
-		light_cube_one->move_z(-light_speed);
-	if (keys[GLFW_KEY_DOWN])
-		light_cube_one->move_z(light_speed);
-	if (keys[GLFW_KEY_LEFT])
-		light_cube_one->move_x(-light_speed);
-	if (keys[GLFW_KEY_RIGHT])
-		light_cube_one->move_x(light_speed);
-	if (keys[GLFW_KEY_RIGHT_SHIFT])
-		light_cube_one->move_y(light_speed);
-	if (keys[GLFW_KEY_RIGHT_CONTROL])
-		light_cube_one->move_y(-light_speed);
-	
+	if (this->is_tablet)
+	{
+		if (keys[GLFW_KEY_I])
+			light_cube_one->move_z(-light_speed);
+		if (keys[GLFW_KEY_K])
+			light_cube_one->move_z(light_speed);
+		if (keys[GLFW_KEY_J])
+			light_cube_one->move_x(-light_speed);
+		if (keys[GLFW_KEY_L])
+			light_cube_one->move_x(light_speed);
+		if (keys[GLFW_KEY_H])
+			light_cube_one->move_y(light_speed);
+		if (keys[GLFW_KEY_N])
+			light_cube_one->move_y(-light_speed);
+	}
+	else
+	{
+		if (keys[GLFW_KEY_UP])
+			light_cube_one->move_z(-light_speed);
+		if (keys[GLFW_KEY_DOWN])
+			light_cube_one->move_z(light_speed);
+		if (keys[GLFW_KEY_LEFT])
+			light_cube_one->move_x(-light_speed);
+		if (keys[GLFW_KEY_RIGHT])
+			light_cube_one->move_x(light_speed);
+		if (keys[GLFW_KEY_LEFT_SHIFT])
+			light_cube_one->move_y(light_speed);
+		if (keys[GLFW_KEY_LEFT_CONTROL])
+			light_cube_one->move_y(-light_speed);
+	}
 }

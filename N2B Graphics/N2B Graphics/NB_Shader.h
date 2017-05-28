@@ -34,7 +34,8 @@ namespace NB
 		void use();
 		GLuint program;
 	protected:
-		explicit NB_Shader(const std::string& fileName);
+		NB_Shader() {}
+		explicit NB_Shader(const std::string& file_name);
 		~NB_Shader();
 
 
@@ -42,6 +43,8 @@ namespace NB
 
 
 		GLuint create_shader(const std::string& text, const GLenum sader_type);
+
+		void build_program(const std::string& file_name);
 
 		void error_check(GLuint shader, GLuint flag, bool isProgram,
 			const std::string& errorMessage, const std::string& file_name);
