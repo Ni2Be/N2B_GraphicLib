@@ -27,6 +27,7 @@
 #include "NB_Material.h"
 //
 #include "NB_Test_Shader.h"
+#include "NB_Draw_Container.h"
 
 int main()
 {
@@ -42,9 +43,7 @@ int main()
 	NB::NB_Texture texture1{ "./res/textures/container2.png" };
 	NB::NB_Texture texture2{ "./res/textures/container2_specular.png" };
 	
-	NB::NB_Transformer trans1, trans2;
-
-
+	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	display.cam1.look_at(
@@ -119,7 +118,25 @@ int main()
 			0.5f, 0.5f, 0.5f, 
 			NB::NB_LIGHT_WHITE });
 		lights[i]->change_color(glm::vec4{ dis0_1(gen), dis0_1(gen), dis0_1(gen), 1.0f });
+
 	}
+
+	//Element test
+	NB::NB_Material wood
+	{ glm::vec3{ 0.24725,	0.1995,	0.0745 },
+		glm::vec3{ 0.75164, 0.60648, 0.22648 },
+		glm::vec3{ 0.628281, 0.555802, 0.366065 },
+		0.4f,
+		texture1,
+		texture2
+	};
+	
+	NB::NB_Model model{ 
+		"./res/models/apollo.obj",
+		glm::vec4{ 0.5f, 0.5f, 0.5f, 1.0f },
+		wood
+	};
+
 
 	while (!glfwWindowShouldClose(&display))
 	{
@@ -130,10 +147,15 @@ int main()
 		float time = static_cast<float>(glfwGetTime());
 
 		texture_shader.use();
+		model.position.pos = glm::vec3{ 0.0f , 0.0f, 0.0f };
+		model.position.set_scale(0.1f);
+		texture_shader.update(display.cam1, model, sun, lights);
+		model.draw();
 		for (int i = 0; i < ground.size(); i++)
 		{
 			for (int n = 0; n < ground[i].size(); n++)
 			{
+				ground[i][n].position.pos.y += 0.01 * cos(time);
 				texture_shader.update(display.cam1, ground[i][n], sun, lights);
 				ground[i][n].draw();
 			}

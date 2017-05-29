@@ -29,23 +29,23 @@ NB::NB_Mesh::NB_Mesh(const std::vector<NB_Vertex>& vertices)
 	//index, how many at all, what type are the single values, normalized?, 
 	//how big is one vertex, offset
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*)0);
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, pos));
 	glEnableVertexAttribArray(0);
 
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*) sizeof(vertices[0].pos));
+		sizeof(NB_Vertex),
+		(GLvoid*) offsetof(NB_Vertex, color));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*) (sizeof(vertices[0].pos) + sizeof(vertices[0].color)));
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, texture));
 	glEnableVertexAttribArray(2);
 
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture)));
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, normal));
 	glEnableVertexAttribArray(3);
 
 	//unbinde
@@ -65,7 +65,11 @@ NB::NB_Mesh::~NB_Mesh()
 	glDeleteVertexArrays(1, &vertex_Array_Object);
 }
 
-NB::NB_EMesh::NB_EMesh(const std::vector<NB_Vertex>& vertices, const std::vector<GLuint> indices)
+NB::NB_EMesh::NB_EMesh(
+	const std::vector<NB_Vertex>& vertices, 
+	const std::vector<GLuint>& indices,
+	std::vector<NB_Texture> textures)
+	:textures(textures)
 {
 	draw_count = static_cast<GLuint>(indices.size());
 
@@ -74,9 +78,8 @@ NB::NB_EMesh::NB_EMesh(const std::vector<NB_Vertex>& vertices, const std::vector
 	glBindVertexArray(vertex_Array_Object);
 
 	//generate elemant buffer object and bind it
-	GLuint Element_Buffer_Object;
-	glGenBuffers(1, &Element_Buffer_Object);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Element_Buffer_Object);
+	glGenBuffers(1, &element_buffer_object);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_object);
 	//send the data
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(indices[0]), &indices[0], GL_STATIC_DRAW);
 
@@ -100,23 +103,23 @@ NB::NB_EMesh::NB_EMesh(const std::vector<NB_Vertex>& vertices, const std::vector
 	//index, how many at all, what type are the single values, normalized?, 
 	//how big is one vertex, offset
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*)0);
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, pos));
 	glEnableVertexAttribArray(0);
 
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*) sizeof(vertices[0].pos));
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, color));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color)));
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, texture));
 	glEnableVertexAttribArray(2);
 
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE,
-		sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture) + sizeof(vertices[0].normal),
-		(GLvoid*)(sizeof(vertices[0].pos) + sizeof(vertices[0].color) + sizeof(vertices[0].texture)));
+		sizeof(NB_Vertex),
+		(GLvoid*)offsetof(NB_Vertex, normal));
 	glEnableVertexAttribArray(3);
 
 	//unbinde

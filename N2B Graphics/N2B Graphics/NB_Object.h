@@ -11,9 +11,14 @@ Usage:
 #ifndef NB_OBJECT_H_INCLUDED
 #define NB_OBJECT_H_INCLUDED
 
+//
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+//
 #include "NB_Mesh.h"
 #include "NB_Transformer.h"
-#include "NB_Shader.h"
 #include "NB_Material.h"
 #include "NB_Texture.h"
 
@@ -33,14 +38,12 @@ namespace NB
 
 		std::vector<NB::NB_Vertex> vertices;
 		NB::NB_Mesh* mesh;
+		NB::NB_EMesh* e_mesh;
 		NB::NB_Transformer position;
 		glm::vec4 color;
 		NB::NB_Material material;
 
-		inline void draw() const
-		{
-			mesh->draw();
-		}
+		virtual void draw() const;
 	};
 
 	class NB_Cube : public NB_Object
@@ -179,6 +182,28 @@ namespace NB
 
 			NB_Object::mesh = new NB::NB_Mesh(NB_Object::vertices);
 		}
+	};
+
+	class NB_Model : public NB_Object
+	{
+	public:
+		explicit NB_Model(const std::string& path, glm::vec4 color, NB_Material material)
+			:NB_Object(color, material)
+		{
+			this->loadModel(path);
+		}
+
+		void NB::NB_Model::draw() const;
+	private:
+		std::vector<NB_EMesh*> meshes;
+		std::string directory;
+		
+		
+		void loadModel(std::string path);
+		void processNode(aiNode* node, const aiScene* scene);
+		NB_EMesh* processMesh(aiMesh* mesh, const aiScene* scene);
+		std::vector<NB_Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type,
+			std::string typeName);
 	};
 }
 #endif

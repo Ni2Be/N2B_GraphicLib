@@ -19,6 +19,12 @@
     <Filter Include="Ressourcendateien\shader">
       <UniqueIdentifier>{25ce7557-68f5-431e-aa39-519a2f0f3afd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ressourcendateien\models">
+      <UniqueIdentifier>{26021061-d5d7-4e89-8bd2-cee2c3d5e637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressourcendateien\models\nano">
+      <UniqueIdentifier>{03e5e662-5741-427c-96e1-18268494e682}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NB_Utility.h">
@@ -57,6 +63,9 @@
     <ClInclude Include="resource.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="NB_Draw_Container.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +96,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="NB_Texture.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NB_Draw_Container.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

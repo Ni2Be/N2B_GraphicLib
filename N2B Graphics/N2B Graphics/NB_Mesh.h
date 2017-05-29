@@ -22,6 +22,12 @@ Usage:
 #include <vector>
 
 
+//
+
+#include "NB_Texture.h"
+#include "NB_Shader.h"
+
+
 namespace NB 
 {
 	class NB_Vertex
@@ -73,15 +79,20 @@ namespace NB
 	class NB_EMesh
 	{
 	public:
-		NB_EMesh(const std::vector<NB_Vertex>& vertices, const std::vector<GLuint> indices);
+		NB_EMesh(
+			const std::vector<NB_Vertex>& vertices,
+			const std::vector<GLuint>& indices,
+			std::vector<NB_Texture> textures);
 
 		void draw();
 
 		~NB_EMesh();
 	private:
+		GLuint element_buffer_object;
 		GLuint vertex_Array_Object;
 		GLuint vertex_Buffer_Object;
 		GLuint draw_count;
+		std::vector<NB_Texture> textures;
 	};
 }
 #endif

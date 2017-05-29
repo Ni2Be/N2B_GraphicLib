@@ -1,12 +1,7 @@
-﻿  main.cpp
-main.cpp(87): warning C4244: "=": Konvertierung von "unsigned __int64" in "float", möglicher Datenverlust
-main.cpp(94): warning C4305: "Argument": Verkürzung von "double" in "float"
-main.cpp(100): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-main.cpp(144): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
-main.cpp(145): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+﻿  NB_Object.cpp
   Code wird generiert.
-  151 of 1824 functions ( 8.3%) were compiled, the rest were copied from previous compilation.
+  180 of 2090 functions ( 8.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    10 functions had inline decision re-evaluated but remain unchanged
+    29 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   N2B Graphics.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Release\N2B Graphics.exe

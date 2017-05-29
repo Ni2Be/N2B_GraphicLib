@@ -21,7 +21,7 @@ NB_Shader:
 #include <string>
 #include <fstream>
 #include <iostream>
-
+#include <vector>
 //
 #include "NB_Transformer.h"
 #include "NB_Camera.h"
@@ -45,9 +45,9 @@ namespace NB
 		GLuint create_shader(const std::string& text, const GLenum sader_type);
 
 		void build_program(const std::string& file_name);
-
 		void error_check(GLuint shader, GLuint flag, bool isProgram,
 			const std::string& errorMessage, const std::string& file_name);
+
 	private:
 		//no copy
 		NB_Shader(const NB_Shader&) {}
