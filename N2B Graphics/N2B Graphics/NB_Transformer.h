@@ -5,6 +5,9 @@ Purpose:
 Usage:
 */
 
+
+#include "NB_Utility.h"
+
 #ifdef NB_PRAGMA_ONCE_SUPPORT
 #pragma once
 #endif
@@ -18,7 +21,8 @@ Usage:
 #include <glm.hpp>
 #include <gtx/transform.hpp>
 
-namespace NB {
+namespace NB 
+{
 	class NB_Transformer
 	{
 	public:

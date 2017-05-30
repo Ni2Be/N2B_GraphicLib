@@ -23,8 +23,9 @@ NB_Shader:
 #include <iostream>
 #include <vector>
 //
-#include "NB_Transformer.h"
-#include "NB_Camera.h"
+
+//
+#include "NB_Object.h"
 
 namespace NB
 {
@@ -34,13 +35,14 @@ namespace NB
 		void use();
 		GLuint program;
 	protected:
+
+		virtual void draw() {}
+
 		NB_Shader() {}
 		explicit NB_Shader(const std::string& file_name);
 		~NB_Shader();
 
-
 		virtual void bind_uniforms() {}
-
 
 		GLuint create_shader(const std::string& text, const GLenum sader_type);
 

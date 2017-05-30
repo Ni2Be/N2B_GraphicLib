@@ -25,8 +25,6 @@ Usage:
 //
 
 #include "NB_Texture.h"
-#include "NB_Shader.h"
-
 
 namespace NB 
 {

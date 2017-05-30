@@ -92,6 +92,63 @@ void NB::Test::Test_Shader_Texture::update(
 }
 
 
+void NB::Test::Test_Shader_Texture::draw()
+{
+#ifdef NB_DEBUG
+	if (this->camera == nullptr)
+	{
+		error_log("NB::Test::Test_Shader_Texture::draw", "No camera");
+		exit(EXIT_FAILURE);
+	}
+	if (this->dir_light == nullptr)
+	{
+		error_log("NB::Test::Test_Shader_Texture::draw", "No dir_light");
+		exit(EXIT_FAILURE);
+	}
+#endif // NB_DEBUG
+
+	this->use();
+	for (auto o : this->objects)
+	{
+		this->update(*this->camera, *o, *this->dir_light, this->lights);
+		o->draw();
+	}
+}
+
+void NB::Test::Test_Shader_Texture::attach(NB::NB_Camera& camera) 
+{ 
+	this->camera = &camera; 
+}
+
+void NB::Test::Test_Shader_Texture::attach(NB::NB_Directional_Light& dir_light)
+{
+	this->dir_light = &dir_light;
+}
+
+void NB::Test::Test_Shader_Texture::attach(NB::NB_Light_Cube& light)
+{
+	this->lights.push_back(&light);
+}
+
+void NB::Test::Test_Shader_Texture::attach(std::vector<NB::NB_Light_Cube>& lights)
+{
+	this->lights.reserve(this->lights.size() + lights.size());
+	for (auto& l : lights)
+		this->lights.push_back(&l);
+}
+
+void NB::Test::Test_Shader_Texture::attach(NB_Object& object)
+{
+	this->objects.push_back(&object);
+}
+
+void NB::Test::Test_Shader_Texture::attach(std::vector<NB_Object>& object_vec)
+{
+	this->objects.reserve(this->objects.size() + object_vec.size());
+	for (auto& o : object_vec)
+		this->objects.push_back(&o);
+}
+
 void NB::Test::Test_Shader_Texture::change_light_count(int new_count)
 {
 	NB::search_replace(shader_location + ".frag", "const int LIGHT_COUNT = (\\d)*;", "const int LIGHT_COUNT = " + std::to_string(new_count) + ";");
@@ -125,6 +182,27 @@ void  NB::Test::Test_Shader_Color::update(const NB::NB_Camera cam, NB::NB_Light_
 	//
 	glUniform3f(uni_light_color, light->type.color.r, light->type.color.g, light->type.color.b);
 }
+
+void NB::Test::Test_Shader_Color::attach(NB::NB_Light_Cube& light)
+{
+	this->lights.push_back(&light);
+}
+
+void NB::Test::Test_Shader_Color::attach(NB::NB_Camera& camera)
+{
+	this->camera = &camera;
+}
+
+void NB::Test::Test_Shader_Color::draw()
+{
+	this->use();
+	for (auto l : this->lights)
+	{
+		this->update(*this->camera, l);
+		l->cube.draw();
+	}
+}
+
 //
 
 

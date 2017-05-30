@@ -30,7 +30,7 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 
 	//light
 	light_cube_one = new NB::NB_Light_Cube{ glm::vec3(3.0f, 2.0f, -4.0f), glm::vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, 1.0f, 1.0f, 1.0f, NB::NB_LIGHT_WHITE };
-
+	light_cube_one->type.strength = 10.0f;
 	//set up callbacks
 	glfwSetWindowUserPointer(window, (void*)this);
 

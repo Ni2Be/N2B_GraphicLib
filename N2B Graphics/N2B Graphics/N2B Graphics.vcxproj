@@ -158,7 +158,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="NB_Draw_Container.h" />
     <ClInclude Include="NB_Light.h" />
     <ClInclude Include="NB_Camera.h" />
     <ClInclude Include="NB_Display.h" />
@@ -174,7 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="NB_Draw_Container.cpp" />
     <ClCompile Include="NB_Light.cpp" />
     <ClCompile Include="NB_Display.cpp" />
     <ClCompile Include="main.cpp" />

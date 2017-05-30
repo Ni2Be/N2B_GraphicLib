@@ -83,6 +83,3 @@ void NB::NB_Shader::error_check(GLuint get_checked, GLuint flag, bool is_program
 		error_log("NB::NB_Shader::error_check\n", "Error in " + file_name + "\n" + error_message + error);
 	}
 }
-
-
-//void NB::NB_Shader::attach(NB_Object& object)

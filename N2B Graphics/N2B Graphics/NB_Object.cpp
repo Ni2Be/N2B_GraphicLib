@@ -1,6 +1,5 @@
 #include "NB_Object.h"
-
-
+#include <assimp/postprocess.h>
 
 NB::NB_Object::NB_Object(const NB_Object& lhs)
 {
@@ -27,8 +26,8 @@ void NB::NB_Model::draw() const
 void NB::NB_Model::loadModel(std::string path)
 {
 	Assimp::Importer import;
-	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
-
+	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
+	
 	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
 		std::string error = import.GetErrorString();
@@ -61,9 +60,14 @@ NB::NB_EMesh* NB::NB_Model::processMesh(aiMesh* mesh, const aiScene* scene)
 	std::vector<NB_Vertex> vertices;
 	std::vector<GLuint> indices;
 	std::vector<NB_Texture> textures;
+
+
+	//TEST
 	textures.push_back(*material.texture);
 	textures.push_back(*material.specular_map);
+	//ENDTEST
 
+	
 	for (GLuint i = 0; i < mesh->mNumVertices; i++)
 	{
 		vertices.push_back

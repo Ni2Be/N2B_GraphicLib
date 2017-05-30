@@ -46,13 +46,28 @@ namespace NB
 				this->bind_uniforms();
 			}
 
+			void draw();
+			
+			void attach(NB::NB_Camera& camera);
+			void attach(NB::NB_Directional_Light& dir_light);
+			void attach(NB::NB_Light_Cube& light);
+			void attach(std::vector<NB::NB_Light_Cube>& lights);
+			void attach(NB_Object& object);
+			void attach(std::vector<NB_Object>& object);
+
 			void update(
-				const NB::NB_Camera cam, 
-				NB::NB_Object& object, 
-				NB::NB_Directional_Light& ambient, 
+				const NB::NB_Camera cam,
+				NB::NB_Object& object,
+				NB::NB_Directional_Light& ambient,
 				std::vector<NB::NB_Light_Cube*>& lights);
 		private:
+			NB::NB_Directional_Light* dir_light;
+			std::vector<NB::NB_Light_Cube*> lights;
+			std::vector<NB_Object*> objects;
+			NB::NB_Camera* camera;
+
 			std::string shader_location;
+
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
@@ -95,8 +110,15 @@ namespace NB
 				this->bind_uniforms();
 			}
 
+
+			void attach(NB::NB_Camera& camera);
+
 			void update(const NB::NB_Camera cam, NB::NB_Light_Cube* light);
+			void attach(NB::NB_Light_Cube& light);
+			void draw();
 		private:
+			NB::NB_Camera* camera;
+			std::vector<NB::NB_Light_Cube*> lights;
 			void bind_uniforms();
 			GLint uni_projection;
 			GLint uni_view;
