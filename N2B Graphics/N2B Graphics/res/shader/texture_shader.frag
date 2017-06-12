@@ -25,7 +25,7 @@ struct Point_Light
 	float strength;
 	float ambient_strength;
 };
-const int LIGHT_COUNT = 50;
+const int LIGHT_COUNT = 12;
 uniform Point_Light point_lights[LIGHT_COUNT];
 
 //Sun

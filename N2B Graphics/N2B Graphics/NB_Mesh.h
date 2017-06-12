@@ -79,8 +79,7 @@ namespace NB
 	public:
 		NB_EMesh(
 			const std::vector<NB_Vertex>& vertices,
-			const std::vector<GLuint>& indices,
-			std::vector<NB_Texture> textures);
+			const std::vector<GLuint>& indices);
 
 		void draw();
 
@@ -90,7 +89,6 @@ namespace NB
 		GLuint vertex_Array_Object;
 		GLuint vertex_Buffer_Object;
 		GLuint draw_count;
-		std::vector<NB_Texture> textures;
 	};
 }
 #endif

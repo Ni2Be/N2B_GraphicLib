@@ -138,6 +138,12 @@
     <None Include="res\shader\light_shader.vert">
       <Filter>Ressourcendateien\shader</Filter>
     </None>
+    <None Include="res\shader\element_texture_shader.frag">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
+    <None Include="res\shader\element_texture_shader.vert">
+      <Filter>Ressourcendateien\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="N2B Graphics.rc">

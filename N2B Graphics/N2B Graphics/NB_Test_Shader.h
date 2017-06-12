@@ -46,7 +46,7 @@ namespace NB
 				this->bind_uniforms();
 			}
 
-			void draw();
+			virtual void draw();
 			
 			void attach(NB::NB_Camera& camera);
 			void attach(NB::NB_Directional_Light& dir_light);
@@ -60,7 +60,7 @@ namespace NB
 				NB::NB_Object& object,
 				NB::NB_Directional_Light& ambient,
 				std::vector<NB::NB_Light_Cube*>& lights);
-		private:
+		protected:
 			NB::NB_Directional_Light* dir_light;
 			std::vector<NB::NB_Light_Cube*> lights;
 			std::vector<NB_Object*> objects;
@@ -99,6 +99,28 @@ namespace NB
 
 			GLint uni_material_texture;
 			GLint uni_material_specular_map;
+		};
+
+		class Test_Shader_Element : public Test_Shader_Texture
+		{
+		public:
+			using Test_Shader_Texture::attach;
+
+			Test_Shader_Element(int light_count)
+				:Test_Shader_Texture(light_count)
+			{}
+
+			void update(
+				const NB::NB_Camera cam,
+				NB::NB_Model& model,
+				NB::NB_Directional_Light& dir_light,
+				std::vector<NB::NB_Light_Cube*>& lights);
+
+			void attach(NB_Model& model);
+
+			std::vector<NB_Model*> models;
+
+			void draw();
 		};
 
 		class Test_Shader_Color : public NB::NB_Shader

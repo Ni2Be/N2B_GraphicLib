@@ -36,9 +36,9 @@ void NB::Test::Test_Shader_Texture::bind_uniforms()
 }
 
 void NB::Test::Test_Shader_Texture::update(
-	const NB::NB_Camera cam, 
-	NB::NB_Object& object, 
-	NB::NB_Directional_Light& dir_light, 
+	const NB::NB_Camera cam,
+	NB::NB_Object& object,
+	NB::NB_Directional_Light& dir_light,
 	std::vector<NB::NB_Light_Cube*>& lights)
 {
 	//Transformer
@@ -66,7 +66,7 @@ void NB::Test::Test_Shader_Texture::update(
 	glUniform3fv(uni_dir_light_color, 1, glm::value_ptr(dir_light.color));
 	glUniform1f(uni_dir_light_strength, dir_light.strength);
 
-	
+
 	//Material
 	glUniform1f(uni_material_shininess, object.material.shininess * 128);
 	glUniform3f(uni_material_ambient, object.material.ambient.r, object.material.ambient.g, object.material.ambient.b);
@@ -115,9 +115,9 @@ void NB::Test::Test_Shader_Texture::draw()
 	}
 }
 
-void NB::Test::Test_Shader_Texture::attach(NB::NB_Camera& camera) 
-{ 
-	this->camera = &camera; 
+void NB::Test::Test_Shader_Texture::attach(NB::NB_Camera& camera)
+{
+	this->camera = &camera;
 }
 
 void NB::Test::Test_Shader_Texture::attach(NB::NB_Directional_Light& dir_light)
@@ -158,8 +158,76 @@ void NB::Test::Test_Shader_Texture::change_light_count(int new_count)
 
 //
 
+void NB::Test::Test_Shader_Element::attach(NB::NB_Model& model)
+{
+	this->models.push_back(&model);
+}
+
+void NB::Test::Test_Shader_Element::draw()
+{
+#ifdef NB_DEBUG
+	if (this->camera == nullptr)
+	{
+		error_log("NB::Test::Test_Shader_Texture::draw", "No camera");
+		exit(EXIT_FAILURE);
+	}
+	if (this->dir_light == nullptr)
+	{
+		error_log("NB::Test::Test_Shader_Texture::draw", "No dir_light");
+		exit(EXIT_FAILURE);
+	}
+#endif // NB_DEBUG
+
+	this->use();
+	for (auto o : models)
+	{
+		this->update(*this->camera, *o, *this->dir_light, this->lights);
+		o->draw(uni_material_texture, uni_material_specular_map);
+	}
+}
 
 
+void NB::Test::Test_Shader_Element::update(
+	const NB::NB_Camera cam,
+	NB::NB_Model& model,
+	NB::NB_Directional_Light& dir_light,
+	std::vector<NB::NB_Light_Cube*>& lights)
+{
+	//Transformer
+	glUniformMatrix4fv(uni_transform, 1, GL_FALSE, glm::value_ptr(model.position.get_model()));
+
+	//Camera
+	glUniformMatrix4fv(uni_view, 1, GL_FALSE, glm::value_ptr(cam.get_view()));
+	glUniformMatrix4fv(uni_projection, 1, GL_FALSE, glm::value_ptr(cam.get_projection()));
+	glUniform3fv(uni_camera_pos, 1, glm::value_ptr(cam.get_camera_pos()));
+
+	//Light
+	for (int i = 0; i < light_count; i++)
+	{
+		glUniform1f(uni_attenuation_const[i], lights[i]->type.attenuation_const);
+		glUniform1f(uni_attenuation_lin[i], lights[i]->type.attenuation_lin);
+		glUniform1f(uni_attenuation_quad[i], lights[i]->type.attenuation_quad);
+		glUniform1f(uni_light_ambient_strength[i], lights[i]->type.ambient_strength);
+
+		glUniform3f(uni_light_pos[i], lights[i]->position.x, lights[i]->position.y, lights[i]->position.z);
+		glUniform3f(uni_light_color[i], lights[i]->type.color.r, lights[i]->type.color.g, lights[i]->type.color.b);
+		glUniform1f(uni_light_strength[i], lights[i]->type.strength);
+	}
+	//Directional Light
+	glUniform3fv(uni_dir_light_direction, 1, glm::value_ptr(dir_light.direction));
+	glUniform3fv(uni_dir_light_color, 1, glm::value_ptr(dir_light.color));
+	glUniform1f(uni_dir_light_strength, dir_light.strength);
+
+
+	//Material
+	glUniform1f(uni_material_shininess, model.material.shininess * 128);
+	glUniform3f(uni_material_ambient, model.material.ambient.r, model.material.ambient.g, model.material.ambient.b);
+	glUniform3f(uni_material_diffuse, model.material.diffuse.r, model.material.diffuse.g, model.material.diffuse.b);
+	glUniform3f(uni_material_specular, model.material.specular.r, model.material.specular.g, model.material.specular.b);
+}
+
+
+//
 
 void NB::Test::Test_Shader_Color::bind_uniforms()
 {

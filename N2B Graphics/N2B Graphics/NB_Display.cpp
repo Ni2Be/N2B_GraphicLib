@@ -20,7 +20,7 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 	yaw(-90.0f),
 	pitch(0.0f),
 	background_color(0.41f, 1.0f, 1.0f, 1.0f),
-	is_tablet(true)
+	is_tablet(false)
 {
 	//set the window properties
 	set_up_glfw(width, height, title);
@@ -74,7 +74,8 @@ void NB::NB_Display::set_up_glfw(int width, int height, const std::string title)
 	glfwMakeContextCurrent(this->window);
 	glfwSwapInterval(1);
 
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	if(is_tablet)
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 void NB::NB_Display::set_up_glew()
@@ -258,9 +259,9 @@ void NB::NB_Display::light_movement()
 			light_cube_one->move_x(-light_speed);
 		if (keys[GLFW_KEY_RIGHT])
 			light_cube_one->move_x(light_speed);
-		if (keys[GLFW_KEY_LEFT_SHIFT])
+		if (keys[GLFW_KEY_RIGHT_SHIFT])
 			light_cube_one->move_y(light_speed);
-		if (keys[GLFW_KEY_LEFT_CONTROL])
+		if (keys[GLFW_KEY_RIGHT_CONTROL])
 			light_cube_one->move_y(-light_speed);
 	}
 }

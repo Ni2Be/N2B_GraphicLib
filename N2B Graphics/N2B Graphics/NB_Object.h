@@ -13,6 +13,12 @@ Usage:
 #ifndef NB_OBJECT_H_INCLUDED
 #define NB_OBJECT_H_INCLUDED
 
+//GLEW
+#include <GL/glew.h>
+
+//GLM
+#include <glm.hpp>
+
 //
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -189,23 +195,36 @@ namespace NB
 	class NB_Model : public NB_Object
 	{
 	public:
-		explicit NB_Model(const std::string& path, glm::vec4 color, NB_Material material)
+		struct Material_Mesh
+		{
+			Material_Mesh(
+				NB_EMesh* mesh,
+				NB_Material material)
+				:
+				mesh(mesh),
+				material(material)
+			{}
+			NB_EMesh* mesh;
+			NB_Material material;
+			void draw(GLint uni_material_texture, GLint uni_material_specular_map);
+		};
+		NB_Model(const std::string& path, glm::vec4 color, NB_Material material)
 			:NB_Object(color, material)
 		{
 			this->loadModel(path);
 		}
 
-		void NB::NB_Model::draw() const;
+
+		void draw(GLint uni_material_texture, GLint uni_material_specular_map);
+		std::vector<Material_Mesh*> meshes;
 	private:
-		std::vector<NB_EMesh*> meshes;
+		
 		std::string directory;
 		
 		
 		void loadModel(std::string path);
 		void processNode(aiNode* node, const aiScene* scene);
-		NB_EMesh* processMesh(aiMesh* mesh, const aiScene* scene);
-		std::vector<NB_Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type,
-			std::string typeName);
+		Material_Mesh* processMesh(aiMesh* mesh, const aiScene* scene);
 	};
 }
 #endif

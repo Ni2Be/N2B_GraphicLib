@@ -66,10 +66,8 @@ NB::NB_Mesh::~NB_Mesh()
 }
 
 NB::NB_EMesh::NB_EMesh(
-	const std::vector<NB_Vertex>& vertices, 
-	const std::vector<GLuint>& indices,
-	std::vector<NB_Texture> textures)
-	:textures(textures)
+	const std::vector<NB_Vertex>& vertices,
+	const std::vector<GLuint>& indices)
 {
 	draw_count = static_cast<GLuint>(indices.size());
 

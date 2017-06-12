@@ -1,20 +1,22 @@
-﻿  NB_Texture.cpp
-  NB_Object.cpp
-  NB_Utility.cpp
-  NB_Test_Shader.cpp
-  main.cpp
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(111): warning C4244: "=": Konvertierung von "unsigned __int64" in "float", möglicher Datenverlust
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(122): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
-  NB_Display.cpp
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(152): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(153): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(154): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(155): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
-d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(186): warning C4244: "Argument": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
-  Camera.cpp
+﻿  NB_Object.cpp
   Code wird generiert...
   Kompilieren...
+  main.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(36): warning C4305: "Argument": Verkürzung von "double" in "float"
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(106): warning C4244: "=": Konvertierung von "unsigned __int64" in "float", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(114): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(189): warning C4244: "+=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(195): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\main.cpp(196): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+  NB_Test_Shader.cpp
   NB_Shader.cpp
   NB_Light.cpp
+  NB_Display.cpp
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(161): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(162): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(163): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(164): warning C4244: "=": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+d:\programmieren\graphic_lib\n2b_graphiclib\n2b graphics\n2b graphics\nb_display.cpp(195): warning C4244: "Argument": Konvertierung von "double" in "GLfloat", möglicher Datenverlust
+  Camera.cpp
   Code wird generiert...
   N2B Graphics.vcxproj -> D:\Programmieren\Graphic_lib\N2B_GraphicLib\N2B Graphics\x64\Debug\N2B Graphics.exe

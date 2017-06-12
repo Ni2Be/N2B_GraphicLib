@@ -38,13 +38,17 @@ int main()
 
 	NB::NB_Display display{ 1200, 700, "Window" };	
 	
-	const int LIGHT_COUNT = 50;
+	const int LIGHT_COUNT = 12;
 	NB::Test::Test_Shader_Texture texture_shader{ LIGHT_COUNT };
+	NB::Test::Test_Shader_Element element_shader{ LIGHT_COUNT };
 
 	NB::Test::Test_Shader_Color color_shader{ "./res/shader/color_shader" };
 	
 	NB::NB_Texture texture1{ "./res/textures/container2.png" };
 	NB::NB_Texture texture2{ "./res/textures/container2_specular.png" };
+
+	NB::NB_Texture texture3{ "./res/models/lion/koban.jpg" };
+	NB::NB_Texture texture4{ "./res/models/lion/koban.jpg" };
 
 	//Camera
 	display.cam1.look_at(
@@ -52,6 +56,7 @@ int main()
 		glm::vec3(0.0f, 0.0f, -1.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f));
 
+	element_shader.attach(display.cam1);
 	texture_shader.attach(display.cam1);
 	color_shader.attach(display.cam1);
 	//End camera
@@ -63,6 +68,7 @@ int main()
 	display.set_background_color(glm::vec4{ 0.02f, 0.02f, 0.02f, 1.0f });
 
 	texture_shader.attach(sun);
+	element_shader.attach(sun);
 	//End die light
 
 	//Cubes
@@ -131,6 +137,7 @@ int main()
 	}
 	for (int i = 0; i < lights.size(); i++)
 	{
+		element_shader.attach(*lights[i]);
 		texture_shader.attach(*lights[i]);
 		color_shader.attach(*lights[i]);
 	}
@@ -138,27 +145,32 @@ int main()
 
 	//Element test
 	NB::NB_Material wood
-	{ glm::vec3{ 0.24725,	0.1995,	0.0745 },
+	{ 
+		glm::vec3{ 0.24725,	0.1995,	0.0745 },
 		glm::vec3{ 0.75164, 0.60648, 0.22648 },
 		glm::vec3{ 0.628281, 0.555802, 0.366065 },
 		0.4f,
-		texture1,
-		texture2
+		texture3,
+		texture4
 	};
 	
-	/*NB::NB_Model model{ 
-		"./res/models/apollo.obj",
-		glm::vec4{ 0.5f, 0.5f, 0.5f, 1.0f },
-		wood
-	};*/
-	NB::NB_Model model{
-		"./res/models/nano/nanosuit2.obj",
+	NB::NB_Model model1{ 
+		"./res/models/nano/nanosuit.obj",
 		glm::vec4{ 0.5f, 0.5f, 0.5f, 1.0f },
 		wood
 	};
-	model.position.pos.x = -10.0f;
-	
-	texture_shader.attach(model);
+	NB::NB_Model model2{
+		"./res/models/skull2/okapi-1.obj",
+		glm::vec4{ 0.5f, 0.5f, 0.5f, 1.0f },
+		wood
+	};
+
+	model1.position.pos.x = -10.0f;
+	//model1.position.rot.x = glm::radians(90.0f);
+	//model2.position.pos.x = -5.0f;
+
+	element_shader.attach(model1);
+	element_shader.attach(model2);
 	//End element test
 
 	while (!glfwWindowShouldClose(&display))
@@ -184,6 +196,7 @@ int main()
 			lights[i]->move_z(0.7f * cos(time) * pow(-1, i));
 		}
 		
+		element_shader.draw();
 		texture_shader.draw();
 		color_shader.draw();
 		display.update();
