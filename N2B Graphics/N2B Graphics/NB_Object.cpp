@@ -4,11 +4,11 @@
 
 NB::NB_Object::NB_Object(const NB_Object& lhs)
 {
-	this->color = lhs.color;
+	this->color    = lhs.color;
 	this->material = lhs.material;
 	this->position = lhs.position;
 	this->vertices = lhs.vertices;
-	this->mesh = new NB_Mesh(this->vertices);
+	this->mesh     = new NB_Mesh(this->vertices);
 }
 
 void NB::NB_Object::draw() const
@@ -106,8 +106,9 @@ NB::NB_Model::Material_Mesh* NB::NB_Model::processMesh(aiMesh* mesh, const aiSce
 		for (GLuint j = 0; j < face.mNumIndices; j++)
 			indices.push_back(face.mIndices[j]);
 	}
-
-	return new Material_Mesh(new NB_EMesh(vertices, indices), material);
+	std::vector<NB_Texture> textures;
+	textures.push_back(*material.texture);
+	return new Material_Mesh(new NB_Mesh(vertices, indices, textures), material);
 }
 
 
