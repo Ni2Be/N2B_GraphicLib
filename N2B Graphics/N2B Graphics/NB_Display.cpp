@@ -20,7 +20,7 @@ NB::NB_Display::NB_Display(int width, int height, const std::string title = "win
 	yaw(-90.0f),
 	pitch(0.0f),
 	background_color(0.41f, 1.0f, 1.0f, 1.0f),
-	is_tablet(false)
+	is_tablet(true)
 {
 	//set the window properties
 	set_up_glfw(width, height, title);
